@@ -1,0 +1,157 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700italic,700,300,300italic);
+@import '_normalise.styl'
+
+body
+  color #333
+  font-family 'Roboto', Helvetica
+  margin 0
+  padding 0
+  
+header 
+	background #333
+	overflow auto
+	padding 10px
+	position relative
+	z-index 2
+	
+	.logo 
+		color white
+		float left
+		font-size 22px
+		font-weight bold
+	
+	.navigation
+		float right
+		margin 0
+
+		li
+			display inline-block
+			list-style none
+			margin-right 10px
+			
+			a
+				color white
+				text-decoration none
+				
+				&.signup 
+					background limegreen
+					border-radius 4px
+					color white
+					display inline-block
+					padding 5px 10px
+
+nav
+	background #f4f4f4
+	
+	.subnav
+		margin 0
+		overflow hidden
+		padding 0
+		
+		li
+			float left
+			list-style none
+			
+			&.active
+				background #b2b2b2
+				
+				a
+					color white
+				
+			
+			a
+				color black
+				display inline-block
+				font-size 14px
+				padding 6px 10px 7px
+				outline none
+				text-decoration none
+			
+
+article.articlebody
+	padding 10px
+	position relative
+	z-index 1
+	
+	section
+		
+		h2
+			.actionlink
+				background #e6e6e6
+				border-radius 4px
+				color #666
+				display inline-block
+				font-size 12px
+				font-weight normal
+				padding 5px 10px
+				text-align center
+				text-decoration none
+				
+
+		table 
+			border 1px solid snow
+			border-spacing 10px
+			width 100%
+			
+			thead
+				th
+					border-bottom 2px solid silver
+					color silver
+					font-weight normal
+					text-align left
+					
+					&.activefilter
+						color orangered
+						border-bottom 2px solid orangered
+			
+			th, td 
+				font-size 14px
+			
+			th
+				padding-bottom 10px
+			
+			&.financials
+				td
+					&:first-child
+						width 50%
+					&:nth-child(2), &:nth-child(3), &:nth-child(4)
+						width 14%
+					&:nth-child(5), &:nth-child(6)
+						width 4%
+					
+					.button 
+						background #c9c9c9
+						border-radius 4px
+						color white
+						display inline-block
+						padding 5px 10px
+						text-align center
+						text-decoration none
+						
+						&:hover
+							background limegreen
+						
+				th
+					&.actions
+						border none
+						text-align center
+			
+				&.-transactions
+					td
+						&:first-child
+							width 64%
+						&:nth-child(2), &:nth-child(3)
+							width 14%
+						&:nth-child(4), &:nth-child(5)
+							width 4%
+					
+			
+		
+	
+	&:first-child
+		margin-top 0 !important
+		
+
+
+
+
