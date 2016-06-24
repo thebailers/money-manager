@@ -68,8 +68,19 @@ app.put('/api/transactions/:id', function(req, res) {
 			transaction.save(function(err) {
 			if (err)
 				res.send(err);
-			res.json({ message: 'transaction updated!' });
+			res.json({ message: 'Transaction updated!' });
 		});
+	});
+});
+
+
+app.delete('/api/transactions/:id', function(req, res) {
+	Transaction.remove({
+		_id: req.params.id
+	}, function(err, transaction) {
+		if (err)
+			res.send(err);
+		res.json({ message: 'Transaction deleted!' })
 	});
 });
 
@@ -87,7 +98,7 @@ app.post('/api/expenditure', function(req, res) {
 		if (err)
 			res.send(err);
 		res.json({ message: 'Expenditure created!' });
-		});
+	});
 });
 
 app.get('/api/expenditure', function(req, res) {
@@ -127,8 +138,8 @@ app.put('/api/expenditure/:id', function(req, res) {
 });
 
 app.delete('/api/expenditure/:id', function(req, res) {
-	Expenditure.remove({
-		_id: req.params.id
+	Expenditure.deleteOne({
+		"_id": req.params.id
 	}, function(err, expenditure) {
 		if (err)
 			res.send(err);

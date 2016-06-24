@@ -15,8 +15,10 @@ import incomeReducer from './reducers/income';
 import App from './components/App';
 import Expenditure from './components/Expenditure';
 import ExpenditureEdit from './components/ExpenditureEdit';
+import ExpenditureAdd from './components/ExpenditureAdd';
 import Income from './components/Income';
 import IncomeEdit from './components/IncomeEdit';
+import IncomeAdd from './components/IncomeAdd';
 import Transactions from './components/Transactions';
 import TransactionEdit from './components/TransactionEdit';
 import TransactionAdd from './components/TransactionAdd';
@@ -43,8 +45,10 @@ const router = (
         <IndexRoute component={Transactions} />
         <Route path="/expenditure" component={Expenditure} />
         <Route path="/expenditure/edit/:id" component={ExpenditureEdit} />
+        <Route path="/expenditure/add" component={ExpenditureAdd} />
         <Route path="/income" component={Income} />
         <Route path="/income/edit/:id" component={IncomeEdit} />
+        <Route path="/income/add" component={IncomeAdd} />
         <Route path="/transaction/edit/:id" component={TransactionEdit} />
         <Route path="/transactions/add" component={TransactionAdd} />
       </Route>

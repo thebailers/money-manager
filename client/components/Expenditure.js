@@ -25,13 +25,14 @@ class Expenditure extends Component {
 
 		return (
 			<section>
-				<h2>Expenditure <Link className="actionlink" to="/">Add</Link></h2>
+				<h2>Expenditure <Link className="actionlink" to="/expenditure/add">Add</Link></h2>
 				<table className="financials">
 					<thead>
 						<tr>
 							<th>Name</th>
 							<th>Category</th>
-							<th>Withdraw Date</th>
+							<th>Date</th>
+							<th>Type</th>
 							<th className="activefilter">Amount</th>
 							<th className="actions">&nbsp;</th>
 							<th className="actions">&nbsp;</th>
@@ -44,6 +45,7 @@ class Expenditure extends Component {
 									<td>{expenditure.name}</td>
 									<td>{expenditure.category}</td>
 									<td>{expenditure.date}</td>
+									<td>{expenditure.type}</td>
 									<td>{`£${numeral(expenditure.amount).format('£ 0,0[.]00')}`}</td>
 									<td><Link to={`/expenditure/edit/${expenditure._id}`} className="button">Edit</Link></td>
 									<td><Link to="/edit/:id" className="button">Delete</Link></td>

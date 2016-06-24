@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var IncomeSchema = new Schema({
-  name: String,
+  	name: String,
 	amount: Number,
 	date: Number,
 	category: String,

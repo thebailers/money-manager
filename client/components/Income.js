@@ -24,7 +24,7 @@ class Income extends Component {
 
     return (
       <section>
-        <h2>Income</h2>
+        <h2>Income <Link className="actionlink" to="/income/add">Add</Link></h2>
         <table className="financials">
           <thead>
             <tr>

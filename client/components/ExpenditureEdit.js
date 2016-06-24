@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+
 import numeral from 'numeral';
 import moment from 'moment';
 
-import { fetchOneExpenditure } from '../actions/actionCreators';
+import { fetchOneExpenditure, editExpenditure } from '../actions/actionCreators';
 
 class ExpenditureEdit extends Component {
 	componentWillMount() {
@@ -53,8 +55,13 @@ class ExpenditureEdit extends Component {
 
 function mapStateToProps(state) {
 	return {
-		expenditure: state.expenditure.expenditure
+		expenditure: state.expenditure.expenditure,
+		initialValues: state.expenditure.expenditure
 	}
 }
 
-export default connect(mapStateToProps, { fetchOneExpenditure })(ExpenditureEdit);
+export default reduxForm({
+  form: 'EditExpenditure',
+  fields: ['name', 'category', 'type', 'amount', 'date'],
+  validate
+}, mapStateToProps, { fetchOneExpenditure, editExpenditure })(ExpenditureEdit);

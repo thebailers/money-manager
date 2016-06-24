@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions/actionCreators';
@@ -9,6 +9,17 @@ import Transaction from './Transaction';
 class Transactions extends Component {
 	componentWillMount() {
 		this.props.fetchTransactions();
+	}
+
+	handleDelete(id) {
+		this.props.deleteTransaction(id)
+		  .then(() => {
+		    this.props.fetchTransactions();
+      });
+	}
+
+	static contextTypes = {
+		router: PropTypes.object
 	}
 
 	render() {
@@ -40,7 +51,7 @@ class Transactions extends Component {
 					<tbody>
 					{this.props.transactions.map(
 						(transaction, i) => 
-							<Transaction {...this.props} key={i} i={i} transaction={transaction} />
+							<Transaction {...this.props} key={i} transaction={transaction} delete={this.handleDelete} />
 					)}
 					</tbody>
 				</table>

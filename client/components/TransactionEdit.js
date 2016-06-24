@@ -16,7 +16,6 @@ class TransactionEdit extends Component {
 	}
 
 	onSubmit(props) {
-		console.log('submit');
 		this.props.editTransaction(this.props.transaction._id, props)
 			.then(() => {
 				this.context.router.push('/');
@@ -58,8 +57,8 @@ class TransactionEdit extends Component {
 								<td>{transaction.name}</td>
 								<td>{moment(transaction.date).format('Do MMM YYYY')}</td>
 								<td>{`£${numeral(transaction.amount).format("£ 0,0[.]00")}`}</td>
-								<td><Link to={`/transaction/edit/${transaction._id}`} className="button">Save</Link></td>
-								<td><Link to="/transaction/edit/:id" className="button">Delete</Link></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
 							</tr>
 							<tr>
 								<td><input type="text" {...name} /></td>
