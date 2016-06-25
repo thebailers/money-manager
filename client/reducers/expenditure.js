@@ -1,4 +1,4 @@
-import { FETCH_EXPENDITURE, FETCH_ONE_EXPENDITURE, ADD_EXPENDITURE } from '../actions/actionCreators';
+import { FETCH_EXPENDITURE, FETCH_ONE_EXPENDITURE, ADD_EXPENDITURE, EDIT_EXPENDITURE } from '../actions/actionCreators';
 
 const INITIAL_STATE = { all: [], expenditure: null };
 
@@ -9,8 +9,11 @@ export default function (state = INITIAL_STATE, action) {
 		case FETCH_EXPENDITURE:
 			return { ...state, all: action.payload.data };
 		case ADD_EXPENDITURE:
-			return { data: action.data }
-		
+			return { data: action.data };
+		case EDIT_EXPENDITURE:
+			console.log('EDIT REDUCER RAN');
+			return { data: action.data };
+		default:
+			return state;	
 	}
-	return state;
 }

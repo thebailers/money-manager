@@ -9,6 +9,7 @@ export const DELETE_TRANSACTION = 'DELETE_TRANSACTION';
 export const FETCH_EXPENDITURE = 'FETCH_EXPENDITURE';
 export const FETCH_ONE_EXPENDITURE = 'FETCH_ONE_EXPENDITURE';
 export const ADD_EXPENDITURE = 'ADD_EXPENDITURE';
+export const EDIT_EXPENDITURE = 'EDIT_EXPENDITURE';
 export const FETCH_INCOME = 'FETCH_INCOME';
 export const FETCH_ONE_INCOME = 'FETCH_ONE_INCOME';
 export const ADD_INCOME = 'ADD_INCOME';
@@ -93,6 +94,16 @@ export function fetchOneExpenditure(id) {
 	
 	return {
 		type: FETCH_ONE_EXPENDITURE,
+		payload: request 
+	}
+};
+
+export function editExpenditure(id, props) {
+	console.log('edit action creator');
+	const request = axios.put(`/api/expenditure/${id}`, props);
+	
+	return {
+		type: EDIT_EXPENDITURE,
 		payload: request 
 	}
 };
