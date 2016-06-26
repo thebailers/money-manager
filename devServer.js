@@ -138,8 +138,8 @@ app.put('/api/expenditure/:id', function(req, res) {
 });
 
 app.delete('/api/expenditure/:id', function(req, res) {
-	Expenditure.deleteOne({
-		"_id": req.params.id
+	Expenditure.remove({
+		_id: req.params.id
 	}, function(err, expenditure) {
 		if (err)
 			res.send(err);

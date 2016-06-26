@@ -10,10 +10,12 @@ export const FETCH_EXPENDITURE = 'FETCH_EXPENDITURE';
 export const FETCH_ONE_EXPENDITURE = 'FETCH_ONE_EXPENDITURE';
 export const ADD_EXPENDITURE = 'ADD_EXPENDITURE';
 export const EDIT_EXPENDITURE = 'EDIT_EXPENDITURE';
+export const DELETE_EXPENDITURE = 'DELETE_EXPENDITURE';
 export const FETCH_INCOME = 'FETCH_INCOME';
 export const FETCH_ONE_INCOME = 'FETCH_ONE_INCOME';
 export const ADD_INCOME = 'ADD_INCOME';
 export const EDIT_INCOME = 'EDIT_INCOME';
+export const DELETE_INCOME = 'DELETE_INCOME';
 
 function transformDateFormat(json) {
 	const transaction = {
@@ -99,7 +101,6 @@ export function fetchOneExpenditure(id) {
 };
 
 export function editExpenditure(id, props) {
-	console.log('edit action creator');
 	const request = axios.put(`/api/expenditure/${id}`, props);
 	
 	return {
@@ -107,6 +108,15 @@ export function editExpenditure(id, props) {
 		payload: request 
 	}
 };
+
+export function deleteExpenditure(id) {
+	const request = axios.delete(`/api/expenditure/${id}`);
+
+	return {
+		type: DELETE_EXPENDITURE,
+		payload: request
+	}
+}
 
 export function addIncome(props) {
 	const request = axios.post('/api/income', props);
@@ -140,6 +150,15 @@ export function editIncome(id, props) {
 
 	return {
 		type: EDIT_INCOME,
+		payload: request
+	}
+};
+
+export function deleteIncome(id) {
+	const request = axios.delete(`/api/income/${id}`);
+
+	return {
+		type: DELETE_INCOME,
 		payload: request
 	}
 };

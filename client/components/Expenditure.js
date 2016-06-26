@@ -10,6 +10,13 @@ class Expenditure extends Component {
 		this.props.fetchExpenditure();
 	}
 
+	handleDelete(id) {
+		this.props.deleteExpenditure(id)
+			.then(() => {
+				this.props.fetchExpenditure();
+			});
+	}
+
 	render() {
 
 		const { expenditure } = this.props;
@@ -48,7 +55,7 @@ class Expenditure extends Component {
 									<td>{expenditure.type}</td>
 									<td>{`£${numeral(expenditure.amount).format('£ 0,0[.]00')}`}</td>
 									<td><Link to={`/expenditure/edit/${expenditure._id}`} className="button">Edit</Link></td>
-									<td><Link to="/edit/:id" className="button">Delete</Link></td>
+									<td><button className="button" onClick={this.handleDelete.bind(this, expenditure._id)}>Delete</button></td>
 								</tr>
 							);
 						})}

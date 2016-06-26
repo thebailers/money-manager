@@ -57,8 +57,8 @@ class ExpenditureEdit extends Component {
 								<td>{expenditure.date}</td>
 								<td>{expenditure.type}</td>
 								<td>{`£${numeral(expenditure.amount).format("£ 0,0[.]00")}`}</td>
-								<td><Link to={`/expenditure/edit/${expenditure._id}`} className="button">Save</Link></td>
-								<td><Link to="/expenditure/edit/:id" className="button">Delete</Link></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
 							</tr>
 							<tr>
 								<td><input type="text" {...name} /></td>
@@ -67,7 +67,7 @@ class ExpenditureEdit extends Component {
 								<td><input type="text" {...amount} /></td>
 								<td><input type="text" {...type} /></td>
 								<td><button type="submit" className="button">Save</button></td>
-								<td><Link to="/" className="button">Cancel</Link></td>
+								<td><Link to="/expenditure" className="button">Cancel</Link></td>
 							</tr>
 							<tr>
 								<td><div className="text-help">{name.touched ? name.error : ''}</div></td>
