@@ -11,7 +11,6 @@ import moment from 'moment';
 class TransactionAdd extends Component {
 
 	onSubmit(props) {
-		console.log(props);
 		this.props.addTransaction(props)
 			.then(() => {
 				this.context.router.push('/');

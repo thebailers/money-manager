@@ -5,6 +5,8 @@ import * as actionCreators from '../actions/actionCreators';
 import { Link } from 'react-router';
 import numeral from 'numeral';
 
+import SumTotal from './SumTotal';
+
 class Expenditure extends Component {
 	componentWillMount() {
 		this.props.fetchExpenditure();
@@ -61,6 +63,8 @@ class Expenditure extends Component {
 						})}
 					</tbody>
 				</table>
+
+				<SumTotal data={expenditure} />
 			</section>
 		 );
 	}
