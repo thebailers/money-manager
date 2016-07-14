@@ -1,6 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700italic,700,300,300italic);
 @import '_normalise.styl'
 
+$orange = orangered
+$green = limegreen
+
+$radius-button = 3px
+
 body
   color #333
   font-family 'Roboto', Helvetica
@@ -34,7 +39,7 @@ header
 				text-decoration none
 				
 				&.signup 
-					background limegreen
+					background $green
 					border-radius 4px
 					color white
 					display inline-block
@@ -103,7 +108,7 @@ article.articlebody
 					
 					&.activefilter
 						color orangered
-						border-bottom 2px solid orangered
+						border-bottom 2px solid $orange
 			
 			th, td 
 				font-size 14px
@@ -147,17 +152,82 @@ article.articlebody
 							width 14%
 						&:nth-child(4), &:nth-child(5)
 							width 4%
-							
+			
+			button 
+				border none
+
+
+			
 		&.sumtotal 
 			margin-top: 75px
+			
+			.total
+				background gold
+			
+			.remaining
+				background firebrick
+			
+			.days
+				background darkorange
+			
+			.total, .remaining, .days
+				border-radius 50%
+				display inline-block
+				position relative
+				height 0
+				margin-left 2%
+				padding-bottom 15%
+				width 15%
+				
+				&:first-child 
+					margin-left 0
+				
+				span
+					display block
+				
+				.label
+					color white
+					font-size 1.6vw
+					margin-top 3.5vw
+					text-align center
+
+				.value
+					color white
+					font-size 3vw
+					position absolute
+					left 50%
+					top 50%
+					transform translate3d(-50%, -50%, 0)
+
+		
+
+		form
+			label
+				display block
+				margin 15px 0 5px
+			
+			input
+				border-radius $radius-button
+				border 1px solid #e0e0e0
+				padding 5px
+				width 100%
+				
+			button
+				background $orange
+				border none
+				border-radius $radius-button
+				color white
+				margin-top 15px
+				padding 5px 15px
+			
+			.text-help
+				color $orange
+				font-size 13px
+				margin-top 5px
+			
 					
 			
 		
 	
 	&:first-child
 		margin-top 0 !important
-		
-
-
-
-
