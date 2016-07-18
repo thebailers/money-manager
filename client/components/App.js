@@ -11,7 +11,7 @@ export default class App extends Component {
 				<Header />
 				<Navigation />
 				<article className="articlebody">
-					{React.cloneElement(this.props.children, this.props)}
+					{React.cloneElement(this.props.children, { ...this.props, key: undefined, ref: undefined } )}
 				</article>
 			</div>
 		);
