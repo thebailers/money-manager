@@ -6,6 +6,12 @@ export default class SumTotal extends Component {
 
 		const { data, type } = this.props;
 
+		if (!data) {
+			return (
+				<div>Loading...</div>
+			);
+		}
+
 		const total = data
 			.map((obj) => { return obj.amount; })
 			.reduce((prev, next) => { return prev += next; }, 0);

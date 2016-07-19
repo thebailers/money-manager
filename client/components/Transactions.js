@@ -62,8 +62,8 @@ class Transactions extends Component {
 
 				<section className="sumtotal">
 					<SumTotal data={transactions} type="Transactions" />
-					{/*<SumTotal data={expenditure} type="Expenditure" />*/}
-					{/*<SumTotal data={income} type="Income" />*/}
+					<SumTotal data={expenditure} type="Expenditure" />
+					<SumTotal data={income} type="Income" />
 
 					<div className="remaining">
 						<span className="label">Remaining</span>
