@@ -1,13 +1,13 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'build' ]
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'start' ]
 2 info using npm@2.15.5
 3 info using node@v4.4.5
-4 verbose run-script [ 'prebuild', 'build', 'postbuild' ]
-5 info prebuild express@1.0.0
-6 info build express@1.0.0
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info prestart express@1.0.0
+6 info start express@1.0.0
 7 verbose unsafe-perm in lifecycle true
-8 info express@1.0.0 Failed to exec build script
-9 verbose stack Error: express@1.0.0 build: `npm run clean && npm run build:webpack`
+8 info express@1.0.0 Failed to exec start script
+9 verbose stack Error: express@1.0.0 start: `node devServer.js`
 9 verbose stack Exit status 1
 9 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:217:16)
 9 verbose stack     at emitTwo (events.js:87:13)
@@ -20,17 +20,17 @@
 10 verbose pkgid express@1.0.0
 11 verbose cwd /Users/simon/git/money-manager
 12 error Darwin 15.0.0
-13 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "build"
+13 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "start"
 14 error node v4.4.5
 15 error npm  v2.15.5
 16 error code ELIFECYCLE
-17 error express@1.0.0 build: `npm run clean && npm run build:webpack`
+17 error express@1.0.0 start: `node devServer.js`
 17 error Exit status 1
-18 error Failed at the express@1.0.0 build script 'npm run clean && npm run build:webpack'.
+18 error Failed at the express@1.0.0 start script 'node devServer.js'.
 18 error This is most likely a problem with the express package,
 18 error not with npm itself.
 18 error Tell the author that this fails on your system:
-18 error     npm run clean && npm run build:webpack
+18 error     node devServer.js
 18 error You can get information on how to open an issue for this project with:
 18 error     npm bugs express
 18 error Or if that isn't available, you can get their info via:
