@@ -71,8 +71,8 @@ class Expenditure extends Component {
 }
 
 function mapStateToProps(state) {
-	return { 
-		expenditure: state.expenditure.all 
+	return {
+		expenditure: state.expenditure.all
 	};
 }
 

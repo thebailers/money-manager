@@ -1,5 +1,8 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700italic,700,300,300italic);
+@import 'jeet/_jeet.styl'
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700italic,700,300,300italic)
 @import '_normalise.styl'
+@import '_header.styl'
+@import '_nav.styl'
 
 $orange = orangered
 $green = limegreen
@@ -12,76 +15,16 @@ body
   font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   margin 0
   padding 0
-  
-header 
-	background #333
-	overflow auto
-	padding 10px
-	position relative
-	z-index 2
-	
-	.logo 
-		color white
-		float left
-		font-size 22px
-		font-weight bold
-	
-	.navigation
-		float right
-		margin 0
 
-		li
-			display inline-block
-			list-style none
-			margin-right 10px
-			
-			a
-				color white
-				text-decoration none
-				
-				&.signup 
-					background $green
-					border-radius 4px
-					color white
-					display inline-block
-					padding 5px 10px
-
-nav
-	background #f4f4f4
-	
-	.subnav
-		margin 0
-		overflow hidden
-		padding 0
-		
-		li
-			float left
-			list-style none
-			
-			&.active
-				background #b2b2b2
-				
-				a
-					color white
-				
-			
-			a
-				color black
-				display inline-block
-				font-size 14px
-				padding 6px 10px 7px
-				outline none
-				text-decoration none
-			
 
 article.articlebody
 	background #f4f4f4
 	padding 10px
 	position relative
 	z-index 1
-	
+
 	section
-		
+
 		h2
 			.actionlink
 				background #e6e6e6
@@ -93,30 +36,30 @@ article.articlebody
 				padding 5px 10px
 				text-align center
 				text-decoration none
-				
 
-		table 
+
+		table
 			border 1px solid snow
 			border-spacing 10px
 			width 100%
-			
+
 			thead
 				th
 					border-bottom 2px solid silver
 					color silver
 					font-weight normal
 					text-align left
-					
+
 					&.activefilter
 						color orangered
 						border-bottom 2px solid $orange
-			
-			th, td 
+
+			th, td
 				font-size 14px
-			
+
 			th
 				padding-bottom 10px
-			
+
 			&.financials
 				background #fff
 
@@ -127,8 +70,8 @@ article.articlebody
 						width 14%
 					&:nth-child(5), &:nth-child(6)
 						width 4%
-					
-					.button 
+
+					.button
 						background #c9c9c9
 						border-radius 4px
 						color white
@@ -136,15 +79,15 @@ article.articlebody
 						padding 5px 10px
 						text-align center
 						text-decoration none
-						
+
 						&:hover
 							background limegreen
-						
+
 				th
 					&.actions
 						border none
 						text-align center
-			
+
 				&.-transactions
 					td
 						&:first-child
@@ -153,24 +96,24 @@ article.articlebody
 							width 14%
 						&:nth-child(4), &:nth-child(5)
 							width 4%
-			
-			button 
+
+			button
 				border none
 
 
-			
-		&.sumtotal 
+
+		&.sumtotal
 			margin-top: 75px
-			
+
 			.total
 				background gold
-			
+
 			.remaining
 				background firebrick
-			
+
 			.days
 				background darkorange
-			
+
 			.total, .remaining, .days
 				border-radius 50%
 				display inline-block
@@ -179,13 +122,13 @@ article.articlebody
 				margin-left 2%
 				padding-bottom 15%
 				width 15%
-				
-				&:first-child 
+
+				&:first-child
 					margin-left 0
-				
+
 				span
 					display block
-				
+
 				.label
 					color white
 					font-size 1.6vw
@@ -200,19 +143,19 @@ article.articlebody
 					top 50%
 					transform translate3d(-50%, -50%, 0)
 
-		
+
 
 		form
 			label
 				display block
 				margin 15px 0 5px
-			
+
 			input
 				border-radius $radius-button
 				border 1px solid #e0e0e0
 				padding 5px
 				width 100%
-				
+
 			button
 				background $orange
 				border none
@@ -220,15 +163,15 @@ article.articlebody
 				color white
 				margin-top 15px
 				padding 5px 15px
-			
+
 			.text-help
 				color $orange
 				font-size 13px
 				margin-top 5px
-			
-					
-			
-		
-	
+
+
+
+
+
 	&:first-child
 		margin-top 0 !important
