@@ -6,6 +6,7 @@ import { Link } from 'react-router';
 import numeral from 'numeral';
 
 import Total from './Total';
+import sumObjectValues from '../utils/sumObjectValues';
 
 class Income extends Component {
 	componentWillMount() {
@@ -30,6 +31,8 @@ class Income extends Component {
 					</div>
 			)
 		}
+
+		const incomeTotal = sumObjectValues(income, 'amount');
 
 		return (
 			<section>
@@ -61,7 +64,9 @@ class Income extends Component {
 						</tbody>
 					</table>
 
-					<Total data={income} />
+					<section className="sumtotal">
+						<Total value={incomeTotal} type="Income" />
+					</section>
 			</section>
 		 );
 	}

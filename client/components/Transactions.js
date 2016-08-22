@@ -9,13 +9,14 @@ import Transaction from './Transaction';
 import Total from './Total';
 import Remaining from './Remaining';
 
+import sumObjectValues from '../utils/sumObjectValues';
+
 class Transactions extends Component {
 
 	componentWillMount() {
 		this.props.fetchTransactions();
 		this.props.fetchExpenditure();
 		this.props.fetchIncome();
-
 	}
 
 	handleDelete(id) {
@@ -23,14 +24,6 @@ class Transactions extends Component {
 		  .then(() => {
 		    this.props.fetchTransactions();
       });
-	}
-
-	sumTotal(data) {
-
-		return data
-			.map((obj) => { return obj.amount; })
-			.reduce((prev, next) => { return prev += next; }, 0);
-
 	}
 
 	static contextTypes = {
@@ -41,9 +34,6 @@ class Transactions extends Component {
 
 		const { transactions, expenditure, income } = this.props;
 
-
-
-
 		if (!transactions || !expenditure || !income) {
 			return (
 					<div>
@@ -52,10 +42,9 @@ class Transactions extends Component {
 			)
 		}
 
-		const transactionsTotal = this.sumTotal(transactions);
-		const expenditureTotal = this.sumTotal(expenditure);
-		const incomeTotal = this.sumTotal(income);
-
+		const transactionsTotal = sumObjectValues(transactions, 'amount');
+		const expenditureTotal = sumObjectValues(expenditure, 'amount');
+		const incomeTotal = sumObjectValues(income, 'amount');
 
 		return (
 			<section>
@@ -87,9 +76,7 @@ class Transactions extends Component {
 						<span className="label">Remaining</span>
 						<span className="value">{`£${numeral((incomeTotal - expenditureTotal) - transactionsTotal).format('£ 0,0[.]00')}`}</span>
 					</div>
-
 				</section>
-
 
 			</section>
 		 );
