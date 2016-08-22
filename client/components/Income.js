@@ -5,7 +5,7 @@ import * as actionCreators from '../actions/actionCreators';
 import { Link } from 'react-router';
 import numeral from 'numeral';
 
-import SumTotal from './SumTotal';
+import Total from './Total';
 
 class Income extends Component {
 	componentWillMount() {
@@ -61,7 +61,7 @@ class Income extends Component {
 						</tbody>
 					</table>
 
-					<SumTotal data={income} />
+					<Total data={income} />
 			</section>
 		 );
 	}

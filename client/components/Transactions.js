@@ -3,16 +3,19 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions/actionCreators';
 import { Link } from 'react-router';
+import numeral from 'numeral';
 
 import Transaction from './Transaction';
-import SumTotal from './SumTotal';
+import Total from './Total';
+import Remaining from './Remaining';
 
 class Transactions extends Component {
+
 	componentWillMount() {
 		this.props.fetchTransactions();
 		this.props.fetchExpenditure();
 		this.props.fetchIncome();
-		
+
 	}
 
 	handleDelete(id) {
@@ -20,6 +23,14 @@ class Transactions extends Component {
 		  .then(() => {
 		    this.props.fetchTransactions();
       });
+	}
+
+	sumTotal(data) {
+
+		return data
+			.map((obj) => { return obj.amount; })
+			.reduce((prev, next) => { return prev += next; }, 0);
+
 	}
 
 	static contextTypes = {
@@ -30,13 +41,20 @@ class Transactions extends Component {
 
 		const { transactions, expenditure, income } = this.props;
 
-		if (!transactions) {
+
+
+
+		if (!transactions || !expenditure || !income) {
 			return (
 					<div>
 						<p>Loading...</p>
 					</div>
 			)
 		}
+
+		const transactionsTotal = this.sumTotal(transactions);
+		const expenditureTotal = this.sumTotal(expenditure);
+		const incomeTotal = this.sumTotal(income);
 
 
 		return (
@@ -54,41 +72,32 @@ class Transactions extends Component {
 					</thead>
 					<tbody>
 					{this.props.transactions.map(
-						(transaction, i) => 
+						(transaction, i) =>
 							<Transaction {...this.props} key={i} transaction={transaction} delete={this.handleDelete} />
 					)}
 					</tbody>
 				</table>
 
 				<section className="sumtotal">
-					<SumTotal data={transactions} type="Transactions" />
-					<SumTotal data={expenditure} type="Expenditure" />
-					<SumTotal data={income} type="Income" />
+					<Total value={transactionsTotal} type="Transactions" />
+					<Total value={expenditureTotal} type="Expenditure" />
+					<Total value={incomeTotal} type="Income" />
 
 					<div className="remaining">
 						<span className="label">Remaining</span>
-						<span className="value">£400</span>
+						<span className="value">{`£${numeral((incomeTotal - expenditureTotal) - transactionsTotal).format('£ 0,0[.]00')}`}</span>
 					</div>
 
-					<div className="days">
-						<span className="label">Days in Month</span>
-						<span className="value">14</span>
-					</div>
 				</section>
 
 
-				
-				<br />
-				<div>Available to spend</div><br />
-				<div>Available to spend less current monthly transactions</div><br />
-				<div>Days left in the month</div><br /><br />
 			</section>
 		 );
 	}
 }
 
 function mapStateToProps(state) {
-	return { 
+	return {
 		transactions: state.transactions.all,
 		expenditure: state.expenditure.all,
 		income: state.income.all
