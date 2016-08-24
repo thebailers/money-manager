@@ -6,7 +6,7 @@
   "scripts": {
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
-    "test": "NODE_ENV=production mocha './tests/**/*.spec.js' --compilers js:babel-core/register",
+    "test": "jest",
     "clean": "rimraf dist",
     "start": "node devServer.js",
     "tunnel": "browser-sync start --proxy localhost:7770 --tunnel wesbos"
@@ -57,8 +57,11 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "devDependencies": {
+    "babel-jest": "^14.1.0",
+    "babel-polyfill": "^6.13.0",
     "expect": "^1.18.0",
     "expect-jsx": "^2.5.1",
+    "jest-cli": "^14.1.0",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^15.0.2"
   }
