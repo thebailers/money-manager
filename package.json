@@ -64,5 +64,8 @@
     "jest-cli": "^14.1.0",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^15.0.2"
+  },
+  "jest": {
+    "automock": false
   }
 }
