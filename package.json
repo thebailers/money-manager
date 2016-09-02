@@ -6,10 +6,10 @@
   "scripts": {
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
-    "test": "jest",
+    "test": "export NODE_ENV=testing|| set NODE_ENV=testing&& mocha --compilers js:babel-core/register --require ./tests/test-helper.js \"./tests/**/*@(.js|.jsx)\"",
+    "test:watch": "npm run test -- --watch",
     "clean": "rimraf dist",
-    "start": "node devServer.js",
-    "tunnel": "browser-sync start --proxy localhost:7770 --tunnel wesbos"
+    "start": "node devServer.js"
   },
   "author": "",
   "license": "ISC",
@@ -57,15 +57,14 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "devDependencies": {
-    "babel-jest": "^14.1.0",
     "babel-polyfill": "^6.13.0",
+    "chai": "^3.5.0",
+    "chai-jquery": "^2.0.0",
     "expect": "^1.18.0",
     "expect-jsx": "^2.5.1",
-    "jest-cli": "^14.1.0",
+    "jquery": "^3.1.0",
+    "jsdom": "^9.4.2",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^15.0.2"
-  },
-  "jest": {
-    "automock": false
   }
 }
