@@ -40,37 +40,37 @@ class TransactionEdit extends Component {
 
 		return (
 			<section>
-				<h2>Transaction <Link className="actionlink" to="/">Go back</Link></h2>
+				<h2>Transaction <Link className='actionlink' to='/'>Go back</Link></h2>
 				<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-					<table className="financials -transactions">
+					<table className='financials -transactions'>
 						<thead>
 							<tr>
 								<th>Name</th>
 								<th>Date</th>
 								<th>Amount</th>
-								<th className="actions">&nbsp;</th>
-								<th className="actions">&nbsp;</th>
+								<th className='actions'>&nbsp;</th>
+								<th className='actions'>&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>{transaction.name}</td>
 								<td>{moment(transaction.date).format('Do MMM YYYY')}</td>
-								<td>{`£${numeral(transaction.amount).format("£ 0,0[.]00")}`}</td>
+								<td>{`£${numeral(transaction.amount).format('£ 0,0[.]00')}`}</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 							</tr>
 							<tr>
-								<td><input type="text" {...name} /></td>
-								<td><input type="date" {...date} /></td>
-								<td><input type="text" {...amount} /></td>
-								<td><button type="submit" className="button">Save</button></td>
-								<td><Link to="/" className="button">Cancel</Link></td>
+								<td><input type='text' {...name} /></td>
+								<td><input type='date' {...date} /></td>
+								<td><input type='text' {...amount} /></td>
+								<td><button type='submit' className='button'>Save</button></td>
+								<td><Link to='/' className='button'>Cancel</Link></td>
 							</tr>
 							<tr>
-								<td><div className="text-help">{name.touched ? name.error : ''}</div></td>
-								<td><div className="text-help">{date.touched ? date.error : ''}</div></td>
-								<td><div className="text-help">{amount.touched ? amount.error : ''}</div></td>
+								<td><div className='text-help'>{name.touched ? name.error : ''}</div></td>
+								<td><div className='text-help'>{date.touched ? date.error : ''}</div></td>
+								<td><div className='text-help'>{amount.touched ? amount.error : ''}</div></td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 							</tr>
