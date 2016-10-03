@@ -10,10 +10,6 @@ import Total from './Total'
 
 import sumObjectValues from '../utils/sumObjectValues'
 
-Transactions.contextTypes = {
-  router: PropTypes.object
-}
-
 class Transactions extends Component {
 
   componentWillMount () {
@@ -53,8 +49,8 @@ class Transactions extends Component {
               <th>Name</th>
               <th>Date</th>
               <th className='activefilter'>Amount</th>
-              <th className='actions'>&nbsp</th>
-              <th className='actions'>&nbsp</th>
+              <th className='actions'>&nbsp;</th>
+              <th className='actions'>&nbsp;</th>
             </tr>
           </thead>
           <tbody>
@@ -80,6 +76,10 @@ class Transactions extends Component {
      )
   }
 }
+
+// Transactions.contextTypes = {
+//   router: PropTypes.object
+// }
 
 function mapStateToProps (state) {
   return {
