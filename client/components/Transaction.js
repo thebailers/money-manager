@@ -1,9 +1,25 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import { connect } from 'react-redux'
+import { deleteTransaction, fetchTransactions } from '../actions/actionCreators'
 import numeral from 'numeral'
 import moment from 'moment'
 
-export default class Transaction extends Component {
+class Transaction extends Component {
+  constructor () {
+    super()
+    this.handleDelete = this.handleDelete.bind(this)
+  }
+
+  handleDelete () {
+    const id = this.props.transaction._id
+
+    this.props.deleteTransaction(id)
+      .then(() => {
+        this.props.fetchTransactions()
+      })
+  }
+
   render () {
     const { transaction } = this.props
 
@@ -13,8 +29,19 @@ export default class Transaction extends Component {
         <td>{moment(transaction.date).format('Do MMM YYYY')}</td>
         <td>{`£${numeral(transaction.amount).format('£ 0,0[.]00')}`}</td>
         <td><Link to={`/transaction/edit/${transaction._id}`} className='button'>Edit</Link></td>
-        <td><button className='button' onClick={this.props.delete.bind(this, transaction._id)}>Delete</button></td>
+        <td><button className='button' onClick={this.handleDelete}>Delete</button></td>
       </tr>
     )
   }
 }
+
+const { func } = React.PropTypes
+
+Transaction.propTypes = {
+  transaction: React.PropTypes.object.isRequired,
+  delete: React.PropTypes.func.isRequired,
+  deleteTransaction: func.isRequired,
+  fetchTransactions: func.isRequired
+}
+
+export default connect(null, { deleteTransaction, fetchTransactions })(Transaction)

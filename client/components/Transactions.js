@@ -18,11 +18,8 @@ class Transactions extends Component {
     this.props.fetchIncome()
   }
 
-  handleDelete (id) {
-    this.props.deleteTransaction(id)
-      .then(() => {
-        this.props.fetchTransactions()
-      })
+  static contextTypes = {
+    router: PropTypes.object
   }
 
   render () {
@@ -54,9 +51,9 @@ class Transactions extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.transactions.map(
+            {transactions.map(
               (transaction, i) =>
-                <Transaction {...this.props} key={i} transaction={transaction} delete={this.handleDelete} />
+                <Transaction {...this.props} key={i} transaction={transaction} />
             )}
           </tbody>
         </table>
@@ -76,10 +73,16 @@ class Transactions extends Component {
      )
   }
 }
+const { func, array } = React.PropTypes
 
-// Transactions.contextTypes = {
-//   router: PropTypes.object
-// }
+Transactions.propTypes = {
+  fetchExpenditure: func.isRequired,
+  fetchIncome: func.isRequired,
+  transactions: array,
+  expenditure: array,
+  income: array,
+  fetchTransactions: func.isRequired
+}
 
 function mapStateToProps (state) {
   return {

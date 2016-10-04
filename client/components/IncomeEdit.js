@@ -1,18 +1,22 @@
 import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import { Link } from 'react-router'
 import numeral from 'numeral'
-import moment from 'moment'
 
 import { fetchOneIncome, editIncome } from '../actions/actionCreators'
 
 class IncomeEdit extends Component {
-  componentWillMount() {
+
+  constructor () {
+    super()
+    this.onSubmit = this.onSubmit.bind(this)
+  }
+
+  componentWillMount () {
     this.props.fetchOneIncome(this.props.params.id)
   }
 
-  onSubmit(props) {
+  onSubmit (props) {
     this.props.editIncome(this.props.income._id, props)
       .then(() => {
         this.context.router.push('/income')
@@ -23,8 +27,7 @@ class IncomeEdit extends Component {
     router: PropTypes.object
   }
 
-  render() {
-
+  render () {
     const { fields: { name, category, date, amount, type }, handleSubmit, income } = this.props
 
     if (!income) {
@@ -36,7 +39,7 @@ class IncomeEdit extends Component {
     return (
       <section>
         <h2>Income <Link className='actionlink' to='/income'>Go back</Link></h2>
-        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <form onSubmit={handleSubmit(this.onSubmit)}>
           <table className='financials -transactions'>
             <thead>
               <tr>
@@ -45,8 +48,8 @@ class IncomeEdit extends Component {
                 <th>Date</th>
                 <th>Amount</th>
                 <th>Type</th>
-                <th className='actions'>&nbsp</th>
-                <th className='actions'>&nbsp</th>
+                <th className='actions'>&nbsp;</th>
+                <th className='actions'>&nbsp;</th>
               </tr>
             </thead>
             <tbody>
@@ -56,8 +59,8 @@ class IncomeEdit extends Component {
                 <td>{income.date}</td>
                 <td>{`£${numeral(income.amount).format('£ 0,0[.]00')}`}</td>
                 <td>{income.type}</td>
-                <td>&nbsp</td>
-                <td>&nbsp</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
               </tr>
               <tr>
                 <td><input type='text' {...name} /></td>
@@ -74,8 +77,8 @@ class IncomeEdit extends Component {
                 <td><div className='text-help'>{date.touched ? date.error : ''}</div></td>
                 <td><div className='text-help'>{amount.touched ? amount.error : ''}</div></td>
                 <td><div className='text-help'>{type.touched ? type.error : ''}</div></td>
-                <td>&nbsp</td>
-                <td>&nbsp</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
               </tr>
             </tbody>
           </table>
@@ -85,7 +88,18 @@ class IncomeEdit extends Component {
   }
 }
 
-function validate(values) {
+const { func, object } = React.PropTypes
+
+IncomeEdit.propTypes = {
+  fetchOneIncome: func.isRequired,
+  editIncome: func.isRequired,
+  handleSubmit: func.isRequired,
+  income: object,
+  params: object.isRequired,
+  fields: object.isRequired
+}
+
+function validate (values) {
   const errors = {}
 
   if (!values.name) {
@@ -113,10 +127,9 @@ function validate(values) {
   }
 
   return errors
-
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     income: state.income.income,
     initialValues: state.income.income

@@ -22,13 +22,13 @@ module.exports = {
     new webpack.NoErrorsPlugin()
   ],
   module: {
-    // preLoaders: [
-    //   {
-    //     test: /\.jsx?$/,
-    //     loader: 'eslint-loader',
-    //     exclude: /node_modules/
-    //   }
-    // ],
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      }
+    ],
     loaders: [
       {
         test: /\.styl$/,
@@ -43,5 +43,9 @@ module.exports = {
         exclude: /node_modules/
       }
     ]
+  },
+
+  eslint: {
+    configFile: './.eslintrc'
   }
 }

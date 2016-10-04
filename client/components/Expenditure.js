@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as actionCreators from '../actions/actionCreators'
+import { deleteExpenditure, fetchExpenditure } from '../actions/actionCreators'
 import { Link } from 'react-router'
-import numeral from 'numeral'
-
+import ExpenditureItem from './ExpenditureItem'
 import Total from './Total'
 import sumObjectValues from '../utils/sumObjectValues'
 
 class Expenditure extends Component {
+  constructor () {
+    super()
+    this.handleDelete = this.handleDelete.bind(this)
+  }
+
   componentWillMount () {
     this.props.fetchExpenditure()
   }
 
-  handleDelete (id) {
+  handleDelete () {
+    const id = this.props.expenditure._id
+
     this.props.deleteExpenditure(id)
       .then(() => {
         this.props.fetchExpenditure()
@@ -44,22 +49,14 @@ class Expenditure extends Component {
               <th>Date</th>
               <th>Type</th>
               <th className='activefilter'>Amount</th>
-              <th className='actions'>&nbsp</th>
-              <th className='actions'>&nbsp</th>
+              <th className='actions'>&nbsp;</th>
+              <th className='actions'>&nbsp;</th>
             </tr>
           </thead>
           <tbody>
-            {this.props.expenditure.map((expenditure) => {
+            {expenditure.map((expenditure) => {
               return (
-                <tr key={expenditure._id}>
-                  <td>{expenditure.name}</td>
-                  <td>{expenditure.category}</td>
-                  <td>{expenditure.date}</td>
-                  <td>{expenditure.type}</td>
-                  <td>{`£${numeral(expenditure.amount).format('£ 0,0[.]00')}`}</td>
-                  <td><Link to={`/expenditure/edit/${expenditure._id}`} className='button'>Edit</Link></td>
-                  <td><button className='button' onClick={this.handleDelete.bind(this, expenditure._id)}>Delete</button></td>
-                </tr>
+                <ExpenditureItem {...this.props} key={expenditure._id} expenditure={expenditure} />
               )
             })}
           </tbody>
@@ -73,14 +70,19 @@ class Expenditure extends Component {
   }
 }
 
+const { func, array } = React.PropTypes
+
+Expenditure.propTypes = {
+  fetchExpenditure: func.isRequired,
+  deleteExpenditure: func.isRequired,
+  expenditure: array,
+  handleDelete: func.isRequired
+}
+
 function mapStateToProps (state) {
   return {
     expenditure: state.expenditure.all
   }
 }
 
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators(actionCreators, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Expenditure)
+export default connect(mapStateToProps, { deleteExpenditure, fetchExpenditure })(Expenditure)

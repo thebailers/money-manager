@@ -5,7 +5,6 @@ const INITIAL_STATE = { all: [], transaction: null }
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case FETCH_TRANSACTION:
-      console.log(action.payload.data)
       return { ...state, transaction: action.payload.data }
     case FETCH_TRANSACTIONS:
       return { ...state, all: action.payload.data }

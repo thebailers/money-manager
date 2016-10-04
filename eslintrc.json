@@ -1,4 +1,0 @@
-{
-  "plugins": ["react"],
-  "extends": ["standard", "standard-react"]
-}
