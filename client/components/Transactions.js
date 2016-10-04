@@ -3,11 +3,9 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from '../actions/actionCreators'
 import { Link } from 'react-router'
-import numeral from 'numeral'
-
 import Transaction from './Transaction'
 import Total from './Total'
-
+import Remaining from './Remaining'
 import sumObjectValues from '../utils/sumObjectValues'
 
 class Transactions extends Component {
@@ -37,6 +35,8 @@ class Transactions extends Component {
     const expenditureTotal = sumObjectValues(expenditure, 'amount')
     const incomeTotal = sumObjectValues(income, 'amount')
 
+    console.log(typeof transactionsTotal)
+
     return (
       <section>
         <h2>Transactions <Link className='actionlink' to='/transactions/add'>Add</Link></h2>
@@ -63,10 +63,12 @@ class Transactions extends Component {
           <Total value={expenditureTotal} type='Expenditure' />
           <Total value={incomeTotal} type='Income' />
 
-          <div className='remaining'>
-            <span className='label'>Remaining</span>
-            <span className='value'>{`£${numeral((incomeTotal - expenditureTotal) - transactionsTotal).format('£ 0,0[.]00')}`}</span>
-          </div>
+          <Remaining
+            incomeTotal={incomeTotal}
+            expenditureTotal={expenditureTotal}
+            transactionsTotal={transactionsTotal}
+          />
+
         </section>
 
       </section>

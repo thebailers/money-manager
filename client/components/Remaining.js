@@ -13,4 +13,12 @@ class Remaining extends Component {
   }
 }
 
+const { number } = React.PropTypes
+
+Remaining.propTypes = {
+  incomeTotal: number.isRequired,
+  expenditureTotal: number.isRequired,
+  transactionsTotal: number.isRequired
+}
+
 export default Remaining
