@@ -8,7 +8,7 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        <Navigation />
+        <Navigation location={this.props.location} />
         <article className='articlebody'>
           {this.props.children}
         </article>
@@ -18,5 +18,6 @@ export default class App extends Component {
 }
 
 App.propTypes = {
-  children: React.PropTypes.node
+  children: React.PropTypes.node,
+  location: React.PropTypes.object
 }

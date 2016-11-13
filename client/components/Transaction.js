@@ -39,7 +39,6 @@ const { func } = React.PropTypes
 
 Transaction.propTypes = {
   transaction: React.PropTypes.object.isRequired,
-  delete: React.PropTypes.func.isRequired,
   deleteTransaction: func.isRequired,
   fetchTransactions: func.isRequired
 }
