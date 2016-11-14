@@ -35,8 +35,6 @@ class Transactions extends Component {
     const expenditureTotal = sumObjectValues(expenditure, 'amount')
     const incomeTotal = sumObjectValues(income, 'amount')
 
-    console.log(typeof transactionsTotal)
-
     return (
       <section>
         <h2>Transactions <Link className='actionlink' to='/transactions/add'>Add</Link></h2>

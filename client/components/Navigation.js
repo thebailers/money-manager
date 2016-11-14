@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 
 export default class Navigation extends Component {
   render () {
-    console.log(this.props.location)
     return (
       <nav>
         <ul className='subnav'>
