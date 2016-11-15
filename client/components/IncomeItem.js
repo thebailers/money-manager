@@ -21,7 +21,6 @@ class IncomeItem extends Component {
 
   render () {
     const { income } = this.props
-    console.log(this)
 
     return (
       <tr key={income._id}>

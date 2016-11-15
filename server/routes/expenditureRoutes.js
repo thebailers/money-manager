@@ -1,4 +1,4 @@
-var Expenditure = require('./app/models/expenditure')
+var Expenditure = require('../../app/models/expenditure')
 var expenditureRouter = require('express').Router()
 
 expenditureRouter.post('/', function (req, res) {
