@@ -69,7 +69,7 @@ class IncomeEdit extends Component {
                 <td><input type='text' {...amount} /></td>
                 <td><input type='text' {...type} /></td>
                 <td><button type='submit' className='button'>Save</button></td>
-                <td><Link to='/' className='button'>Cancel</Link></td>
+                <td><Link to='/income' className='button'>Cancel</Link></td>
               </tr>
               <tr>
                 <td><div className='text-help'>{name.touched ? name.error : ''}</div></td>
