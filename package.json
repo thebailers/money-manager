@@ -8,7 +8,7 @@
     "lint": "standard",
     "test:watch": "npm run test -- --watch",
     "clean": "rimraf dist",
-    "start": "node server/server.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -32,7 +32,7 @@
     "express": "^4.0.0",
     "jeet": "^6.1.4",
     "moment": "^2.13.0",
-    "mongoose": "^3.6.12",
+    "mongoose": "~4.4",
     "numeral": "^1.5.3",
     "raven-js": "^2.3.0",
     "react": "^15.3.1",
@@ -58,6 +58,7 @@
   "devDependencies": {
     "babel-jest": "^15.0.0",
     "babel-polyfill": "^6.13.0",
+    "chai": "^3.5.0",
     "eslint": "^2.10.1",
     "eslint-config-standard": "^5.1.0",
     "eslint-config-standard-jsx": "^1.1.1",
@@ -72,6 +73,7 @@
     "jsdom": "^9.4.2",
     "morgan": "^1.7.0",
     "react-addons-test-utils": "^15.0.2",
-    "react-test-renderer": "^15.3.1"
+    "react-test-renderer": "^15.3.1",
+    "supertest": "^2.0.1"
   }
 }

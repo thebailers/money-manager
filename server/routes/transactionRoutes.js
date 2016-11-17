@@ -20,7 +20,7 @@ transactionsRouter.route('/')
       if (err) {
         res.send(err)
       }
-      res.json({ message: 'Transaction saved!' })
+      res.json(transaction)
     })
   })
 
