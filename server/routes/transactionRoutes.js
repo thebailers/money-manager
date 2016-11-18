@@ -50,7 +50,7 @@ transactionsRouter.route('/:id')
         if (err) {
           res.send(err)
         }
-        res.json({ message: 'Transaction updated!' })
+        res.json(transaction)
       })
     })
   })
@@ -61,7 +61,7 @@ transactionsRouter.route('/:id')
       if (err) {
         res.send(err)
       }
-      res.json({ message: 'Transaction deleted!' })
+      res.json(transaction)
     })
   })
 

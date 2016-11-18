@@ -5,6 +5,9 @@ var expect = require('chai').expect
 describe('[Transactions]', function() {
 
   it('should get all of the transactions', function(done) {
+    // Specify a timeout for this test
+    this.timeout(30000);
+
     request(app)
       .get('/api/transactions')
       .set('Accept', 'application/json')
@@ -17,6 +20,9 @@ describe('[Transactions]', function() {
   })
 
   it('should create a transaction', function(done) {
+    // Specify a timeout for this test
+    this.timeout(30000);
+
     request(app)
       .post('/api/transactions')
       .send({
@@ -33,8 +39,10 @@ describe('[Transactions]', function() {
       })
   })
 
-  /*
-  it('should delete a transaction', function(done) {
+  /*it('should delete a transaction', function(done) {
+    // Specify a timeout for this test
+    this.timeout(30000)
+
     request(app)
       .post('/api/transactions')
       .send({
@@ -48,11 +56,10 @@ describe('[Transactions]', function() {
         request(app)
           .delete('/api/transactions/' + transaction._id)
           .end(function(err, resp) {
-            expect(resp.body).to.eql(transaction);
-            done();
+            expect(resp.body).to.eql(transaction)
+            done()
           })
       })
-  })
-  */
+  })*/
 
 })
