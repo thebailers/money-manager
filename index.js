@@ -5,5 +5,5 @@ app.listen(7770, 'localhost', function (err) {
     console.log(err)
     return
   }
-  console.log('We are running. Pop yourself over to http://localhost:7770')
+  console.log('We are a go! Pop yourself over to http://localhost:7770')
 })

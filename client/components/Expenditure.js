@@ -47,7 +47,6 @@ class Expenditure extends Component {
               <th>Name</th>
               <th>Category</th>
               <th>Date</th>
-              <th>Type</th>
               <th className='activefilter'>Amount</th>
               <th className='actions'>&nbsp;</th>
               <th className='actions'>&nbsp;</th>
