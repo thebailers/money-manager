@@ -1,7 +1,8 @@
-var Income = require('../../app/models/income')
-var incomeRouter = require('express').Router()
+var Income = require('../../../app/models/income')
+var router = require('express').Router()
+var logger = require('../../util/logger')
 
-incomeRouter.route('/')
+router.route('/')
   .get(function (req, res) {
     Income.find(function (err, income) {
       if (err) {
@@ -26,7 +27,7 @@ incomeRouter.route('/')
     })
   })
 
-incomeRouter.route('/:id')
+router.route('/:id')
   .get(function (req, res) {
     Income.findById(req.params.id, function (err, income) {
       if (err) {
@@ -68,4 +69,4 @@ incomeRouter.route('/:id')
     })
   })
 
-module.exports = incomeRouter
+module.exports = router

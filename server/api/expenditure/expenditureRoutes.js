@@ -1,7 +1,8 @@
-var Expenditure = require('../../app/models/expenditure')
-var expenditureRouter = require('express').Router()
+var Expenditure = require('../../../app/models/expenditure')
+var router = require('express').Router()
+var logger = require('../../util/logger')
 
-expenditureRouter.route('/')
+router.route('/')
   .get(function (req, res) {
     Expenditure.find(function (err, expenditure) {
       if (err) {
@@ -27,7 +28,7 @@ expenditureRouter.route('/')
     })
   })
 
-expenditureRouter.route('/:id')
+router.route('/:id')
   .get(function (req, res) {
     Expenditure.findById(req.params.id, function (err, expenditure) {
       if (err) {
@@ -67,4 +68,4 @@ expenditureRouter.route('/:id')
     })
   })
 
-module.exports = expenditureRouter
+module.exports = router

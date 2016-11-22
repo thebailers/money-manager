@@ -59,6 +59,7 @@
     "babel-jest": "^15.0.0",
     "babel-polyfill": "^6.13.0",
     "chai": "^3.5.0",
+    "colors": "^1.1.2",
     "eslint": "^2.10.1",
     "eslint-config-standard": "^5.1.0",
     "eslint-config-standard-jsx": "^1.1.1",

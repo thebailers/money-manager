@@ -1,7 +1,8 @@
-var Transaction = require('../../app/models/transactions')
-var transactionsRouter = require('express').Router()
+var Transaction = require('../../../app/models/transactions')
+var router = require('express').Router()
+var logger = require('../../util/logger')
 
-transactionsRouter.route('/')
+router.route('/')
   .get(function (req, res) {
     Transaction.find(function (err, transaction) {
       if (err) {
@@ -24,7 +25,7 @@ transactionsRouter.route('/')
     })
   })
 
-transactionsRouter.get('/:id', function (req, res) {
+router.get('/:id', function (req, res) {
   Transaction.findById(req.params.id, function (err, transaction) {
     if (err) {
       res.send(err)
@@ -35,7 +36,7 @@ transactionsRouter.get('/:id', function (req, res) {
 })
 
 
-transactionsRouter.route('/:id')
+router.route('/:id')
   .put(function (req, res) {
     Transaction.findById(req.params.id, function (err, transaction) {
       if (err) {
@@ -65,4 +66,4 @@ transactionsRouter.route('/:id')
     })
   })
 
-module.exports = transactionsRouter
+module.exports = router

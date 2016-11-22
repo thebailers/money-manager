@@ -1,9 +1,6 @@
+var config = require('./server/config/config')
 var app = require('./server/server')
+var logger = require('./server/util/logger')
 
-app.listen(7770, 'localhost', function (err) {
-  if (err) {
-    console.log(err)
-    return
-  }
-  console.log('We are a go! Pop yourself over to http://localhost:7770')
-})
+app.listen(config.port)
+logger.log('Listening on http://localhost:' + config.port)
