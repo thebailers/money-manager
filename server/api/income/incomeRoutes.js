@@ -1,4 +1,4 @@
-var Income = require('../../../app/models/income')
+var Income = require('./incomeModel')
 var router = require('express').Router()
 var logger = require('../../util/logger')
 

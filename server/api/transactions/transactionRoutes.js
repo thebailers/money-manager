@@ -1,4 +1,4 @@
-var Transaction = require('../../../app/models/transactions')
+var Transaction = require('./transactionsModel')
 var router = require('express').Router()
 var logger = require('../../util/logger')
 

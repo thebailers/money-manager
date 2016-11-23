@@ -1,4 +1,4 @@
-var Expenditure = require('../../../app/models/expenditure')
+var Expenditure = require('./expenditureModel')
 var router = require('express').Router()
 var logger = require('../../util/logger')
 
