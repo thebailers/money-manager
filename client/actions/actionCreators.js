@@ -16,137 +16,77 @@ export const ADD_INCOME = 'ADD_INCOME'
 export const EDIT_INCOME = 'EDIT_INCOME'
 export const DELETE_INCOME = 'DELETE_INCOME'
 
-export function fetchTransactions () {
-  const request = axios.get('/api/transactions')
+export const fetchTransactions = () => ({
+  type: FETCH_TRANSACTIONS,
+  payload: axios.get('/api/transactions')
+})
 
-  return {
-    type: FETCH_TRANSACTIONS,
-    payload: request
-  }
-}
+export const fetchTransaction = (id) => ({
+  type: FETCH_TRANSACTION,
+  payload: axios.get(`/api/transactions/${id}`)
+})
 
-export function fetchTransaction (id) {
-  const request = axios.get(`/api/transactions/${id}`)
+export const editTransaction = (id, props) => ({
+  type: EDIT_TRANSACTION,
+  payload: axios.put(`/api/transactions/${id}`, props)
+})
 
-  return {
-    type: FETCH_TRANSACTION,
-    payload: request
-  }
-}
+export const addTransaction = (props) => ({
+  type: ADD_TRANSACTION,
+  payload: axios.post('/api/transactions', props)
+})
 
-export function editTransaction (id, props) {
-  const request = axios.put(`/api/transactions/${id}`, props)
+export const deleteTransaction = (id) => ({
+  type: DELETE_TRANSACTION,
+  payload: axios.delete(`/api/transactions/${id}`)
+})
 
-  return {
-    type: EDIT_TRANSACTION,
-    payload: request
-  }
-}
+export const addExpenditure = (props) => ({
+  type: ADD_EXPENDITURE,
+  payload: axios.post('/api/expenditure', props)
+})
 
-export function addTransaction (props) {
-  const request = axios.post('/api/transactions', props)
+export const fetchExpenditure = () => ({
+  type: FETCH_EXPENDITURE,
+  payload: axios.get('/api/expenditure')
+})
 
-  return {
-    type: ADD_TRANSACTION,
-    payload: request
-  }
-}
+export const fetchOneExpenditure = (id) => ({
+  type: FETCH_ONE_EXPENDITURE,
+  payload: axios.get(`/api/expenditure/${id}`)
+})
 
-export function deleteTransaction (id) {
-  const request = axios.delete(`/api/transactions/${id}`)
+export const editExpenditure = (id, props) => ({
+  type: EDIT_EXPENDITURE,
+  payload: axios.put(`/api/expenditure/${id}`, props)
+})
 
-  return {
-    type: DELETE_TRANSACTION,
-    payload: request
-  }
-}
+export const deleteExpenditure = (id) => ({
+  type: DELETE_EXPENDITURE,
+  payload: axios.delete(`/api/expenditure/${id}`)
+})
 
-export function addExpenditure (props) {
-  const request = axios.post('/api/expenditure', props)
+export const addIncome = (props) => ({
+  type: ADD_INCOME,
+  payload: axios.post('/api/income', props)
+})
 
-  return {
-    type: ADD_EXPENDITURE,
-    payload: request
-  }
-}
+export const fetchIncome = () => ({
+  type: FETCH_INCOME,
+  payload: axios.get('/api/income')
+})
 
-export function fetchExpenditure () {
-  const request = axios.get('/api/expenditure')
+export const fetchOneIncome = (id) => ({
+  type: FETCH_ONE_INCOME,
+  payload: axios.get(`/api/income/${id}`)
+})
 
-  return {
-    type: FETCH_EXPENDITURE,
-    payload: request
-  }
-}
+export const editIncome = (id, props) => ({
+  type: EDIT_INCOME,
+  payload: axios.put(`/api/income/${id}`, props)
+})
 
-export function fetchOneExpenditure (id) {
-  const request = axios.get(`/api/expenditure/${id}`)
-
-  return {
-    type: FETCH_ONE_EXPENDITURE,
-    payload: request
-  }
-}
-
-export function editExpenditure (id, props) {
-  const request = axios.put(`/api/expenditure/${id}`, props)
-
-  return {
-    type: EDIT_EXPENDITURE,
-    payload: request
-  }
-}
-
-export function deleteExpenditure (id) {
-  const request = axios.delete(`/api/expenditure/${id}`)
-
-  return {
-    type: DELETE_EXPENDITURE,
-    payload: request
-  }
-}
-
-export function addIncome (props) {
-  const request = axios.post('/api/income', props)
-
-  return {
-    type: ADD_INCOME,
-    payload: request
-  }
-}
-
-export function fetchIncome () {
-  const request = axios.get('/api/income')
-
-  return {
-    type: FETCH_INCOME,
-    payload: request
-  }
-}
-
-export function fetchOneIncome (id) {
-  const request = axios.get(`/api/income/${id}`)
-
-  return {
-    type: FETCH_ONE_INCOME,
-    payload: request
-  }
-}
-
-export function editIncome (id, props) {
-  const request = axios.put(`/api/income/${id}`, props)
-
-  return {
-    type: EDIT_INCOME,
-    payload: request
-  }
-}
-
-export function deleteIncome (id) {
-  const request = axios.delete(`/api/income/${id}`)
-
-  return {
-    type: DELETE_INCOME,
-    payload: request
-  }
-}
+export const deleteIncome = (id) => ({
+  type: DELETE_INCOME,
+  payload: axios.delete(`/api/income/${id}`)
+})
