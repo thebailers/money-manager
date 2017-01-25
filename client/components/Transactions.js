@@ -90,8 +90,6 @@ const mapStateToProps = (state) => ({
   income: state.income.all
 })
 
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators(actionCreators, dispatch)
-}
+const mapDispatchToProps = (dispatch) => bindActionCreators(actionCreators, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Transactions)
