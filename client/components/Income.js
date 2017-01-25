@@ -62,11 +62,9 @@ Income.propTypes = {
   fetchIncome: React.PropTypes.func.isRequired
 }
 
-function mapStateToProps (state) {
-  return {
-    income: state.income.all
-  }
-}
+const mapStateToProps = (state) => ({
+  income: state.income.all
+})
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators(actionCreators, dispatch)

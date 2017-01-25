@@ -78,10 +78,8 @@ Expenditure.propTypes = {
   handleDelete: func.isRequired
 }
 
-function mapStateToProps (state) {
-  return {
-    expenditure: state.expenditure.all
-  }
-}
+const mapStateToProps = (state) => ({
+  expenditure: state.expenditure.all
+})
 
 export default connect(mapStateToProps, { deleteExpenditure, fetchExpenditure })(Expenditure)

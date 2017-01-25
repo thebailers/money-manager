@@ -84,13 +84,11 @@ Transactions.propTypes = {
   fetchTransactions: func.isRequired
 }
 
-function mapStateToProps (state) {
-  return {
-    transactions: state.transactions.all,
-    expenditure: state.expenditure.all,
-    income: state.income.all
-  }
-}
+const mapStateToProps = (state) => ({
+  transactions: state.transactions.all,
+  expenditure: state.expenditure.all,
+  income: state.income.all
+})
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators(actionCreators, dispatch)
