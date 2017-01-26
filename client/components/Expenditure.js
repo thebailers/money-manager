@@ -7,22 +7,8 @@ import Total from './Total'
 import sumObjectValues from '../utils/sumObjectValues'
 
 class Expenditure extends Component {
-  constructor () {
-    super()
-    this.handleDelete = this.handleDelete.bind(this)
-  }
-
   componentWillMount () {
     this.props.fetchExpenditure()
-  }
-
-  handleDelete () {
-    const id = this.props.expenditure._id
-
-    this.props.deleteExpenditure(id)
-      .then(() => {
-        this.props.fetchExpenditure()
-      })
   }
 
   render () {
@@ -74,8 +60,7 @@ const { func, array } = React.PropTypes
 Expenditure.propTypes = {
   fetchExpenditure: func.isRequired,
   deleteExpenditure: func.isRequired,
-  expenditure: array,
-  handleDelete: func.isRequired
+  expenditure: array
 }
 
 const mapStateToProps = (state) => ({
