@@ -7,6 +7,7 @@ import Transaction from './Transaction'
 import Total from './Total'
 import Remaining from './Remaining'
 import sumObjectValues from '../utils/sumObjectValues'
+import _ from 'ramda'
 
 class Transactions extends Component {
 
@@ -84,11 +85,23 @@ Transactions.propTypes = {
   fetchTransactions: func.isRequired
 }
 
-const mapStateToProps = (state) => ({
-  transactions: state.transactions.all,
-  expenditure: state.expenditure.all,
-  income: state.income.all
-})
+const diff = (a, b) => {
+  if (a.name < b.name) {
+    return -1
+  }
+  if (a.name > b.name) {
+    return 1
+  }
+  return 0
+}
+
+const mapStateToProps = (state) => {
+  return {
+    transactions: _.sort(diff, state.transactions.all),
+    expenditure: state.expenditure.all,
+    income: state.income.all
+  }
+}
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(actionCreators, dispatch)
 
