@@ -2,7 +2,8 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  devtool: 'source-map',
+  // devtool: 'source-map', // production
+  devtool: 'eval',
   entry: [
     'webpack-hot-middleware/client',
     './client/index'
