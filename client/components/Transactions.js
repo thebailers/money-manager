@@ -8,6 +8,7 @@ import Total from './Total'
 import Remaining from './Remaining'
 import sumObjectValues from '../utils/sumObjectValues'
 import _ from 'ramda'
+import diff from '../utils/diff'
 
 class Transactions extends Component {
 
@@ -83,16 +84,6 @@ Transactions.propTypes = {
   expenditure: array,
   income: array,
   fetchTransactions: func.isRequired
-}
-
-const diff = (a, b) => {
-  if (a.name < b.name) {
-    return -1
-  }
-  if (a.name > b.name) {
-    return 1
-  }
-  return 0
 }
 
 const mapStateToProps = (state) => {
