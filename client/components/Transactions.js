@@ -60,9 +60,9 @@ class Transactions extends Component {
         <table className='financials -transactions'>
           <thead>
             <tr>
-              <th onClick={this.orderBy} data-orderby='name'>Name</th>
-              <th onClick={this.orderBy} data-orderby='date'>Date</th>
-              <th className='activefilter' onClick={this.orderBy} data-orderby='amount'>Amount</th>
+              <th className={this.state.orderBy === 'name' ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='name'>Name</th>
+              <th className={this.state.orderBy === 'date' ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='date'>Date</th>
+              <th className={this.state.orderBy === 'amount' ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='amount'>Amount</th>
               <th className='actions'>&nbsp;</th>
               <th className='actions'>&nbsp;</th>
             </tr>
