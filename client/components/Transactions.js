@@ -12,6 +12,16 @@ import diff from '../utils/diff'
 
 class Transactions extends Component {
 
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      orderBy: 'date'
+    }
+
+    this.orderBy = this.orderBy.bind(this)
+  }
+
   componentWillMount () {
     this.props.fetchTransactions()
     this.props.fetchExpenditure()
@@ -20,6 +30,11 @@ class Transactions extends Component {
 
   static contextTypes = {
     router: PropTypes.object
+  }
+
+  orderBy (e) {
+    let key = e.target.getAttribute('data-orderby')
+    this.setState({ orderBy: key })
   }
 
   render () {
@@ -37,21 +52,23 @@ class Transactions extends Component {
     const expenditureTotal = sumObjectValues(expenditure, 'amount')
     const incomeTotal = sumObjectValues(income, 'amount')
 
+    const orderedTransactions = _.sort(diff(this.state.orderBy), transactions)
+
     return (
       <section>
         <h2>Transactions <Link className='actionlink' to='/transactions/add'>Add</Link></h2>
         <table className='financials -transactions'>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Date</th>
-              <th className='activefilter'>Amount</th>
+              <th onClick={this.orderBy} data-orderby='name'>Name</th>
+              <th onClick={this.orderBy} data-orderby='date'>Date</th>
+              <th className='activefilter' onClick={this.orderBy} data-orderby='amount'>Amount</th>
               <th className='actions'>&nbsp;</th>
               <th className='actions'>&nbsp;</th>
             </tr>
           </thead>
           <tbody>
-            {transactions.map(
+            {orderedTransactions.map(
               (transaction, i) =>
                 <Transaction {...this.props} key={i} transaction={transaction} />
             )}
