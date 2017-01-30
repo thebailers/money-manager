@@ -51,8 +51,8 @@ class Transactions extends Component {
     const transactionsTotal = sumObjectValues(transactions, 'amount')
     const expenditureTotal = sumObjectValues(expenditure, 'amount')
     const incomeTotal = sumObjectValues(income, 'amount')
-
-    const orderedTransactions = _.sort(diff(this.state.orderBy), transactions)
+    console.log('transactions', transactions)
+    const orderTransactions = _.sort(diff(this.state.orderBy))
 
     return (
       <section>
@@ -68,7 +68,7 @@ class Transactions extends Component {
             </tr>
           </thead>
           <tbody>
-            {orderedTransactions.map(
+            {orderTransactions(transactions).map(
               (transaction, i) =>
                 <Transaction {...this.props} key={i} transaction={transaction} />
             )}
@@ -105,7 +105,7 @@ Transactions.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    transactions: _.sort(diff, state.transactions.all),
+    transactions: state.transactions.all,
     expenditure: state.expenditure.all,
     income: state.income.all
   }
