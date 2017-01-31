@@ -74,8 +74,8 @@ class Transactions extends Component {
               <th className={(_.split('-', this.state.orderBy)[0] === 'name') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='name-asc'>Name</th>
               <th className={((_.split('-', this.state.orderBy)[0] === 'date') ? 'activefilter' : '') + ' sort-asc'} onClick={this.orderBy} data-orderby='date-desc'>Date</th>
               <th className={(_.split('-', this.state.orderBy)[0] === 'amount') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='amount-asc'>Amount</th>
-              <th className='actions'>&nbsp;</th>
-              <th className='actions'>&nbsp;</th>
+              <th className='actions nobor'>&nbsp;</th>
+              <th className='actions nobor'>&nbsp;</th>
             </tr>
           </thead>
           <tbody>
