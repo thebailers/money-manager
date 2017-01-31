@@ -9,6 +9,7 @@ import Remaining from './Remaining'
 import sumObjectValues from '../utils/sumObjectValues'
 import _ from 'ramda'
 import diff from '../utils/diff'
+// import sortStringCaseInsensitive from '../utils/sortStringCaseInsensitive'
 
 class Transactions extends Component {
 
@@ -16,7 +17,7 @@ class Transactions extends Component {
     super(props)
 
     this.state = {
-      orderBy: 'date-desc'
+      orderBy: 'name-asc'
     }
 
     this.orderBy = this.orderBy.bind(this)
@@ -70,9 +71,9 @@ class Transactions extends Component {
         <table className='financials -transactions'>
           <thead>
             <tr>
-              <th className={(this.state.orderBy === 'name-asc' || this.state.orderBy === 'name-desc') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='name-asc'>Name</th>
-              <th className={((this.state.orderBy === 'date-asc' || this.state.orderBy === 'date-desc') ? 'activefilter' : '') + ' sort-asc'} onClick={this.orderBy} data-orderby='date-desc'>Date</th>
-              <th className={(this.state.orderBy === 'amount-asc' || this.state.orderBy === 'amount-desc') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='amount-asc'>Amount</th>
+              <th className={(_.split('-', this.state.orderBy)[0] === 'name') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='name-asc'>Name</th>
+              <th className={((_.split('-', this.state.orderBy)[0] === 'date') ? 'activefilter' : '') + ' sort-asc'} onClick={this.orderBy} data-orderby='date-desc'>Date</th>
+              <th className={(_.split('-', this.state.orderBy)[0] === 'amount') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='amount-asc'>Amount</th>
               <th className='actions'>&nbsp;</th>
               <th className='actions'>&nbsp;</th>
             </tr>
