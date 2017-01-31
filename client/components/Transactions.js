@@ -16,7 +16,7 @@ class Transactions extends Component {
     super(props)
 
     this.state = {
-      orderBy: 'date'
+      orderBy: 'date-desc'
     }
 
     this.orderBy = this.orderBy.bind(this)
@@ -34,6 +34,17 @@ class Transactions extends Component {
 
   orderBy (e) {
     let key = e.target.getAttribute('data-orderby')
+    const clickedSplitKey = _.split('-', key)
+    const stateSplitKey = _.split('-', this.state.orderBy)
+
+    // If the data is already ordered - reverse the ordering
+    if (_.split('-', this.state.orderBy)[0] === clickedSplitKey[0]) {
+      let keyVal = clickedSplitKey[0]
+      key = (stateSplitKey[1] === 'asc') ? `${keyVal}-desc` : `${keyVal}-asc`
+      this.setState({ orderBy: key })
+      return
+    }
+
     this.setState({ orderBy: key })
   }
 
@@ -51,8 +62,7 @@ class Transactions extends Component {
     const transactionsTotal = sumObjectValues(transactions, 'amount')
     const expenditureTotal = sumObjectValues(expenditure, 'amount')
     const incomeTotal = sumObjectValues(income, 'amount')
-    console.log('transactions', transactions)
-    const orderTransactions = _.sort(diff(this.state.orderBy))
+    const orderTransactions = (_.split('-', this.state.orderBy)[1] === 'asc') ? _.sort(diff(this.state.orderBy)) : _.reverse()
 
     return (
       <section>
@@ -60,9 +70,9 @@ class Transactions extends Component {
         <table className='financials -transactions'>
           <thead>
             <tr>
-              <th className={this.state.orderBy === 'name' ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='name'>Name</th>
-              <th className={this.state.orderBy === 'date' ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='date'>Date</th>
-              <th className={this.state.orderBy === 'amount' ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='amount'>Amount</th>
+              <th className={(this.state.orderBy === 'name-asc' || this.state.orderBy === 'name-desc') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='name-asc'>Name</th>
+              <th className={((this.state.orderBy === 'date-asc' || this.state.orderBy === 'date-desc') ? 'activefilter' : '') + ' sort-asc'} onClick={this.orderBy} data-orderby='date-desc'>Date</th>
+              <th className={(this.state.orderBy === 'amount-asc' || this.state.orderBy === 'amount-desc') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='amount-asc'>Amount</th>
               <th className='actions'>&nbsp;</th>
               <th className='actions'>&nbsp;</th>
             </tr>
