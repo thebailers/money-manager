@@ -34,8 +34,8 @@ class Expenditure extends Component {
               <th>Category</th>
               <th>Date</th>
               <th className='activefilter'>Amount</th>
-              <th className='actions'>&nbsp;</th>
-              <th className='actions'>&nbsp;</th>
+              <th className='actions nobor'>&nbsp;</th>
+              <th className='actions nobor'>&nbsp;</th>
             </tr>
           </thead>
           <tbody>
