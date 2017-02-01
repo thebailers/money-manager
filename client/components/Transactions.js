@@ -9,7 +9,6 @@ import Remaining from './Remaining'
 import sumObjectValues from '../utils/sumObjectValues'
 import _ from 'ramda'
 import diff from '../utils/diff'
-// import sortStringCaseInsensitive from '../utils/sortStringCaseInsensitive'
 
 class Transactions extends Component {
 
@@ -49,6 +48,15 @@ class Transactions extends Component {
     this.setState({ orderBy: key })
   }
 
+  orderData (data) {
+    // Specify how to sort based on the appended orderBy flag in this.state.orderBy
+    if (_.split('-', this.state.orderBy)[1] === 'asc') {
+      return _.sort(diff(_.split('-', this.state.orderBy)[0]), data)
+    }
+
+    return _.reverse(_.sort(diff(_.split('-', this.state.orderBy)[0]), data))
+  }
+
   render () {
     const { transactions, expenditure, income } = this.props
 
@@ -63,7 +71,6 @@ class Transactions extends Component {
     const transactionsTotal = sumObjectValues(transactions, 'amount')
     const expenditureTotal = sumObjectValues(expenditure, 'amount')
     const incomeTotal = sumObjectValues(income, 'amount')
-    const orderTransactions = (_.split('-', this.state.orderBy)[1] === 'asc') ? _.sort(diff(this.state.orderBy)) : _.reverse()
 
     return (
       <section>
@@ -72,14 +79,14 @@ class Transactions extends Component {
           <thead>
             <tr>
               <th className={(_.split('-', this.state.orderBy)[0] === 'name') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='name-asc'>Name</th>
-              <th className={((_.split('-', this.state.orderBy)[0] === 'date') ? 'activefilter' : '') + ' sort-asc'} onClick={this.orderBy} data-orderby='date-desc'>Date</th>
+              <th className={((_.split('-', this.state.orderBy)[0] === 'date') ? 'activefilter' : '')} onClick={this.orderBy} data-orderby='date-desc'>Date</th>
               <th className={(_.split('-', this.state.orderBy)[0] === 'amount') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='amount-asc'>Amount</th>
               <th className='actions nobor'>&nbsp;</th>
               <th className='actions nobor'>&nbsp;</th>
             </tr>
           </thead>
           <tbody>
-            {orderTransactions(transactions).map(
+            {this.orderData(transactions).map(
               (transaction, i) =>
                 <Transaction {...this.props} key={i} transaction={transaction} />
             )}
