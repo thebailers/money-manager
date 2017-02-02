@@ -22,6 +22,7 @@ class TransactionAdd extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.onDateChange = this.onDateChange.bind(this)
     this.onFocusChange = this.onFocusChange.bind(this)
+    this.outsideRange = this.outsideRange.bind(this)
   }
 
   handleSubmit (e) {
@@ -73,6 +74,10 @@ class TransactionAdd extends Component {
     this.setState({ focused: !this.state.focused })
   }
 
+  outsideRange () {
+    return false
+  }
+
   static contextTypes = {
     router: PropTypes.object
   }
@@ -97,6 +102,7 @@ class TransactionAdd extends Component {
               focused={this.state.focused}
               onDateChange={this.onDateChange}
               onFocusChange={this.onFocusChange}
+              isOutsideRange={this.outsideRange}
             />
             <span className="text-help">{this.state.errors.date}</span>
           </div>
