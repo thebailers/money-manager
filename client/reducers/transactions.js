@@ -1,6 +1,6 @@
 import { FETCH_TRANSACTIONS, FETCH_TRANSACTION, EDIT_TRANSACTION, ADD_TRANSACTION, DELETE_TRANSACTION } from '../actions/actionCreators'
 
-const INITIAL_STATE = { all: [], transaction: null }
+const INITIAL_STATE = { all: [], transaction: {} }
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {

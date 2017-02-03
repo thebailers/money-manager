@@ -1,26 +1,90 @@
 import React, { Component, PropTypes } from 'react'
-import { reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { fetchTransaction, editTransaction } from '../actions/actionCreators'
 import numeral from 'numeral'
 import moment from 'moment'
+import { SingleDatePicker } from 'react-dates'
 
 class TransactionEdit extends Component {
 
-  constructor () {
-    super()
-    this.onSubmit = this.onSubmit.bind(this)
+  constructor (props) {
+    super(props)
+    this.state = {
+      name: '',
+      date: null,
+      focused: false,
+      amount: '',
+      errors: {},
+      loading: false
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.onDateChange = this.onDateChange.bind(this)
+    this.onFocusChange = this.onFocusChange.bind(this)
+    this.outsideRange = this.outsideRange.bind(this)
   }
 
-  componentWillMount () {
+  componentDidMount () {
     this.props.fetchTransaction(this.props.params.id)
   }
 
-  onSubmit (props) {
-    this.props.editTransaction(this.props.transaction._id, props)
-      .then(() => {
-        this.context.router.push('/')
+  componentWillReceiveProps (nextProps) {
+    if (typeof nextProps.transaction !== 'undefined') {
+      const { transaction } = nextProps
+      this.setState({
+        name: transaction.name,
+        date: moment(transaction.date),
+        amount: transaction.amount
       })
+    }
+  }
+
+  handleSubmit (e) {
+    e.preventDefault()
+
+    // valudation
+    let errors = {}
+    if (this.state.name === '') errors.name = 'Please enter a name'
+    if (this.state.date === '') errors.date = 'Please enter a date'
+    if (this.state.amount === '') errors.amount = 'Please enter a value'
+
+    this.setState({ errors })
+
+    const isValid = Object.keys(errors).length === 0
+
+    if (isValid) {
+      const { name, date, amount } = this.state
+      this.setState({ loading: true })
+      this.props.editTransaction(this.props.transaction._id, { name, date, amount })
+        .then(() => {
+          this.context.router.push('/')
+        })
+    }
+  }
+
+  handleChange (e) {
+    if (!this.state.errors[e.target.name]) {
+      let errors = Object.assign({}, this.state.errors)
+      delete errors[e.target.name]
+      this.setState({
+        [e.target.name]: e.target.value,
+        errors
+      })
+    }
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  onDateChange (e) {
+    this.setState({ date: moment(e._d) })
+  }
+
+  onFocusChange () {
+    this.setState({ focused: !this.state.focused })
+  }
+
+  outsideRange () {
+    return false
   }
 
   static contextTypes = {
@@ -28,7 +92,7 @@ class TransactionEdit extends Component {
   }
 
   render () {
-    const { fields: { name, amount, date }, handleSubmit, transaction } = this.props
+    const { transaction } = this.props
 
     if (!transaction) {
       return (
@@ -41,7 +105,7 @@ class TransactionEdit extends Component {
     return (
       <section>
         <h2>Transaction <Link className='actionlink' to='/'>Go back</Link></h2>
-        <form onSubmit={handleSubmit(this.onSubmit)}>
+        <form onSubmit={this.handleSubmit}>
           <table className='financials -transactions'>
             <thead>
               <tr>
@@ -61,16 +125,29 @@ class TransactionEdit extends Component {
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td><input type='text' {...name} /></td>
-                <td><input type='date' {...date} /></td>
-                <td><input type='text' {...amount} /></td>
+                <td className="field">
+                  <input id="name" name="name" type="text" value={this.state.name} onChange={this.handleChange} />
+                </td>
+                <td className="field">
+                  <SingleDatePicker
+                    id="date"
+                    date={this.state.date}
+                    focused={this.state.focused}
+                    onDateChange={this.onDateChange}
+                    onFocusChange={this.onFocusChange}
+                    isOutsideRange={this.outsideRange}
+                  />
+                </td>
+                <td className="field">
+                  <input id="amount" name="amount" type="text" value={this.state.amount} onChange={this.handleChange} />
+                </td>
                 <td><button type='submit' className='button'>Save</button></td>
                 <td><Link to='/' className='button'>Cancel</Link></td>
               </tr>
               <tr>
-                <td><div className='text-help'>{name.touched ? name.error : ''}</div></td>
-                <td><div className='text-help'>{date.touched ? date.error : ''}</div></td>
-                <td><div className='text-help'>{amount.touched ? amount.error : ''}</div></td>
+                <td><div className='text-help'>{this.state.errors.name}</div></td>
+                <td><div className='text-help'>{this.state.errors.date}</div></td>
+                <td><div className='text-help'>{this.state.errors.amount}</div></td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
               </tr>
@@ -85,39 +162,14 @@ class TransactionEdit extends Component {
 TransactionEdit.propTypes = {
   fetchTransaction: React.PropTypes.func.isRequired,
   editTransaction: React.PropTypes.func.isRequired,
-  transaction: React.PropTypes.object.isRequired,
-  handleSubmit: React.PropTypes.func.isRequired,
-  fields: React.PropTypes.object.isRequired,
+  transaction: React.PropTypes.object,
   params: React.PropTypes.object
-}
-
-function validate (values) {
-  const errors = {}
-
-  if (!values.name) {
-    errors.name = 'Please briefly describe the transaction.'
-  }
-
-  if (!values.date) {
-    errors.date = 'Please enter a date for your transaction.'
-  }
-
-  if (!values.amount) {
-    errors.amount = 'What was the value of the transaction?'
-  }
-
-  return errors
 }
 
 function mapStateToProps (state) {
   return {
-    transaction: state.transactions.transaction,
-    initialValues: state.transactions.transaction
+    transaction: state.transactions.transaction
   }
 }
 
-export default reduxForm({
-  form: 'EditTransactions',
-  fields: ['name', 'date', 'amount'],
-  validate
-}, mapStateToProps, { fetchTransaction, editTransaction })(TransactionEdit)
+export default connect(mapStateToProps, { fetchTransaction, editTransaction })(TransactionEdit)
