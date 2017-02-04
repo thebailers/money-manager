@@ -27,12 +27,6 @@ class TransactionAdd extends Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    /*
-    this.props.addTransaction(props)
-      .then(() => {
-        this.context.router.push('/')
-      })
-    */
 
     // valudation
     let errors = {}
@@ -55,7 +49,7 @@ class TransactionAdd extends Component {
   }
 
   handleChange (e) {
-    if (!this.state.errors[e.target.name]) {
+    if (this.state.errors[e.target.name]) {
       let errors = Object.assign({}, this.state.errors)
       delete errors[e.target.name]
       this.setState({
