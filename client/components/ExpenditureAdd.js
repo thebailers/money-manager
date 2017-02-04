@@ -1,20 +1,62 @@
 import React, { Component, PropTypes } from 'react'
-import { reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { addExpenditure } from '../actions/actionCreators'
+import classnames from 'classnames'
 
 class ExpenditureAdd extends Component {
 
   constructor () {
     super()
-    this.onSubmit = this.onSubmit.bind(this)
+    this.state = {
+      name: '',
+      category: '',
+      date: '',
+      type: '',
+      amount: '',
+      focused: false,
+      loading: false,
+      errors: {}
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  onSubmit (props) {
-    this.props.addExpenditure(props)
-      .then(() => {
-        this.context.router.push('/expenditure')
+  handleSubmit (e) {
+    e.preventDefault()
+
+    // validation
+    let errors = {}
+    if (this.state.name === '') errors.name = 'Please describe the expenditure.'
+    if (this.state.category === '') errors.category = 'Please assign a category.'
+    if (this.state.date === '') errors.date = 'What day of the month does the payment leave your account?'
+    if (this.state.type === '') errors.type = 'Is the expenditure irregular or recurring'
+    if (this.state.amount === '') errors.amount = 'What is the value of this expenditure'
+
+    this.setState({ errors })
+
+    const isValid = Object.keys(errors).length === 0
+
+    if (isValid) {
+      const { name, category, date, type, amount } = this.state
+      this.setState({ loading: true })
+      this.props.addExpenditure({ name, category, date, type, amount })
+        .then(() => {
+          this.context.router.push('/expenditure')
+        })
+    }
+  }
+
+  handleChange (e) {
+    if (this.state.errors[e.target.name]) {
+      let errors = Object.assign({}, this.state.errors)
+      delete errors[e.target.name]
+      this.setState({
+        [e.target.name]: e.target.value,
+        errors
       })
+    }
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   static contextTypes = {
@@ -22,31 +64,39 @@ class ExpenditureAdd extends Component {
   }
 
   render () {
-    const { fields: { name, category, date, type, amount }, handleSubmit } = this.props
-
     return (
       <section>
         <h2>Add Expenditure <Link className="actionlink" to="/expenditure">Go back</Link></h2>
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-          <label>Name</label>
-          <input type="text" {...name} />
-          <div className="text-help">{name.touched ? name.error : ''}</div>
+        <form onSubmit={this.handleSubmit}>
+          <div className={classnames('field', { error: !!this.state.errors.name })}>
+            <label htmlFor="name">Name</label>
+            <input type="text" id="name" name="name" value={this.state.name} onChange={this.handleChange} />
+            <div className="text-help">{this.state.errors.name}</div>
+          </div>
 
-          <label>Category</label>
-          <input type="text" {...category} />
-          <div className="text-help">{category.touched ? category.error : ''}</div>
+          <div className="field">
+            <label htmlFor="category">Category</label>
+            <input type="text" id="category" name="category" value={this.state.category} onChange={this.handleChange} />
+            <div className="text-help">{this.state.errors.category}</div>
+          </div>
 
-          <label>Date</label>
-          <input type="string" {...date} />
-          <div className="text-help">{date.touched ? date.error : ''}</div>
+          <div className="field">
+            <label htmlFor="date">Date</label>
+            <input type="text" name="date" id="date" value={this.state.date} onChange={this.handleChange} />
+            <div className="text-help">{this.state.errors.date}</div>
+          </div>
 
-          <label>Type</label>
-          <input type="text" {...type} />
-          <div className="text-help">{type.touched ? type.error : ''}</div>
+          <div className="field">
+            <label htmlFor="type">Type</label>
+            <input type="text" id="type" name="type" value={this.state.type} onChange={this.handleChange} />
+            <div className="text-help">{this.state.errors.type}</div>
+          </div>
 
-          <label>Amount</label>
-          <input type="text" {...amount} />
-          <div className="text-help">{amount.touched ? amount.error : ''}</div>
+          <div className="field">
+            <label htmlFor="amount">Amount</label>
+            <input type="text" id="amount" name="amount" value={this.state.amount} onChange={this.handleChange} />
+            <div className="text-help">{this.state.errors.amount}</div>
+          </div>
 
           <button type="submit">Add</button>
 
@@ -56,46 +106,10 @@ class ExpenditureAdd extends Component {
   }
 }
 
-const { func, object } = React.PropTypes
+const { func } = React.PropTypes
 
 ExpenditureAdd.propTypes = {
-  handleSubmit: func.isRequired,
-  addExpenditure: func.isRequired,
-  fields: object.isRequired
+  addExpenditure: func.isRequired
 }
 
-function validate (values) {
-  const errors = {}
-
-  if (!values.name) {
-    errors.name = 'Please describe the expenditure.'
-  }
-
-  if (!values.category) {
-    errors.category = 'Please assign a category.'
-  }
-
-  if (!values.date) {
-    errors.date = 'Please enter a date for your expenditure.'
-  }
-
-  if (isNaN(parseFloat(values.date)) && isFinite(values.date)) {
-    errors.date = 'The date must just be a number (for now)'
-  }
-
-  if (!values.type) {
-    errors.type = 'Please enter a type for your expenditure.'
-  }
-
-  if (!values.amount) {
-    errors.amount = 'What was the value of the expenditure?'
-  }
-
-  return errors
-}
-
-export default reduxForm({
-  form: 'AddExpenditure',
-  fields: ['name', 'category', 'date', 'type', 'amount'],
-  validate
-}, null, { addExpenditure })(ExpenditureAdd)
+export default connect(null, { addExpenditure })(ExpenditureAdd)
