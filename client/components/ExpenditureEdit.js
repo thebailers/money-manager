@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import numeral from 'numeral'
 import { fetchOneExpenditure, editExpenditure } from '../actions/actionCreators'
@@ -7,18 +7,72 @@ import { fetchOneExpenditure, editExpenditure } from '../actions/actionCreators'
 class ExpenditureEdit extends Component {
   constructor () {
     super()
-    this.onSubmit = this.onSubmit.bind(this)
+    this.state = {
+      name: '',
+      category: '',
+      date: '',
+      type: '',
+      amount: '',
+      focused: false,
+      loading: false,
+      errors: {}
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  componentWillMount () {
+  componentDidMount () {
     this.props.fetchOneExpenditure(this.props.params.id)
   }
 
-  onSubmit (props) {
-    this.props.editExpenditure(this.props.expenditure._id, props)
-      .then(() => {
-        this.context.router.push('/expenditure')
+  componentWillReceiveProps (nextProps) {
+    if (typeof nextProps.expenditure !== 'undefined') {
+      const { expenditure } = nextProps
+      this.setState({
+        name: expenditure.name,
+        category: expenditure.category,
+        date: expenditure.date,
+        type: expenditure.type,
+        amount: expenditure.amount
       })
+    }
+  }
+
+  handleSubmit (e) {
+    e.preventDefault()
+
+    // valudation
+    let errors = {}
+    if (this.state.name === '') errors.name = 'Please enter a name'
+    if (this.state.category === '') errors.category = 'Please enter category'
+    if (this.state.date === '') errors.date = 'Please enter a date'
+    if (this.state.type === '') errors.type = 'Is the expenditure one-off or recurring'
+    if (this.state.amount === '') errors.amount = 'Please enter a value'
+
+    this.setState({ errors })
+
+    const isValid = Object.keys(errors).length === 0
+
+    if (isValid) {
+      const { name, category, date, type, amount } = this.state
+      this.setState({ loading: true })
+      this.props.editExpenditure(this.props.expenditure._id, { name, category, date, type, amount })
+        .then(() => {
+          this.context.router.push('/expenditure')
+        })
+    }
+  }
+
+  handleChange (e) {
+    if (!this.state.errors[e.target.name]) {
+      let errors = Object.assign({}, this.state.errors)
+      delete errors[e.target.name]
+      this.setState({
+        [e.target.name]: e.target.value,
+        errors
+      })
+    }
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   static contextTypes = {
@@ -26,7 +80,7 @@ class ExpenditureEdit extends Component {
   }
 
   render () {
-    const { fields: { name, category, date, amount, type }, handleSubmit, expenditure } = this.props
+    const { expenditure } = this.props
 
     if (!expenditure) {
       return (
@@ -37,7 +91,7 @@ class ExpenditureEdit extends Component {
     return (
       <section>
         <h2>Expenditure <Link className='actionlink' to='/expenditure'>Go back</Link></h2>
-        <form onSubmit={handleSubmit(this.onSubmit)}>
+        <form onSubmit={this.handleSubmit}>
           <table className='financials -transactions'>
             <thead>
               <tr>
@@ -61,20 +115,30 @@ class ExpenditureEdit extends Component {
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td><input type='text' {...name} /></td>
-                <td><input type='text' {...category} /></td>
-                <td><input type='text' {...date} /></td>
-                <td><input type='text' {...amount} /></td>
-                <td><input type='text' {...type} /></td>
+                <td>
+                  <input type="text" id="name" name="name" value={this.state.name} onChange={this.handleChange} />
+                </td>
+                <td>
+                  <input type="text" id="category" name="category" value={this.state.category} onChange={this.handleChange} />
+                </td>
+                <td>
+                  <input type="text" name="date" id="date" value={this.state.date} onChange={this.handleChange} />
+                </td>
+                <td>
+                  <input type="text" id="type" name="type" value={this.state.type} onChange={this.handleChange} />
+                </td>
+                <td>
+                  <input type="text" id="amount" name="amount" value={this.state.amount} onChange={this.handleChange} />
+                </td>
                 <td><button type='submit' className='button'>Save</button></td>
                 <td><Link to='/expenditure' className='button'>Cancel</Link></td>
               </tr>
               <tr>
-                <td><div className='text-help'>{name.touched ? name.error : ''}</div></td>
-                <td><div className='text-help'>{category.touched ? category.error : ''}</div></td>
-                <td><div className='text-help'>{date.touched ? date.error : ''}</div></td>
-                <td><div className='text-help'>{amount.touched ? amount.error : ''}</div></td>
-                <td><div className='text-help'>{type.touched ? type.error : ''}</div></td>
+                <td><div className='text-help'>{this.state.errors.name}</div></td>
+                <td><div className='text-help'>{this.state.errors.category}</div></td>
+                <td><div className='text-help'>{this.state.errors.date}</div></td>
+                <td><div className='text-help'>{this.state.errors.type}</div></td>
+                <td><div className='text-help'>{this.state.errors.amount}</div></td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
               </tr>
@@ -86,56 +150,19 @@ class ExpenditureEdit extends Component {
   }
 }
 
-const { func, object, array } = React.PropTypes
+const { func, object } = React.PropTypes
 
 ExpenditureEdit.propTypes = {
   fetchOneExpenditure: func.isRequired,
   editExpenditure: func.isRequired,
-  fields: object.isRequired,
-  handleSubmit: func.isRequired,
-  expenditure: array.isRequired,
+  expenditure: object,
   params: object.isRequired
-}
-
-function validate (values) {
-  const errors = {}
-
-  if (!values.name) {
-    errors.name = 'Please describe the income.'
-  }
-
-  if (!values.category) {
-    errors.category = 'Please assign a category.'
-  }
-
-  if (!values.date) {
-    errors.date = 'Please enter a date for your income payment.'
-  }
-
-  if (isNaN(parseFloat(values.date)) && isFinite(values.date)) {
-    errors.date = 'The date must just be a number (for now)'
-  }
-
-  if (!values.type) {
-    errors.type = 'Please enter a type for your income.'
-  }
-
-  if (!values.amount) {
-    errors.amount = 'What was the value of the income?'
-  }
-
-  return errors
 }
 
 function mapStateToProps (state) {
   return {
-    expenditure: state.expenditure.expenditure,
-    initialValues: state.expenditure.expenditure,
-    validate
+    expenditure: state.expenditure.expenditure
   }
 }
 
-export default reduxForm({
-  form: 'EditExpenditure',
-  fields: ['name', 'category', 'type', 'amount', 'date']
-}, mapStateToProps, { fetchOneExpenditure, editExpenditure })(ExpenditureEdit)
+export default connect(mapStateToProps, { fetchOneExpenditure, editExpenditure })(ExpenditureEdit)
