@@ -1,3 +1,8 @@
 module.exports = {
-	logging: true
+	// enabled logging for development
+	logging: true,
+	seed: true,
+	db: {
+		url: 'mongodb://localhost/cashbook-dev'
+	}
 }

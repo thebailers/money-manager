@@ -1,3 +1,7 @@
 module.exports = {
-	logging: false
+	// disabled logging for testing
+	logging: true,
+	db: {
+		url: 'mongodb://localhost/cashbook-test'
+	}
 }
