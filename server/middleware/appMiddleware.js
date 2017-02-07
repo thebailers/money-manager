@@ -1,7 +1,6 @@
 var webpack = require('webpack')
 var config = require('../../webpack.config.dev')
 var bodyParser = require('body-parser')
-var mongoose = require('mongoose')
 var morgan = require('morgan')
 
 var compiler = webpack(config)

@@ -14,6 +14,7 @@ var consoleLog = config.logging ? console.log.bind(console) : noop;
 
 var logger = {
   log: function() {
+    var tag = '[ 👍  LOG 👍  ]'.green;
     // arguments is an array like object with all the passed
     // in arguments to this function
     var args = _.toArray(arguments)
@@ -22,12 +23,12 @@ var logger = {
           // turn the object to a string so we
           // can log all the properties and color it
           var string = JSON.stringify(arg, 2);
-          
-          return string.magenta;
+
+          return tag + '  ' + string.cyan;;
         } else {
           // coerce to string to color
           arg+='';
-          return arg.magenta;
+          return tag + '  ' + arg.cyan;
         }
       });
 
