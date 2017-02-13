@@ -16,7 +16,7 @@ class Transactions extends Component {
     super(props)
 
     this.state = {
-      orderBy: 'name-asc'
+      orderBy: 'date-desc'
     }
 
     this.orderBy = this.orderBy.bind(this)
