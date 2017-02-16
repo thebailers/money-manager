@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 var bcrypt = require('bcrypt')
 
-var userSchema = new Schema({
+var UserSchema = new Schema({
   username: {
     type: String,
     required: true,
@@ -18,4 +18,31 @@ var userSchema = new Schema({
   updated_at: Date
 })
 
-module.exports = mongoose.model('User', userSchema)
+
+// middleware that will run before a document is created
+UserSchema.pre('save', function(next) {
+  if (!this.isModified('password')) return next()
+
+  // encrypt the password
+  this.password = this.encryptPassword(this.password)
+  next()
+})
+
+UserSchema.methods = {
+  // check the passwords on signin
+  authenticate: function(plainTextPword) {
+    return bcrypt.compareSync(plainTextPword, this.password)
+  },
+
+  // hash the passwords
+  encryptPassword: function(plainTextPword) {
+    if (!plainTextPword) {
+      return ''
+    } else {
+      var salt = bcrypt.genSaltSync(10)
+      return bcrypt.hashSync(plainTextPword, salt)
+    }
+  }
+}
+
+module.exports = mongoose.model('User', UserSchema)
