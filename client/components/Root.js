@@ -13,6 +13,7 @@ import IncomeAdd from './IncomeAdd'
 import Transactions from './Transactions'
 import TransactionEdit from './TransactionEdit'
 import TransactionAdd from './TransactionAdd'
+import LoginForm from './LoginForm'
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -27,6 +28,7 @@ const Root = ({ store }) => (
         <Route path='/income/add' component={IncomeAdd} />
         <Route path='/transaction/edit/:id' component={TransactionEdit} />
         <Route path='/transactions/add' component={TransactionAdd} />
+        <Route path='/login' component={LoginForm} />
       </Route>
     </Router>
   </Provider>
