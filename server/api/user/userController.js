@@ -4,6 +4,8 @@ var signToken = require('../../auth/auth').signToken
 
 exports.params = function(req, res, next, id) {
   User.findById(id)
+    .select('-password')
+    .exec()
     .then(function(user) {
       if (!user) {
         next(new Error('No new user with that id'))
@@ -18,16 +20,20 @@ exports.params = function(req, res, next, id) {
 
 exports.get = function(req, res, next) {
   User.find({})
+    .select('-password')
+    .exec()
     .then(function(users) {
-      res.json(users)
+      res.json(users.map(function(users) {
+        return user.toJson()
+      }))
     }, function(err) {
       next(err)
     })
 }
 
 exports.getOne = function(req, res, next) {
-  var user = req.user
-  res.json(user)
+  var user = req.user.toJson()
+  res.json(user.toJson())
 }
 
 exports.put = function(req, res, next) {
@@ -38,7 +44,7 @@ exports.put = function(req, res, next) {
     if (err) {
       next(err)
     } else {
-      res.json(saved)
+      res.json(saved.toJson())
     }
   })
 }
@@ -60,11 +66,11 @@ exports.delete = function(req, res, next) {
     if (err) {
       next(err)
     } else {
-      res.json(removed)
+      res.json(removed.toJson())
     }
   })
 }
 
 exports.me = function(req, res) {
-  res.json(req.user)
+  res.json(req.user.toJson())
 }
