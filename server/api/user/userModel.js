@@ -29,9 +29,13 @@ var UserSchema = new Schema({
 
 UserSchema.methods = {
 
-  validPassword: function(password) {
-    return (this.password === password)
-  },
+  comparePassword: function comparePassword(password, callback) {
+    bcrypt.compare(password, this.password, callback)
+  }
+
+  // validPassword: function(password) {
+  //   return (this.password === password)
+  // },
 
   // check the passwords on signin
   // authenticate: function(plainTextPword) {
@@ -54,5 +58,25 @@ UserSchema.methods = {
   //   return obj
   // }
 }
+
+UserSchema.pre('save', function saveHook(next) {
+  const user = this
+
+  // proceed further only if the password is modified or the user is new
+  if (!user.isModified('password')) return next()
+
+  return bcrypt.genSalt((saltError, salt) => {
+    if (saltError) return next(saltErr)
+
+    return bcrypt.hash(user.password, salt, (hashError, hash) => {
+      if (hashError) return next(hashError)
+
+      // replace passwors string with a hash value
+      user.password = hash
+
+      return next()
+    })
+  })
+})
 
 module.exports = mongoose.model('User', UserSchema)
