@@ -1,21 +1,88 @@
-import React from 'react'
+import React, { Component } from 'react'
+import TextFieldGroup from './common/TextFieldGroup'
+import validateInput from '../../server/shared/validation/login'
+import { connect } from 'react-redux'
+import { login } from '../actions/login'
 
-const LoginForm = () => {
-  return (
-    <form className="loginform" action="/auth/login" method="post">
-      <div>
-        <label>Username:</label>
-        <input type="text" name="username" />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" name="password" />
-      </div>
-      <div>
-        <input type="submit" value="Log In" />
-      </div>
-    </form>
-  )
+class LoginForm extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      username: '',
+      password: '',
+      errors: {},
+      isLoading: false
+    }
+
+    this.onSubmit = this.onSubmit.bind(this)
+    this.onChange = this.onChange.bind(this)
+  }
+
+  onChange (e) {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  isValid () {
+    const { errors, isValid } = validateInput(this.state)
+
+    if (!isValid) {
+      this.setState({ errors })
+    }
+
+    return isValid
+  }
+
+  onSubmit (e) {
+    e.preventDefault()
+    if (this.isValid()) {
+      this.setState({ errors: {}, isLoading: true })
+      this.props.login(this.state)
+        .then(
+          (res) => this.context.router.push('/'),
+          (err) => this.setState({ errors: err.data.errors, isLoading: false })
+        )
+    }
+  }
+
+  render () {
+    const { errors, isLoading } = this.state
+    return (
+      <form className="loginform" onSubmit={this.onSubmit}>
+
+        {errors.form && <div className='alert'>{errors.form}</div>}
+
+        <TextFieldGroup
+          error={errors.username}
+          label='Username'
+          onChange={this.onChange}
+          value={this.state.username}
+          field='username'
+        />
+
+        <TextFieldGroup
+          error={errors.password}
+          label='Password'
+          onChange={this.onChange}
+          value={this.state.password}
+          field='password'
+          type='password'
+        />
+
+        <div>
+          <button className='button large orange login' disabled={isLoading}>Login</button>
+        </div>
+      </form>
+    )
+  }
+
 }
 
-export default LoginForm
+LoginForm.propTypes = {
+  login: React.PropTypes.func.isRequired
+}
+
+LoginForm.contextTypes = {
+  router: React.PropTypes.object.isRequired
+}
+
+export default connect(null, { login })(LoginForm)
