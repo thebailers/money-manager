@@ -20,7 +20,8 @@ require('./middleware/appMiddleware')(app)
 
 // routes
 var api = require('./api/')
-var auth = require('./auth/routes')
+// var auth = require('./auth/routes')
+var auth = require('./auth/auth')
 app.use('/auth', auth)
 app.use('/api', api)
 
