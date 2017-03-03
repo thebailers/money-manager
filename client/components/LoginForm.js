@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import TextFieldGroup from './common/TextFieldGroup'
 import validateInput from '../../server/shared/validation/login'
+import { connect } from 'react-redux'
+import { login } from '../actions/login'
 
 class LoginForm extends Component {
   constructor (props) {
@@ -8,7 +10,8 @@ class LoginForm extends Component {
     this.state = {
       username: '',
       password: '',
-      errors: {}
+      errors: {},
+      isLoading: false
     }
 
     this.onSubmit = this.onSubmit.bind(this)
@@ -32,14 +35,22 @@ class LoginForm extends Component {
   onSubmit (e) {
     e.preventDefault()
     if (this.isValid()) {
-
+      this.setState({ errors: {}, isLoading: true })
+      this.props.login(this.state)
+        .then(
+          (res) => this.context.router.push('/'),
+          (err) => this.setState({ errors: err.data.errors, isLoading: false })
+        )
     }
   }
 
   render () {
-    const { errors } = this.state
+    const { errors, isLoading } = this.state
     return (
       <form className="loginform" onSubmit={this.onSubmit}>
+
+        {errors.form && <div className='alert'>{errors.form}</div>}
+
         <TextFieldGroup
           error={errors.username}
           label='Username'
@@ -58,7 +69,7 @@ class LoginForm extends Component {
         />
 
         <div>
-          <button className='button large orange login'>Login</button>
+          <button className='button large orange login' disabled={isLoading}>Login</button>
         </div>
       </form>
     )
@@ -66,4 +77,12 @@ class LoginForm extends Component {
 
 }
 
-export default LoginForm
+LoginForm.propTypes = {
+  login: React.PropTypes.func.isRequired
+}
+
+LoginForm.contextTypes = {
+  router: React.PropTypes.object.isRequired
+}
+
+export default connect(null, { login })(LoginForm)
