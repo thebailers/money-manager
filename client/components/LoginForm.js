@@ -58,7 +58,7 @@ class LoginForm extends Component {
         />
 
         <div>
-          <button className='btn-primary'>Login</button>
+          <button className='button large orange login'>Login</button>
         </div>
       </form>
     )
