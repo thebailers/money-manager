@@ -15,11 +15,23 @@ import TransactionEdit from './TransactionEdit'
 import TransactionAdd from './TransactionAdd'
 import LoginForm from './LoginForm'
 
+function loggedIn () {
+  return true
+}
+
+function requireAuth (nextState, replace) {
+  if (!loggedIn()) {
+    replace({
+      pathname: '/login'
+    })
+  }
+}
+
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={history}>
       <Route path='/' component={App}>
-        <IndexRoute component={Transactions} />
+        <IndexRoute component={Transactions} onEnter={requireAuth} />
         <Route path='/expenditure' component={Expenditure} />
         <Route path='/expenditure/edit/:id' component={ExpenditureEdit} />
         <Route path='/expenditure/add' component={ExpenditureAdd} />
@@ -36,6 +48,7 @@ const Root = ({ store }) => (
 
 Root.propTypes = {
   store: React.PropTypes.object
+  // requireAuth: React.PropTypes.func.isRequired
 }
 
 export default Root

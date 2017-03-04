@@ -1,17 +1,9 @@
 var router = require('express').Router()
 var logger = require('../../util/logger')
-var passport = require('passport')
 var controller = require('./transactionsController')
+var auth = require('../../auth/auth');
 
-var isAuthenticated = function (req, res, next) {
-	if (req.isAuthenticated()) {
-    console.log('is authenticated')
-		return next();
-  }
-
-  console.log('is not authenticated!')
-	res.redirect('/login');
-}
+var checkUser = [auth.decodeToken(), auth.getFreshUser()];
 
 router.route('/')
   .get(controller.get)
