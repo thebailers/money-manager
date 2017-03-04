@@ -18,19 +18,19 @@ module.exports = function(app) {
 	//app.use(session({ secret: appconfig.secrets.jwt }))
 
 	// Passport authentication
-	app.use(passport.initialize())
+	// app.use(passport.initialize())
 	// app.use(passport.session())
 	// app.use(flash())
 
 	// Load passport strategies
-	const login = require('./auth/passport/login')
-	const signup = require('./auth/passport/signup')
-	passport.use('login', login)
-	passport.use('signup', signup)
+	// const login = require('../auth/auth')
+	// const signup = require('../auth/auth')
+	// passport.use('login', login)
+	// passport.use('signup', signup)
 
 	// Pass the authentication checker middleware
-	const authCheck = require('./middleware/auth-check')
-	app.use('/api', authCheck)
+	// const authCheck = require('./middleware/auth-check')
+	// app.use('/api', authCheck)
 
 	app.use(require('webpack-dev-middleware')(compiler, {
 	  noInfo: true,
