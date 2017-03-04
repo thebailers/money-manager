@@ -48,12 +48,9 @@ exports.getFreshUser = function() {
 // check the user exists in the database
 // and that the password is correct
 exports.verifyUser = function() {
-  console.log('-------------------verify user')
-  console.log(req.body);
-  console.log('-------------------')
   return function(req, res, next) {
-    var username = req.body.username
-    var password = req.body.password
+    var username = req.body.username;
+    var password = req.body.password;
 
     // if no username or password then send
     if (!username || !password) {

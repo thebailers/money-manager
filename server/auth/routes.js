@@ -1,5 +1,4 @@
 var router = require('express').Router()
-var User = require('../api/user/userModel')
 var verifyUser = require('./auth').verifyUser
 var controller = require('./controller')
 
