@@ -38,8 +38,8 @@ class LoginForm extends Component {
       this.setState({ errors: {}, isLoading: true })
       this.props.login(this.state)
         .then(
-          (res) => { this.context.router.push('/') },
-          (err) => this.setState({ errors: err.payload.data.errors, isLoading: false })
+          (res) => this.context.router.push('/'),
+          (err) => this.setState({ errors: err.data.errors, isLoading: false })
         )
     }
   }
