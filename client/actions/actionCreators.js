@@ -16,10 +16,16 @@ export const ADD_INCOME = 'ADD_INCOME'
 export const EDIT_INCOME = 'EDIT_INCOME'
 export const DELETE_INCOME = 'DELETE_INCOME'
 
-export const fetchTransactions = () => ({
-  type: FETCH_TRANSACTIONS,
-  payload: axios.get('/api/transactions')
-})
+export const fetchTransactions = () => {
+  return (dispatch) => {
+    axios.get('/api/transactions').then((transactions) => {
+      dispatch({
+        type: FETCH_TRANSACTIONS,
+        payload: transactions
+      })
+    })
+  }
+}
 
 export const fetchTransaction = (id) => ({
   type: FETCH_TRANSACTION,
@@ -46,10 +52,16 @@ export const addExpenditure = (props) => ({
   payload: axios.post('/api/expenditure', props)
 })
 
-export const fetchExpenditure = () => ({
-  type: FETCH_EXPENDITURE,
-  payload: axios.get('/api/expenditure')
-})
+export const fetchExpenditure = () => {
+  return (dispatch) => {
+    axios.get('/api/expenditure').then((expenditure) => {
+      dispatch({
+        type: FETCH_EXPENDITURE,
+        payload: expenditure
+      })
+    })
+  }
+}
 
 export const fetchOneExpenditure = (id) => ({
   type: FETCH_ONE_EXPENDITURE,
@@ -71,10 +83,16 @@ export const addIncome = (props) => ({
   payload: axios.post('/api/income', props)
 })
 
-export const fetchIncome = () => ({
-  type: FETCH_INCOME,
-  payload: axios.get('/api/income')
-})
+export const fetchIncome = () => {
+  return (dispatch) => {
+    axios.get('/api/income').then((income) => {
+      dispatch({
+        type: FETCH_INCOME,
+        payload: income
+      })
+    })
+  }
+}
 
 export const fetchOneIncome = (id) => ({
   type: FETCH_ONE_INCOME,
