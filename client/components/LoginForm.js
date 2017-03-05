@@ -38,10 +38,8 @@ class LoginForm extends Component {
       this.setState({ errors: {}, isLoading: true })
       this.props.login(this.state)
         .then(
-          // (res) => this.context.router.push('/'),
-          (err) => {
-            this.setState({ errors: err.payload.data.errors, isLoading: false })
-          }
+          (res) => { this.context.router.push('/') },
+          (err) => this.setState({ errors: err.payload.data.errors, isLoading: false })
         )
     }
   }
@@ -51,7 +49,7 @@ class LoginForm extends Component {
     return (
       <form className="loginform" onSubmit={this.onSubmit}>
 
-        {errors.form && <div className='alert'>{errors.form}</div>}
+        {errors.form && <div className='alert error'>{errors.form}</div>}
 
         <TextFieldGroup
           error={errors.username}
