@@ -55,11 +55,14 @@ class TransactionEdit extends Component {
 
     if (isValid) {
       const { name, date, amount } = this.state
+      const { editTransaction, transaction } = this.props
       this.setState({ loading: true })
-      this.props.editTransaction(this.props.transaction._id, { name, date, amount })
-        .then(() => {
+      editTransaction(transaction._id, { name, date, amount }).then(
+        (res) => this.context.router.push('/')
+      )
+        /* .then(() => {
           this.context.router.push('/')
-        })
+        }) */
     }
   }
 

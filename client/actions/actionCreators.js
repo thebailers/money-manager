@@ -16,51 +16,59 @@ export const ADD_INCOME = 'ADD_INCOME'
 export const EDIT_INCOME = 'EDIT_INCOME'
 export const DELETE_INCOME = 'DELETE_INCOME'
 
-export const fetchTransactions = () => {
-  return (dispatch) => {
-    axios.get('/api/transactions').then((transactions) => {
-      dispatch({
-        type: FETCH_TRANSACTIONS,
-        payload: transactions
-      })
+export const fetchTransactions = () => dispatch => {
+  axios.get('/api/transactions').then(transactions => {
+    dispatch({
+      type: FETCH_TRANSACTIONS,
+      payload: transactions
     })
-  }
+  })
 }
 
-export const fetchTransaction = (id) => ({
-  type: FETCH_TRANSACTION,
-  payload: axios.get(`/api/transactions/${id}`)
-})
+export const fetchTransaction = id => dispatch => axios.get(`/api/transactions/${id}`)
+  .then(transaction => {
+    dispatch({
+      type: FETCH_TRANSACTION,
+      payload: transaction
+    })
+  })
 
-export const editTransaction = (id, props) => ({
-  type: EDIT_TRANSACTION,
-  payload: axios.put(`/api/transactions/${id}`, props)
-})
+export const editTransaction = (id, props) => dispatch => axios.put(`/api/transactions/${id}`, props)
+  .then(transaction => {
+    dispatch({
+      type: EDIT_TRANSACTION,
+      payload: transaction
+    })
+  })
 
-export const addTransaction = (props) => ({
-  type: ADD_TRANSACTION,
-  payload: axios.post('/api/transactions', props)
-})
+export const addTransaction = (props) => dispatch => axios.post('/api/transactions', props)
+  .then(transaction => {
+    dispatch({
+      type: ADD_TRANSACTION,
+      payload: transaction
+    })
+  })
 
-export const deleteTransaction = (id) => ({
-  type: DELETE_TRANSACTION,
-  payload: axios.delete(`/api/transactions/${id}`)
-})
+export const deleteTransaction = (id) => dispatch => axios.delete(`/api/transactions/${id}`)
+  .then(transaction => {
+    dispatch({
+      type: DELETE_TRANSACTION,
+      payload: axios.delete(`/api/transactions/${id}`)
+    })
+  })
 
 export const addExpenditure = (props) => ({
   type: ADD_EXPENDITURE,
   payload: axios.post('/api/expenditure', props)
 })
 
-export const fetchExpenditure = () => {
-  return (dispatch) => {
-    axios.get('/api/expenditure').then((expenditure) => {
-      dispatch({
-        type: FETCH_EXPENDITURE,
-        payload: expenditure
-      })
+export const fetchExpenditure = () => dispatch => {
+  axios.get('/api/expenditure').then(expenditure => {
+    dispatch({
+      type: FETCH_EXPENDITURE,
+      payload: expenditure
     })
-  }
+  })
 }
 
 export const fetchOneExpenditure = (id) => ({
@@ -83,15 +91,13 @@ export const addIncome = (props) => ({
   payload: axios.post('/api/income', props)
 })
 
-export const fetchIncome = () => {
-  return (dispatch) => {
-    axios.get('/api/income').then((income) => {
-      dispatch({
-        type: FETCH_INCOME,
-        payload: income
-      })
+export const fetchIncome = () => dispatch => {
+  axios.get('/api/income').then(income => {
+    dispatch({
+      type: FETCH_INCOME,
+      payload: income
     })
-  }
+  })
 }
 
 export const fetchOneIncome = (id) => ({
