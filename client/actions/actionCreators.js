@@ -16,6 +16,8 @@ export const ADD_INCOME = 'ADD_INCOME'
 export const EDIT_INCOME = 'EDIT_INCOME'
 export const DELETE_INCOME = 'DELETE_INCOME'
 
+// Transactions
+
 export const fetchTransactions = () => dispatch => {
   axios.get('/api/transactions').then(transactions => {
     dispatch({
@@ -57,34 +59,47 @@ export const deleteTransaction = (id) => dispatch => axios.delete(`/api/transact
     })
   })
 
-export const addExpenditure = (props) => ({
-  type: ADD_EXPENDITURE,
-  payload: axios.post('/api/expenditure', props)
-})
+// Expenditure
 
-export const fetchExpenditure = () => dispatch => {
-  axios.get('/api/expenditure').then(expenditure => {
+export const fetchExpenditure = () => dispatch => axios.get('/api/expenditure')
+  .then(expenditure => {
     dispatch({
       type: FETCH_EXPENDITURE,
       payload: expenditure
     })
   })
-}
 
-export const fetchOneExpenditure = (id) => ({
-  type: FETCH_ONE_EXPENDITURE,
-  payload: axios.get(`/api/expenditure/${id}`)
-})
+export const addExpenditure = (props) => dispatch => axios.post('/api/expenditure', props)
+  .then(expenditure => {
+    dispatch({
+      type: ADD_EXPENDITURE,
+      payload: expenditure
+    })
+  })
 
-export const editExpenditure = (id, props) => ({
-  type: EDIT_EXPENDITURE,
-  payload: axios.put(`/api/expenditure/${id}`, props)
-})
+export const fetchOneExpenditure = (id) => dispatch => axios.get(`/api/expenditure/${id}`)
+  .then(expenditure => {
+    dispatch({
+      type: FETCH_ONE_EXPENDITURE,
+      payload: expenditure
+    })
+  })
 
-export const deleteExpenditure = (id) => ({
-  type: DELETE_EXPENDITURE,
-  payload: axios.delete(`/api/expenditure/${id}`)
-})
+export const editExpenditure = (id, props) => dispatch => axios.put(`/api/expenditure/${id}`, props)
+  .then(expenditure => {
+    dispatch({
+      type: EDIT_EXPENDITURE,
+      payload: expenditure
+    })
+  })
+
+export const deleteExpenditure = (id) => dispatch => axios.delete(`/api/expenditure/${id}`)
+  .then(expenditure => {
+    dispatch({
+      type: DELETE_EXPENDITURE,
+      payload: expenditure
+    })
+  })
 
 export const addIncome = (props) => ({
   type: ADD_INCOME,
