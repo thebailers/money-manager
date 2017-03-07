@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware } from 'redux'
-// import ReduxPromise from 'redux-promise'
 import thunk from 'redux-thunk'
 
 import rootReducer from './reducers/index'
@@ -7,7 +6,7 @@ import rootReducer from './reducers/index'
 const configureStore = () => {
   const store = createStore(
     rootReducer,
-    // applyMiddleware(ReduxPromise)
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(thunk)
   )
   return store

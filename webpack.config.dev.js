@@ -48,5 +48,9 @@ module.exports = {
 
   eslint: {
     configFile: './.eslintrc'
+  },
+  node: {
+    net: 'empty',
+    dns: 'empty'
   }
 }
