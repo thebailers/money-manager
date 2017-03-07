@@ -8,9 +8,9 @@ var logger = require('./logger')
 logger.log('Seeding the Database')
 
 var users = [
-  { username: 'CarlSagan', password: 'pw' },
-  { username: 'RichardFeynman', password: 'pw' },
-  { username: 'AlanWatts', password: 'pw' }
+  { username: 'CarlSagan', password: 'pw', firstname: 'Carl', lastname: 'Sagan' },
+  { username: 'RichardFeynman', password: 'pw', firstname: 'Richard', lastname: 'Feynman' },
+  { username: 'AlanWatts', password: 'pw', firstname: 'Alan', lastname: 'Watts' }
 ]
 
 var transactions = [

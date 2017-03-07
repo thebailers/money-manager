@@ -14,6 +14,16 @@ var UserSchema = new Schema({
     required: true
   },
 
+  firstname: {
+    type: String,
+    required: true
+  },
+
+  lastname: {
+    type: String,
+    required: true
+  },
+
   created_at: Date,
   updated_at: Date
 })

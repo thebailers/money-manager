@@ -7,7 +7,7 @@ class Header extends Component {
 
     const userLinks = (
       <ul className='navigation'>
-        <li>Hello {user.username}</li>
+        <li>Hello {user.firstname}</li>
         <li><a href='#'>Accounts</a></li>
         <li><a href='/login'>Log out</a></li>
       </ul>
