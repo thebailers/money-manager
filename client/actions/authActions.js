@@ -16,3 +16,9 @@ export const login = data => dispatch => axios.post('/auth/signin', data)
     setAuthToken(token)
     dispatch(setCurrentUser(jwt.decode(token)))
   })
+
+export const logout = () => dispatch => {
+  localStorage.removeItem('mm-jwtToken')
+  setAuthToken(false)
+  dispatch(setCurrentUser({}))
+}
