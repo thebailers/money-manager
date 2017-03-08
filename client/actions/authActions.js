@@ -1,6 +1,6 @@
 import axios from 'axios'
 import setAuthToken from '../utils/setAuthToken'
-import jwt from 'jsonwebtoken'
+import jwtDecode from 'jwt-decode'
 
 export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 
@@ -19,7 +19,7 @@ export const login = data => dispatch => axios.post('/auth/signin', data)
     const token = res.data.token
     localStorage.setItem('mm-jwtToken', token)
     setAuthToken(token)
-    dispatch(setCurrentUser(jwt.decode(token)))
+    dispatch(setCurrentUser(jwtDecode(token)))
   })
 
 export const logout = () => dispatch => {
