@@ -23,9 +23,7 @@ exports.get = function(req, res, next) {
     .select('-password')
     .exec()
     .then(function(users) {
-      res.json(users.map(function(users) {
-        return user.toJson()
-      }))
+      res.json(users)
     }, function(err) {
       next(err)
     })
@@ -56,7 +54,7 @@ exports.post = function(req, res, next) {
     if (err) {
       return next(err)
     }
-    var token = signToken(user._id, user.username);
+    var token = signToken(user._id, user.username, user.firstname, user.lastname);
     res.json({token: token})
   })
 }

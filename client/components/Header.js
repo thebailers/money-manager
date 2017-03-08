@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { logout } from '../actions/authActions'
 
@@ -26,8 +27,8 @@ class Header extends Component {
 
     const guestLinks = (
       <ul className='navigation'>
-        <li><a href='/login'>Log in</a></li>
-        <li><a className='signup button green' href='#'>Sign up</a></li>
+        <li><Link to='/login'>Log in</Link></li>
+        <li><Link className='signup button green' to='/register'>Sign up</Link></li>
       </ul>
     )
 

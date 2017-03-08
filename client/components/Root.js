@@ -14,6 +14,7 @@ import Transactions from './Transactions'
 import TransactionEdit from './TransactionEdit'
 import TransactionAdd from './TransactionAdd'
 import LoginForm from './LoginForm'
+import SignupForm from './SignupForm'
 
 function loggedIn () {
   return true
@@ -41,6 +42,7 @@ const Root = ({ store }) => (
         <Route path='/transaction/edit/:id' component={TransactionEdit} />
         <Route path='/transactions/add' component={TransactionAdd} />
         <Route path='/login' component={LoginForm} />
+        <Route path='/register' component={SignupForm} />
       </Route>
     </Router>
   </Provider>

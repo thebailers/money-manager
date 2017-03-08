@@ -1,11 +1,11 @@
 var Transaction = require('./transactionsModel')
 
 exports.get = function (req, res) {
-  Transaction.find(function (err, transaction) {
+  Transaction.find(function (err, transactions) {
     if (err) {
       res.send(err)
     }
-    res.json(transaction)
+    res.json({ transactions: transactions, user: req.currentUser })
   })
 }
 

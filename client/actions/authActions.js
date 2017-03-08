@@ -9,6 +9,11 @@ export const setCurrentUser = (user) => ({
   user
 })
 
+export const register = userdata => dispatch => axios.post('/api/users', userdata)
+  .then(res => {
+    console.log(res)
+  })
+
 export const login = data => dispatch => axios.post('/auth/signin', data)
   .then(res => {
     const token = res.data.token
