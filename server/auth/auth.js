@@ -21,11 +21,12 @@ exports.authenticate = function(req, res, next) {
         .select('-password')
         .exec()
         .then(user => {
-          if (!user) res.status(404).json({ error: 'No such user.' })
-
-          req.currentUser = user
-
-          next()
+          if (!user) {
+            res.status(404).json({ error: 'No such user.' })
+          } else {
+            req.currentUser = user
+            next()
+          }
         })
       }
     })

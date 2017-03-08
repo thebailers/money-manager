@@ -5,7 +5,7 @@ exports.get = function (req, res) {
     if (err) {
       res.send(err)
     }
-    res.json({ transactions: transactions, user: req.currentUser })
+    res.status(201).json(transactions)
   })
 }
 
