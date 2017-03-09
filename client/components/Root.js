@@ -23,7 +23,7 @@ const Root = ({ store }) => (
     <Router history={history}>
       <Route path='/' component={App}>
         <IndexRoute component={requireAuth(Transactions)} />
-        <Route path='/expenditure' component={Expenditure} />
+        <Route path='/expenditure' component={requireAuth(Expenditure)} />
         <Route path='/expenditure/edit/:id' component={ExpenditureEdit} />
         <Route path='/expenditure/add' component={ExpenditureAdd} />
         <Route path='/income' component={Income} />

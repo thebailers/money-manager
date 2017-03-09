@@ -23,9 +23,11 @@ class Transactions extends Component {
   }
 
   componentWillMount () {
-    this.props.fetchTransactions()
-    this.props.fetchExpenditure()
-    this.props.fetchIncome()
+    if (this.props.isAuthenticated) {
+      this.props.fetchTransactions()
+      this.props.fetchExpenditure()
+      this.props.fetchIncome()
+    }
   }
 
   static contextTypes = {
@@ -110,7 +112,7 @@ class Transactions extends Component {
      )
   }
 }
-const { func, array } = React.PropTypes
+const { func, array, bool } = React.PropTypes
 
 Transactions.propTypes = {
   fetchExpenditure: func.isRequired,
@@ -118,14 +120,16 @@ Transactions.propTypes = {
   transactions: array,
   expenditure: array,
   income: array,
-  fetchTransactions: func.isRequired
+  fetchTransactions: func.isRequired,
+  isAuthenticated: bool.isRequired
 }
 
 const mapStateToProps = (state) => {
   return {
     transactions: state.transactions.all,
     expenditure: state.expenditure.all,
-    income: state.income.all
+    income: state.income.all,
+    isAuthenticated: state.auth.isAuthenticated
   }
 }
 

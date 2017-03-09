@@ -19,8 +19,10 @@ class Expenditure extends Component {
     this.orderBy = this.orderBy.bind(this)
   }
 
-  componentWillMount () {
-    this.props.fetchExpenditure()
+  componentDidMount () {
+    if (this.props.isAuthenticated) {
+      this.props.fetchExpenditure()
+    }
   }
 
   orderBy (e) {
@@ -92,16 +94,18 @@ class Expenditure extends Component {
   }
 }
 
-const { func, array } = React.PropTypes
+const { func, array, bool } = React.PropTypes
 
 Expenditure.propTypes = {
   fetchExpenditure: func.isRequired,
   deleteExpenditure: func.isRequired,
-  expenditure: array
+  expenditure: array,
+  isAuthenticated: bool.isRequired
 }
 
 const mapStateToProps = (state) => ({
-  expenditure: state.expenditure.all
+  expenditure: state.expenditure.all,
+  isAuthenticated: state.auth.isAuthenticated
 })
 
 export default connect(mapStateToProps, { deleteExpenditure, fetchExpenditure })(Expenditure)
