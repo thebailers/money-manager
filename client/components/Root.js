@@ -16,23 +16,13 @@ import TransactionAdd from './TransactionAdd'
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 
-function loggedIn () {
-  return true
-}
-
-function requireAuth (nextState, replace) {
-  if (!loggedIn()) {
-    replace({
-      pathname: '/login'
-    })
-  }
-}
+import requireAuth from '../utils/requireAuth'
 
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={history}>
       <Route path='/' component={App}>
-        <IndexRoute component={Transactions} onEnter={requireAuth} />
+        <IndexRoute component={requireAuth(Transactions)} />
         <Route path='/expenditure' component={Expenditure} />
         <Route path='/expenditure/edit/:id' component={ExpenditureEdit} />
         <Route path='/expenditure/add' component={ExpenditureAdd} />
