@@ -1,17 +1,15 @@
 var router = require('express').Router()
 var logger = require('../../util/logger')
 var controller = require('./incomeController')
-var auth = require('../../auth/auth');
-
-var checkUser = [auth.decodeToken(), auth.getFreshUser()];
+var authenticate = require('../../auth/auth').authenticate;
 
 router.route('/')
-  .get(checkUser, controller.get)
-  .post(controller.post)
+  .get(authenticate, controller.get)
+  .post(authenticate, controller.post)
 
 router.route('/:id')
-  .get(controller.getOne)
-  .put(controller.put)
-  .delete(controller.delete)
+  .get(authenticate, controller.getOne)
+  .put(authenticate, controller.put)
+  .delete(authenticate, controller.delete)
 
 module.exports = router

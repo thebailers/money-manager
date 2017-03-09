@@ -17,6 +17,9 @@ exports.post = function (req, res) {
 
   transaction.save(function (err) {
     if (err) {
+      console.log('------------------------')
+      console.log('TRANSACTIONS ERROR RAN')
+      console.log('------------------------')
       res.send(err)
     }
     res.json(transaction)
