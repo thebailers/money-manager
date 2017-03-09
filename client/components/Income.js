@@ -20,8 +20,10 @@ class Income extends Component {
     this.orderBy = this.orderBy.bind(this)
   }
 
-  componentWillMount () {
-    this.props.fetchIncome()
+  componentDidMount () {
+    if (this.props.isAuthenticated) {
+      this.props.fetchIncome()
+    }
   }
 
   orderBy (e) {
@@ -95,11 +97,13 @@ class Income extends Component {
 
 Income.propTypes = {
   income: React.PropTypes.arrayOf(React.PropTypes.object),
-  fetchIncome: React.PropTypes.func.isRequired
+  fetchIncome: React.PropTypes.func.isRequired,
+  isAuthenticated: React.PropTypes.bool.isRequired
 }
 
 const mapStateToProps = (state) => ({
-  income: state.income.all
+  income: state.income.all,
+  isAuthenticated: state.auth.isAuthenticated
 })
 
 function mapDispatchToProps (dispatch) {
