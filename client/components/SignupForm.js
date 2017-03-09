@@ -47,7 +47,13 @@ class LoginForm extends Component {
 
       this.props.register(user)
         .then(
-          (res) => this.context.router.push('/login'),
+          (res) => {
+            this.props.addFlashMessage({
+              type: 'success',
+              text: 'Success!'
+            })
+            this.context.router.push('/login')
+          },
           (err) => this.setState({ errors: err.data.errors, isLoading: false })
         )
     }
@@ -119,7 +125,8 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  register: React.PropTypes.func.isRequired
+  register: React.PropTypes.func.isRequired,
+  addFlashMessage: React.PropTypes.func.isRequired
 }
 
 LoginForm.contextTypes = {

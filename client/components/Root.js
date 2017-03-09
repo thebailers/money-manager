@@ -14,7 +14,7 @@ import Transactions from './Transactions'
 import TransactionEdit from './TransactionEdit'
 import TransactionAdd from './TransactionAdd'
 import LoginForm from './LoginForm'
-import SignupForm from './SignupForm'
+import Signup from './Signup'
 
 import requireAuth from '../utils/requireAuth'
 
@@ -32,7 +32,7 @@ const Root = ({ store }) => (
         <Route path='/transaction/edit/:id' component={TransactionEdit} />
         <Route path='/transactions/add' component={TransactionAdd} />
         <Route path='/login' component={LoginForm} />
-        <Route path='/register' component={SignupForm} />
+        <Route path='/register' component={Signup} />
       </Route>
     </Router>
   </Provider>
