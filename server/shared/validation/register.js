@@ -13,7 +13,7 @@ module.exports = function validateInput (data) {
   }
 
   if (!Validator.isEmail(data.email)) {
-    errors.email = 'Must be a valid email address.'
+    errors.email = 'Hmmmm. That looks suspiciously like an invalid email address...'
   }
 
   // Password
