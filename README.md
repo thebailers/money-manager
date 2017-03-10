@@ -5,6 +5,7 @@ This is still in early stages of development.
 
 ## Setup
 - Clone the repo
+- `cd money-manager`
 - Install NPM dependencies `npm install`
 - Ensure mongo is running `mongod` (may need to use need `sudo mongod`)
 - Run `npm start`
