@@ -4,6 +4,7 @@ A simple money manager with React, Redux, MongoDB and ExpressJS - never go overd
 This is still in early stages of development.
 
 ## Setup
+- Ensure you are running Node v7.2+
 - Clone the repo
 - `cd money-manager`
 - Install NPM dependencies `npm install`
