@@ -10,7 +10,7 @@ This is still in early stages of development.
 - Install nodemon globally if not already installed: `npm install -g nodemon`
 - Ensure mongo is installed and running `mongod` (may need to use `sudo mongod`)
 - Run `npm start`
-- Visit http://localhost:3000 and login with username: RichardFeynman and the amazingly secure password: pw
+- Visit http://localhost:3000 and either signup or login with username: RichardFeynman and the amazingly secure password: pw
 
 
 
