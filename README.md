@@ -7,6 +7,7 @@ This is still in early stages of development.
 - Clone the repo
 - `cd money-manager`
 - Install NPM dependencies `npm install`
+- Install nodemon globally `npm install -g nodemon`
 - Ensure mongo is running `mongod` (may need to use `sudo mongod`)
 - Run `npm start`
 - Visit http://localhost:3000 and login with username: RichardFeynman and the amazingly secure password: pw
