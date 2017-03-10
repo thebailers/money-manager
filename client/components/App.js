@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Header from './Header'
 import Navigation from './Navigation'
+import FlashMessagesList from './FlashMessagesList'
 
 export default class App extends Component {
   render () {
@@ -9,6 +10,7 @@ export default class App extends Component {
       <div>
         <Header />
         <Navigation location={this.props.location} />
+        <FlashMessagesList />
         <article className='articlebody'>
           {this.props.children}
         </article>
