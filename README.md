@@ -1,10 +1,10 @@
 # Can you really afford to buy that?
-A simple money manager with React, Redux, MongoDB and ExpressJS - never go overdrawn again!
+A simple money manager with React, Redux, ExpressJS and MongoDB - never go overdrawn again!
 
 This is still in early stages of development.
 
 ## Setup
-- Ensure you are running Node v7.2+ (run `node -v` - to update download the current release at https://nodejs.org/en/)
+- Ensure you are running Node v7.2+ (run `node -v`. To update, download the current release at https://nodejs.org/en/)
 - Clone the repo
 - `cd money-manager`
 - Install NPM dependencies `npm install`
