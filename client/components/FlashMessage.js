@@ -10,13 +10,7 @@ class FlashMessage extends Component {
     this.onClick = this.onClick.bind(this)
   }
 
-  onClick () {
-    this.props.deleteFlashMessage(this.props.message.id)
-  }
-
-  render () {
-    const { type, text } = this.props.message
-
+  componentDidMount () {
     if (this.props.message) {
       setTimeout(() => {
         this.setState({ hide: true })
@@ -25,6 +19,14 @@ class FlashMessage extends Component {
         }, 1000)
       }, 3000)
     }
+  }
+
+  onClick () {
+    this.props.deleteFlashMessage(this.props.message.id)
+  }
+
+  render () {
+    const { type, text } = this.props.message
 
     return (
       <div className={classnames('alert', {
