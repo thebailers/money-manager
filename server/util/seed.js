@@ -8,9 +8,9 @@ var logger = require('./logger')
 logger.log('Seeding the Database')
 
 var users = [
-  { username: 'CarlSagan', password: 'pw', firstname: 'Carl', lastname: 'Sagan' },
-  { username: 'RichardFeynman', password: 'pw', firstname: 'Richard', lastname: 'Feynman' },
-  { username: 'AlanWatts', password: 'pw', firstname: 'Alan', lastname: 'Watts' }
+  { _id: "58c2a33cc6cd5a5d15a8fc0c", username: 'CarlSagan', password: 'pw', firstname: 'Carl', lastname: 'Sagan' },
+  { _id: "58c2a33cc6cd5a5d15a8fc0d", username: 'RichardFeynman', password: 'pw', firstname: 'Richard', lastname: 'Feynman' },
+  { _id: "58c2a33cc6cd5a5d15a8fc0e", username: 'AlanWatts', password: 'pw', firstname: 'Alan', lastname: 'Watts' }
 ]
 
 var transactions = [
@@ -19,21 +19,72 @@ var transactions = [
     "amount": 4.50,
     "name": "Cashew Nuts",
     "__v": 0,
-    "date": "2017-01-25T00:00:00.000Z"
+    "date": "2017-01-25T00:00:00.000Z",
+    "user": "58c2a33cc6cd5a5d15a8fc0c"
   },
   {
     "_id": "58890108df9d3e0905a2d605",
     "amount": 6.25,
     "name": "Monmouth Coffee",
     "__v": 0,
-    "date": "2017-01-25T00:00:00.000Z"
+    "date": "2017-01-25T00:00:00.000Z",
+    "user": "58c2a33cc6cd5a5d15a8fc0c"
   },
   {
     "_id": "588b67fbada9d2040bee4ef4",
     "amount": 399,
     "name": "Flight to Copenhagen",
     "__v": 0,
-    "date": "2017-01-27T00:00:00.000Z"
+    "date": "2017-01-27T00:00:00.000Z",
+    "user": "58c2a33cc6cd5a5d15a8fc0c"
+  },
+  {
+    "_id": "588900efdf9d3e0905a2d605",
+    "amount": 4.50,
+    "name": "Hazel Nuts",
+    "__v": 0,
+    "date": "2017-01-25T00:00:00.000Z",
+    "user": "58c2a33cc6cd5a5d15a8fc0d"
+  },
+  {
+    "_id": "58890108df9d3e0905a2d606",
+    "amount": 6.25,
+    "name": "Salt Beef Sandwich",
+    "__v": 0,
+    "date": "2017-01-25T00:00:00.000Z",
+    "user": "58c2a33cc6cd5a5d15a8fc0d"
+  },
+  {
+    "_id": "588b67fbada9d2040bee4ef7",
+    "amount": 638,
+    "name": "Flight to Muscat",
+    "__v": 0,
+    "date": "2017-01-27T00:00:00.000Z",
+    "user": "58c2a33cc6cd5a5d15a8fc0d"
+  },
+  {
+    "_id": "588900efdf9d3e0905a2d608",
+    "amount": 4.50,
+    "name": "Brazil Nuts",
+    "__v": 0,
+    "date": "2017-01-25T00:00:00.000Z",
+    "user": "58c2a33cc6cd5a5d15a8fc0e"
+  },
+  {
+    "_id": "58890108df9d3e0905a2d609",
+    "amount": 6.25,
+    "name": "Cloudy Lemonade",
+    "__v": 0,
+    "date": "2017-01-25T00:00:00.000Z",
+    "user": "58c2a33cc6cd5a5d15a8fc0e"
+  },
+  {
+    "_id": "588b67fbada9d2040bee4ef0",
+    "amount": 799,
+    "name": "Flight to Tokyo",
+    "__v": 0,
+    "date": "2017-01-27T00:00:00.000Z",
+    "user": "58c2a33cc6cd5a5d15a8fc0e"
   }
 ]
 
