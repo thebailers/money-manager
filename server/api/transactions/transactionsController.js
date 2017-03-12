@@ -14,6 +14,7 @@ exports.post = function (req, res) {
   transaction.name = req.body.name
   transaction.amount = req.body.amount
   transaction.date = req.body.date
+  transaction.user = req.currentUser._id
 
   transaction.save(function (err) {
     if (err) {
