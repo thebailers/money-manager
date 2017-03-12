@@ -1,7 +1,7 @@
 var Transaction = require('./transactionsModel')
 
 exports.get = function (req, res) {
-  Transaction.find(function (err, transactions) {
+  Transaction.find({ user: req.currentUser._id }, function (err, transactions) {
     if (err) {
       res.send(err)
     }
