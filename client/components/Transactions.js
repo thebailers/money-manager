@@ -42,6 +42,13 @@ class Transactions extends Component {
 
   render () {
     const { transactions } = this.props
+
+    if (transactions.length === 0) {
+      return (
+        <div className='alert error'>No transactions. <Link className='actionlink' to='/transactions/add'>Add one.</Link></div>
+      )
+    }
+
     return (
       <section className='transactions'>
         <h2>Transactions <Link className='actionlink' to='/transactions/add'>Add</Link></h2>
