@@ -10,7 +10,7 @@ import ExpenditureAdd from './ExpenditureAdd'
 import Income from './Income'
 import IncomeEdit from './IncomeEdit'
 import IncomeAdd from './IncomeAdd'
-import Transactions from './Transactions'
+import Dashboard from './Dashboard'
 import TransactionEdit from './TransactionEdit'
 import TransactionAdd from './TransactionAdd'
 import LoginForm from './LoginForm'
@@ -22,7 +22,7 @@ const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={history}>
       <Route path='/' component={App}>
-        <IndexRoute component={requireAuth(Transactions)} />
+        <IndexRoute component={requireAuth(Dashboard)} />
         <Route path='/expenditure' component={requireAuth(Expenditure)} />
         <Route path='/expenditure/edit/:id' component={ExpenditureEdit} />
         <Route path='/expenditure/add' component={ExpenditureAdd} />
