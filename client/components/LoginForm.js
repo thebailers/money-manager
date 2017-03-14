@@ -3,6 +3,7 @@ import TextFieldGroup from './common/TextFieldGroup'
 import validateInput from '../../server/shared/validation/login'
 import { connect } from 'react-redux'
 import { login } from '../actions/authActions'
+import { addFlashMessage } from '../actions/flashMessages'
 
 class LoginForm extends Component {
   constructor (props) {
@@ -38,7 +39,13 @@ class LoginForm extends Component {
       this.setState({ errors: {}, isLoading: true })
       this.props.login(this.state)
         .then(
-          (res) => this.context.router.push('/'),
+          (res) => {
+            this.props.addFlashMessage({
+              type: 'success',
+              text: 'Welcome back!'
+            })
+            this.context.router.push('/')
+          },
           (err) => this.setState({ errors: err.data.errors, isLoading: false })
         )
     }
@@ -78,11 +85,12 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  login: React.PropTypes.func.isRequired
+  login: React.PropTypes.func.isRequired,
+  addFlashMessage: React.PropTypes.func.isRequired
 }
 
 LoginForm.contextTypes = {
   router: React.PropTypes.object.isRequired
 }
 
-export default connect(null, { login })(LoginForm)
+export default connect(null, { login, addFlashMessage })(LoginForm)
