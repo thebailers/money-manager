@@ -3,6 +3,7 @@ var expressJwt = require('express-jwt')
 var config = require('../config/config')
 var checkToken = expressJwt({ secret: config.secrets.jwt })
 var User = require('../api/user/userModel')
+var logger = require('../util/logger')
 
 exports.authenticate = function(req, res, next) {
   const authorizationHeader = req.headers['authorization']
@@ -15,6 +16,7 @@ exports.authenticate = function(req, res, next) {
   if (token) {
     jwt.verify(token, config.secrets.jwt, (err, decoded) => {
       if (err) {
+        logger.log(err)
         res.status(401).json({ error: 'Failed to authenticate' })
       } else {
         User.findById(decoded._id)
