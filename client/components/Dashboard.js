@@ -9,7 +9,7 @@ import sumObjectValues from '../utils/sumObjectValues'
 
 class Dashboard extends Component {
 
-  componentWillMount () {
+  componentDidMount () {
     if (this.props.isAuthenticated) {
       this.props.fetchTransactions()
       this.props.fetchExpenditure()
