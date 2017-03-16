@@ -33,9 +33,7 @@ describe('transactions reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).toEqual(
-      INITIAL_STATE
-    )
+    ).toEqual(INITIAL_STATE)
   })
 
   it('should handle FETCH_TRANSACTIONS', () => {

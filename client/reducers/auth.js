@@ -1,7 +1,7 @@
 import isEmpty from 'lodash/isEmpty'
 import { SET_CURRENT_USER } from '../actions/authActions'
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   isAuthenticated: false,
   user: {}
 }
