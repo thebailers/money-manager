@@ -4,6 +4,7 @@ var config = require('../config/config')
 var checkToken = expressJwt({ secret: config.secrets.jwt })
 var User = require('../api/user/userModel')
 var logger = require('../util/logger')
+var axios = require('axios')
 
 exports.authenticate = function(req, res, next) {
   const authorizationHeader = req.headers['authorization']

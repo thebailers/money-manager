@@ -1,4 +1,6 @@
 import axios from 'axios'
+import setAuthToken from '../utils/setAuthToken'
+import { setCurrentUser } from './authActions'
 
 export const FETCH_TRANSACTIONS = 'FETCH_TRANSACTIONS'
 export const FETCH_TRANSACTION = 'FETCH_TRANSACTION'
@@ -16,15 +18,23 @@ export const ADD_INCOME = 'ADD_INCOME'
 export const EDIT_INCOME = 'EDIT_INCOME'
 export const DELETE_INCOME = 'DELETE_INCOME'
 
+function handleErr (err) {
+  if (err.status === 401) {
+    localStorage.removeItem('mm-jwtToken')
+    setAuthToken(false)
+    return setCurrentUser({})
+  }
+}
+
 // Transactions
-export const fetchTransactions = () => dispatch => {
-  axios.get('/api/transactions').then(transactions => {
+export const fetchTransactions = () => dispatch => axios.get('/api/transactions')
+  .then(transactions => {
     dispatch({
       type: FETCH_TRANSACTIONS,
       payload: transactions
+    }) }, err => {
+      dispatch(handleErr(err))
     })
-  })
-}
 
 export const fetchTransaction = id => dispatch => axios.get(`/api/transactions/${id}`)
   .then(transaction => {
@@ -100,14 +110,13 @@ export const deleteExpenditure = (id) => dispatch => axios.delete(`/api/expendit
   })
 
 // Income
-export const fetchIncome = () => dispatch => {
-  axios.get('/api/income').then(income => {
+export const fetchIncome = () => dispatch => axios.get('/api/income')
+  .then(income => {
     dispatch({
       type: FETCH_INCOME,
       payload: income
     })
   })
-}
 
 export const addIncome = (props) => dispatch => axios.post('/api/income', props)
   .then(income => {
