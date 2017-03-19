@@ -28,7 +28,7 @@ class TransactionAdd extends Component {
   handleSubmit (e) {
     e.preventDefault()
 
-    // valudation
+    // validation
     let errors = {}
     if (this.state.name === '') errors.name = 'Please enter a name'
     if (this.state.date === '') errors.date = 'Please enter a date'
