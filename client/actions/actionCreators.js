@@ -4,7 +4,6 @@ import { setCurrentUser } from './authActions'
 
 export const FETCH_TRANSACTIONS = 'FETCH_TRANSACTIONS'
 export const FETCH_TRANSACTION = 'FETCH_TRANSACTION'
-export const DELETE_TRANSACTION = 'DELETE_TRANSACTION'
 export const FETCH_EXPENDITURE = 'FETCH_EXPENDITURE'
 export const FETCH_ONE_EXPENDITURE = 'FETCH_ONE_EXPENDITURE'
 export const ADD_EXPENDITURE = 'ADD_EXPENDITURE'
@@ -43,16 +42,8 @@ export const fetchTransaction = id => dispatch => axios.get(`/api/transactions/$
   })
 
 export const editTransaction = (id, props) => dispatch => axios.put(`/api/transactions/${id}`, props)
-
 export const addTransaction = (props) => dispatch => axios.post('/api/transactions', props)
-
 export const deleteTransaction = (id) => dispatch => axios.delete(`/api/transactions/${id}`)
-  .then(transaction => {
-    dispatch({
-      type: DELETE_TRANSACTION,
-      payload: axios.delete(`/api/transactions/${id}`)
-    })
-  })
 
 // Expenditure
 export const fetchExpenditure = () => dispatch => axios.get('/api/expenditure')
