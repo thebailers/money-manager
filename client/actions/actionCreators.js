@@ -4,6 +4,7 @@ import { setCurrentUser } from './authActions'
 
 export const FETCH_TRANSACTIONS = 'FETCH_TRANSACTIONS'
 export const FETCH_TRANSACTION = 'FETCH_TRANSACTION'
+
 export const FETCH_EXPENDITURE = 'FETCH_EXPENDITURE'
 export const FETCH_ONE_EXPENDITURE = 'FETCH_ONE_EXPENDITURE'
 export const ADD_EXPENDITURE = 'ADD_EXPENDITURE'
@@ -54,14 +55,6 @@ export const fetchExpenditure = () => dispatch => axios.get('/api/expenditure')
     })
   })
 
-export const addExpenditure = (props) => dispatch => axios.post('/api/expenditure', props)
-  .then(expenditure => {
-    dispatch({
-      type: ADD_EXPENDITURE,
-      payload: expenditure
-    })
-  })
-
 export const fetchOneExpenditure = (id) => dispatch => axios.get(`/api/expenditure/${id}`)
   .then(expenditure => {
     dispatch({
@@ -70,21 +63,9 @@ export const fetchOneExpenditure = (id) => dispatch => axios.get(`/api/expenditu
     })
   })
 
+export const addExpenditure = (props) => dispatch => axios.post('/api/expenditure', props)
 export const editExpenditure = (id, props) => dispatch => axios.put(`/api/expenditure/${id}`, props)
-  .then(expenditure => {
-    dispatch({
-      type: EDIT_EXPENDITURE,
-      payload: expenditure
-    })
-  })
-
 export const deleteExpenditure = (id) => dispatch => axios.delete(`/api/expenditure/${id}`)
-  .then(expenditure => {
-    dispatch({
-      type: DELETE_EXPENDITURE,
-      payload: expenditure
-    })
-  })
 
 // Income
 export const fetchIncome = () => dispatch => axios.get('/api/income')
