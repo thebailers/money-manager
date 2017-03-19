@@ -60,9 +60,6 @@ class TransactionEdit extends Component {
       editTransaction(transaction._id, { name, date, amount }).then(
         (res) => this.context.router.push('/')
       )
-        /* .then(() => {
-          this.context.router.push('/')
-        }) */
     }
   }
 
