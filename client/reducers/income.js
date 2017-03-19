@@ -1,6 +1,6 @@
 import { FETCH_INCOME, FETCH_ONE_INCOME } from '../actions/actionCreators'
 
-const INITIAL_STATE = { all: [], income: null }
+export const INITIAL_STATE = { all: [], income: null }
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
