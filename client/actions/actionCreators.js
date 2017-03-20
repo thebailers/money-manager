@@ -25,9 +25,10 @@ export const fetchTransactions = () => dispatch => axios.get('/api/transactions'
     dispatch({
       type: FETCH_TRANSACTIONS,
       payload: transactions
-    }) }, err => {
-      dispatch(handleErr(err))
     })
+  }, err => {
+    dispatch(handleErr(err))
+  })
 
 export const fetchTransaction = id => dispatch => axios.get(`/api/transactions/${id}`)
   .then(transaction => {
@@ -48,6 +49,8 @@ export const fetchExpenditure = () => dispatch => axios.get('/api/expenditure')
       type: FETCH_EXPENDITURE,
       payload: expenditure
     })
+  }, err => {
+    dispatch(handleErr(err))
   })
 
 export const fetchOneExpenditure = (id) => dispatch => axios.get(`/api/expenditure/${id}`)
@@ -69,6 +72,8 @@ export const fetchIncome = () => dispatch => axios.get('/api/income')
       type: FETCH_INCOME,
       payload: income
     })
+  }, err => {
+    dispatch(handleErr(err))
   })
 
 export const fetchOneIncome = (id) => dispatch => axios.get(`/api/income/${id}`)
