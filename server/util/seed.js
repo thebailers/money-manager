@@ -96,7 +96,8 @@ var income = [
     "category": "Salary",
     "amount": 3000,
     "name": "Paper Round",
-    "__v": 0
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0c"
   },
   {
     "_id": "58890053df9d3e0905a2d5ff",
@@ -105,7 +106,8 @@ var income = [
     "category": "Salary",
     "amount": 400,
     "name": "YouTube Unboxing Channel",
-    "__v": 0
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0c"
   },
   {
     "_id": "58906158530a4a6b5a64c30b",
@@ -114,7 +116,68 @@ var income = [
     "category": "Salary",
     "amount": 300,
     "name": "Dog Walking",
-    "__v": 0
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0c"
+  },
+  {
+    "_id": "5862db33e7c717750a0803e1",
+    "type": "Recurring",
+    "date": 1,
+    "category": "Salary",
+    "amount": 3000,
+    "name": "Lemonade Stand",
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0d"
+  },
+  {
+    "_id": "58890053df9d3e0905a2d5f2",
+    "type": "Recurring",
+    "date": 5,
+    "category": "Salary",
+    "amount": 400,
+    "name": "Meth Lab",
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0d"
+  },
+  {
+    "_id": "58906158530a4a6b5a64c303",
+    "type": "Recurring",
+    "date": 1,
+    "category": "Salary",
+    "amount": 300,
+    "name": "Poker",
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0d"
+  },
+  {
+    "_id": "5862db33e7c717750a0803e4",
+    "type": "Recurring",
+    "date": 1,
+    "category": "Salary",
+    "amount": 3000,
+    "name": "Todo App Sales",
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0e"
+  },
+  {
+    "_id": "58890053df9d3e0905a2d5f5",
+    "type": "Recurring",
+    "date": 5,
+    "category": "Salary",
+    "amount": 400,
+    "name": "YouTube Gaming Channel",
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0e"
+  },
+  {
+    "_id": "58906158530a4a6b5a64c306",
+    "type": "Recurring",
+    "date": 1,
+    "category": "Salary",
+    "amount": 300,
+    "name": "Ferret Walking",
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0e"
   }
 ]
 
