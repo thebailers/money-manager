@@ -1,5 +1,6 @@
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema
+var ObjectId = Schema.ObjectId
 
 var IncomeSchema = new Schema({
   name: {
@@ -21,6 +22,9 @@ var IncomeSchema = new Schema({
   type: {
     type: String,
     required: true
+  },
+  user: {
+    type: ObjectId
   }
 }, {
   collection: 'income'
