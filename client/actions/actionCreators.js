@@ -12,7 +12,7 @@ export const FETCH_INCOME = 'FETCH_INCOME'
 export const FETCH_ONE_INCOME = 'FETCH_ONE_INCOME'
 
 function handleErr (err) {
-  if (err.status === 401) {
+  if (err.status === 401 || err.status === 404) {
     localStorage.removeItem('mm-jwtToken')
     setAuthToken(false)
     return setCurrentUser({})
@@ -20,15 +20,16 @@ function handleErr (err) {
 }
 
 // Transactions
+function fetchTransactionsSuccess (transactions) {
+  return {
+    type: FETCH_TRANSACTIONS,
+    payload: transactions
+  }
+}
+
 export const fetchTransactions = () => dispatch => axios.get('/api/transactions')
-  .then(transactions => {
-    dispatch({
-      type: FETCH_TRANSACTIONS,
-      payload: transactions
-    })
-  }, err => {
-    dispatch(handleErr(err))
-  })
+  .then(transactions => dispatch(fetchTransactionsSuccess(transactions)))
+  .catch(err => dispatch(handleErr(err)))
 
 export const fetchTransaction = id => dispatch => axios.get(`/api/transactions/${id}`)
   .then(transaction => {
