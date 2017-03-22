@@ -16,6 +16,7 @@ exports.post = function (req, res) {
   income.category = req.body.category
   income.date = req.body.date
   income.type = req.body.type
+  income.user = req.currentUser._id
 
   income.save(function (err) {
     if (err) {
