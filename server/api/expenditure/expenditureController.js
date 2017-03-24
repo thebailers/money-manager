@@ -1,7 +1,7 @@
 var Expenditure = require('./expenditureModel')
 
 exports.get = function (req, res) {
-  Expenditure.find(function (err, expenditure) {
+  Expenditure.find({ user: req.user._id }, function (err, expenditure) {
     if (err) {
       res.send(err)
     }
@@ -16,6 +16,7 @@ exports.post = function (req, res) {
   expenditure.category = req.body.category
   expenditure.date = req.body.date
   expenditure.type = req.body.type
+  expenditure.user = req.user._id
 
   expenditure.save(function (err) {
     if (err) {

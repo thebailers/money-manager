@@ -189,7 +189,8 @@ var expenditure = [
     "category": "Bills",
     "amount": 2000,
     "name": "Bills",
-    "__v": 0
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0c"
   },
   {
     "_id": "5889007edf9d3e0905a2d601",
@@ -198,7 +199,8 @@ var expenditure = [
     "category": "Entertainment",
     "amount": 9.99,
     "name": "Spotify",
-    "__v": 0
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0c"
   },
   {
     "_id": "5889009adf9d3e0905a2d602",
@@ -207,7 +209,68 @@ var expenditure = [
     "category": "Entertainment",
     "amount": 7.49,
     "name": "Netflix",
-    "__v": 0
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0c"
+  },
+  {
+    "_id": "5889006ddf9d3e0905a2d651",
+    "type": "Yearly",
+    "date": 1,
+    "category": "Entertainment",
+    "amount": 79,
+    "name": "Amazon Prime",
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0d"
+  },
+  {
+    "_id": "5889007edf9d3e0905a2d652",
+    "type": "Monthly",
+    "date": 12,
+    "category": "Entertainment",
+    "amount": 45,
+    "name": "Sky",
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0d"
+  },
+  {
+    "_id": "5889009adf9d3e0905a2d653",
+    "type": "Recurring",
+    "date": 23,
+    "category": "Phone Bill",
+    "amount": 20,
+    "name": "Bills",
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0d"
+  },
+  {
+    "_id": "5889006ddf9d3e0905a2d654",
+    "type": "Monthly",
+    "date": 1,
+    "category": "Insurance",
+    "amount": 35,
+    "name": "Life Insurance",
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0e"
+  },
+  {
+    "_id": "5889007edf9d3e0905a2d655",
+    "type": "Monthly",
+    "date": 12,
+    "category": "Health",
+    "amount": 55,
+    "name": "Gym Membership",
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0e"
+  },
+  {
+    "_id": "5889009adf9d3e0905a2d656",
+    "type": "Yearly",
+    "date": 23,
+    "category": "Automotive",
+    "amount": 278,
+    "name": "Car Insurance",
+    "__v": 0,
+    "user": "58c2a33cc6cd5a5d15a8fc0e"
   }
 ]
 
@@ -272,7 +335,7 @@ var createIncome = function(data) {
       return _.merge({income: income}, data || {});
     })
     .then(function() {
-      return 'Seeded DB with 3 Users, 3 Transactions, Income & Expenditure';
+      return 'Seeded DB with 9 Users, Transactions, Income & Expenditure';
     })
 };
 

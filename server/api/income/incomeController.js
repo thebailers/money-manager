@@ -1,7 +1,7 @@
 var Income = require('./incomeModel')
 
 exports.get = function (req, res) {
-  Income.find({ user: req.currentUser._id }, function (err, income) {
+  Income.find({ user: req.user._id }, function (err, income) {
     if (err) {
       res.send(err)
     }
@@ -16,7 +16,7 @@ exports.post = function (req, res) {
   income.category = req.body.category
   income.date = req.body.date
   income.type = req.body.type
-  income.user = req.currentUser._id
+  income.user = req.user._id
 
   income.save(function (err) {
     if (err) {
