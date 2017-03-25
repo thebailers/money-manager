@@ -38,6 +38,7 @@ export const fetchTransaction = id => dispatch => axios.get(`/api/transactions/$
       payload: transaction
     })
   })
+  .catch(err => dispatch(handleErr(err)))
 
 export const editTransaction = (id, props) => dispatch => axios.put(`/api/transactions/${id}`, props)
 export const addTransaction = (props) => dispatch => axios.post('/api/transactions', props)
