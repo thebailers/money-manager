@@ -62,6 +62,7 @@ export const fetchOneExpenditure = (id) => dispatch => axios.get(`/api/expenditu
       payload: expenditure
     })
   })
+  .catch(err => dispatch(handleErr(err)))
 
 export const addExpenditure = (props) => dispatch => axios.post('/api/expenditure', props)
 export const editExpenditure = (id, props) => dispatch => axios.put(`/api/expenditure/${id}`, props)
