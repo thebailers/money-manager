@@ -86,6 +86,7 @@ export const fetchOneIncome = (id) => dispatch => axios.get(`/api/income/${id}`)
       payload: income
     })
   })
+  .catch(err => dispatch(handleErr(err)))
 
 export const addIncome = (props) => dispatch => axios.post('/api/income', props)
 export const editIncome = (id, props) => dispatch => axios.put(`/api/income/${id}`, props)
