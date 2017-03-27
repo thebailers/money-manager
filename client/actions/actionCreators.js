@@ -11,7 +11,7 @@ export const FETCH_ONE_EXPENDITURE = 'FETCH_ONE_EXPENDITURE'
 export const FETCH_INCOME = 'FETCH_INCOME'
 export const FETCH_ONE_INCOME = 'FETCH_ONE_INCOME'
 
-function handleErr (err) {
+export function handleErr (err) {
   if (err.status === 401 || err.status === 404) {
     localStorage.removeItem('mm-jwtToken')
     setAuthToken(false)
