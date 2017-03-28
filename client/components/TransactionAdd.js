@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { addTransaction } from '../actions/actionCreators'
-import { checkAuth } from '../actions/authActions'
 import { SingleDatePicker } from 'react-dates'
 import classnames from 'classnames'
 import moment from 'moment'
@@ -24,10 +23,6 @@ class TransactionAdd extends Component {
     this.onDateChange = this.onDateChange.bind(this)
     this.onFocusChange = this.onFocusChange.bind(this)
     this.outsideRange = this.outsideRange.bind(this)
-  }
-
-  componentDidMount () {
-    this.props.checkAuth()
   }
 
   handleSubmit (e) {
@@ -122,8 +117,7 @@ class TransactionAdd extends Component {
 const { func } = React.PropTypes
 
 TransactionAdd.propTypes = {
-  addTransaction: func.isRequired,
-  checkAuth: func.isRequired
+  addTransaction: func.isRequired
 }
 
-export default connect(null, { addTransaction, checkAuth })(TransactionAdd)
+export default connect(null, { addTransaction })(TransactionAdd)

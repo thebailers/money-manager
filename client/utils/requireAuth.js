@@ -1,11 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { checkAuth } from '../actions/authActions'
 
 export default function (ComposedComponent) {
   class Authenticate extends Component {
+    constructor (props) {
+      super(props)
+
+      this.state = {
+        authorised: false
+      }
+    }
     componentDidMount () {
+      this.props.checkAuth()
+
       if (!this.props.isAuthenticated) {
         this.context.router.push('/login')
+      } else {
+        this.setState({ authorised: true })
       }
     }
 
@@ -16,6 +28,10 @@ export default function (ComposedComponent) {
     }
 
     render () {
+      if (!this.state.authorised) {
+        return <div>Loading...</div>
+      }
+
       return (
         <ComposedComponent {...this.props} />
       )
@@ -23,7 +39,8 @@ export default function (ComposedComponent) {
   }
 
   Authenticate.propTypes = {
-    isAuthenticated: React.PropTypes.bool.isRequired
+    isAuthenticated: React.PropTypes.bool.isRequired,
+    checkAuth: React.PropTypes.func.isRequired
   }
 
   Authenticate.contextTypes = {
@@ -36,5 +53,5 @@ export default function (ComposedComponent) {
     }
   }
 
-  return connect(mapStateToProps)(Authenticate)
+  return connect(mapStateToProps, { checkAuth })(Authenticate)
 }
