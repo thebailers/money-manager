@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
 import Header from './Header'
 import Navigation from './Navigation'
 import FlashMessagesList from './FlashMessagesList'
 
-export default class App extends Component {
+class App extends Component {
   render () {
+    console.log(this.props)
     return (
       <div>
         <Header />
-        <Navigation location={this.props.location} />
+        {(this.props.isAuthenticated ? <Navigation location={this.props.location} /> : '')}
         <FlashMessagesList />
         <article className='articlebody'>
           {this.props.children}
@@ -21,5 +22,14 @@ export default class App extends Component {
 
 App.propTypes = {
   children: React.PropTypes.node,
-  location: React.PropTypes.object
+  location: React.PropTypes.object,
+  isAuthenticated: React.PropTypes.bool.isRequired
 }
+
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated
+  }
+}
+
+export default connect(mapStateToProps)(App)
