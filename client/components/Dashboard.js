@@ -11,7 +11,10 @@ class Dashboard extends Component {
 
   componentDidMount () {
     if (this.props.isAuthenticated) {
-      this.props.fetchTransactions()
+      const end = new Date()
+      const start = new Date(end.getFullYear(), end.getMonth(), 1)
+
+      this.props.fetchTransactions(start, end)
       this.props.fetchExpenditure()
       this.props.fetchIncome()
     }

@@ -1,7 +1,13 @@
 var Transaction = require('./transactionsModel')
 
 exports.get = function (req, res) {
-  Transaction.find({ user: req.user._id }, function (err, transactions) {
+  Transaction.find({
+    user: req.user._id,
+    date: {
+      $gte: req.query.start,
+      $lt: req.query.end
+    }
+  }, function (err, transactions) {
     if (err) {
       res.send(err)
     }
