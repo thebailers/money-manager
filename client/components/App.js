@@ -6,7 +6,6 @@ import FlashMessagesList from './FlashMessagesList'
 
 class App extends Component {
   render () {
-    console.log(this.props)
     return (
       <div>
         <Header />

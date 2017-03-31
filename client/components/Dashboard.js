@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from '../actions/actionCreators'
 import Transactions from './Transactions'
+import ArchiveSnapshot from './ArchiveSnapshot'
 import Total from './Total'
 import Remaining from './Remaining'
 import sumObjectValues from '../utils/sumObjectValues'
@@ -55,6 +56,8 @@ class Dashboard extends Component {
           />
 
         </section>
+
+        <ArchiveSnapshot />
 
       </section>
      )
