@@ -57,7 +57,7 @@ class Dashboard extends Component {
 
         </section>
 
-        <ArchiveSnapshot />
+        <ArchiveSnapshot archiveCount='5' />
 
       </section>
      )
