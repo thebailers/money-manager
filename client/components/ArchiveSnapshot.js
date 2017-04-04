@@ -19,7 +19,6 @@ class ArchiveSnapshot extends Component {
   buildArchives () {
     const archives = []
     const d = new Date()
-    d.setMonth(d.getMonth() - 1)
 
     for (var i = 1; i <= this.props.archiveCount; i++) {
       d.setMonth(d.getMonth() - 1)

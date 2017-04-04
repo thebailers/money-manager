@@ -14,9 +14,12 @@ class Transaction extends Component {
   handleDelete () {
     const id = this.props.transaction._id
 
+    const end = new Date()
+    const start = new Date(end.getFullYear(), end.getMonth(), 1)
+
     this.props.deleteTransaction(id)
       .then(() => {
-        this.props.fetchTransactions()
+        this.props.fetchTransactions(start, end)
       })
   }
 
