@@ -27,7 +27,7 @@ var transactions = [
     "amount": 6.25,
     "name": "Monmouth Coffee",
     "__v": 0,
-    "date": "2017-02-25T00:00:00.000Z",
+    "date": "2017-03-25T00:00:00.000Z",
     "user": "58c2a33cc6cd5a5d15a8fc0c"
   },
   {
@@ -35,7 +35,7 @@ var transactions = [
     "amount": 399,
     "name": "Flight to Copenhagen",
     "__v": 0,
-    "date": "2017-01-27T00:00:00.000Z",
+    "date": "2017-02-27T00:00:00.000Z",
     "user": "58c2a33cc6cd5a5d15a8fc0c"
   },
   {

@@ -32,7 +32,7 @@ const Root = ({ store }) => (
         <Route path='/income/add' component={requireAuth(IncomeAdd)} />
         <Route path='/transaction/edit/:id' component={requireAuth(TransactionEdit)} />
         <Route path='/transactions/add' component={requireAuth(TransactionAdd)} />
-        <Route path='/archives/:year/:month' component={requireAuth(ArchivedData)} />
+        <Route path='/archives/:year/:month' component={ArchivedData} />
         <Route path='/login' component={LoginForm} />
         <Route path='/register' component={Signup} />
       </Route>

@@ -9,11 +9,11 @@ class ArchivedData extends Component {
   componentDidMount () {
     const { month, year } = this.props.params
 
-    const monthToInt = monthNames.indexOf(month)
+    const monthToInt = monthNames.findIndex(i => month.toLowerCase() === i.toLowerCase())
     const daysInMonth = moment(`${year}-${monthToInt}`, 'YYYY-MM').daysInMonth()
 
-    const start = new Date(year, month, 1)
-    const end = new Date(year, month, daysInMonth)
+    const start = new Date(year, monthToInt, 1)
+    const end = new Date(year, monthToInt, daysInMonth)
 
     this.props.fetchTransactions(start, end)
   }
