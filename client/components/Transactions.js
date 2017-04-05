@@ -43,15 +43,23 @@ class Transactions extends Component {
   render () {
     const { transactions } = this.props
 
-    if (transactions.length === 0) {
+    // Display link to add a first transaction if allowed
+    if (transactions.length === 0 && !this.props.locked) {
       return (
         <div className='alert error'>No transactions. <Link className='actionlink' to='/transactions/add'>Add one.</Link></div>
       )
     }
 
+    // Show no transactions notice without add functionality if locked
+    if (transactions.length === 0 && this.props.locked) {
+      return (
+        <div className='alert error'>No transactions for this time period.</div>
+      )
+    }
+
     return (
       <section className='transactions'>
-        <h2>Transactions <Link className='actionlink' to='/transactions/add'>Add</Link></h2>
+        <h2>Transactions {(!this.props.locked) ? <Link className='actionlink' to='/transactions/add'>Add</Link> : ''}</h2>
         <table className='financials -transactions'>
           <thead>
             <tr>
@@ -75,7 +83,8 @@ class Transactions extends Component {
 }
 
 Transactions.propTypes = {
-  transactions: React.PropTypes.array
+  transactions: React.PropTypes.array,
+  locked: React.PropTypes.bool
 }
 
 export default Transactions

@@ -30,8 +30,8 @@ class ArchivedData extends Component {
 
     return (
       <section>
-        <h2>Transactions for {this.props.params.month} {this.props.params.year}</h2>
-        <Transactions transactions={transactions} />
+        <h2><span className='capitalize'>{this.props.params.month}</span> {this.props.params.year}</h2>
+        <Transactions transactions={transactions} locked />
       </section>
     )
   }
