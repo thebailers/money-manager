@@ -42,9 +42,9 @@ class ArchiveSnapshot extends Component {
     }
 
     return (
-      <section className="archives">
-        <h3>Recent Months</h3>
-        <ul>
+      <section className="archives dashboard-archive-panel">
+        <h3 className='title'>Archives</h3>
+        <ul className='archive-list'>
           {this.state.archives.map((archive, i) => {
             return (
               <li key={i}><Link to={`/archives/${archive.year}/${archive.month}`}>{archive.name}</Link></li>
