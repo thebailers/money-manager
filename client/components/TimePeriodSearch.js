@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
+import dates from '../utils/dates'
 
 export default class TimePeriodSearch extends Component {
   constructor (props) {
     super(props)
 
-    const date = new Date()
-    const day = (`0${date.getDay()}`).slice(-2)
-    const month = (`0${date.getMonth()}`).slice(-2)
-    const now = `${date.getFullYear()}-${month}-${day}`
+    const d = new Date()
+    const now = `${d.getFullYear()}-${dates.getFormattedDate(d, 'MM')}-${dates.getFormattedDate(d, 'DD')}`
 
     this.state = {
       startDate: now,
