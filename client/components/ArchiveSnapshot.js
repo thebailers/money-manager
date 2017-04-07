@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import monthNames from '../utils/monthNames'
+import TimePeriodSearch from './TimePeriodSearch'
 
 class ArchiveSnapshot extends Component {
   constructor (props) {
@@ -52,6 +53,7 @@ class ArchiveSnapshot extends Component {
           })}
         </ul>
         <a href="#">Custom date range</a>
+        <TimePeriodSearch />
       </section>
     )
   }
