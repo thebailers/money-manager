@@ -9,15 +9,20 @@ export default class TimePeriodSearch extends Component {
     const now = `${d.getFullYear()}-${dates.getFormattedDate(d, 'MM')}-${dates.getFormattedDate(d, 'DD')}`
 
     this.state = {
-      startDate: now,
-      endDate: now
+      start: now,
+      end: now
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
+
   handleSubmit (e) {
     e.preventDefault()
-    console.log('handled submit')
+  }
+
+  handleChange (e) {
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   render () {
@@ -25,11 +30,11 @@ export default class TimePeriodSearch extends Component {
       <form onSubmit={this.handleSubmit}>
         <div className='form-row'>
           <label htmlFor='start'>Start date</label>
-          <input type='date' id='start' name='start' value={this.state.startDate} / >
+          <input type='date' id='start' name='start' value={this.state.start} onChange={this.handleChange} / >
         </div>
         <div className='form-row'>
-          <label htmlFor='end'>Start date</label>
-          <input type='date' id='end' name='end' value={this.state.endDate} / >
+          <label htmlFor='end'>End date</label>
+          <input type='date' id='end' name='end' value={this.state.end} onChange={this.handleChange} / >
         </div>
         <div className='form-row'>
           <button className='button orange'>Search</button>
