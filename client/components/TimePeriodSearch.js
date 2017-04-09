@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import dates from '../utils/dates'
 
 export default class TimePeriodSearch extends Component {
@@ -19,10 +19,15 @@ export default class TimePeriodSearch extends Component {
 
   handleSubmit (e) {
     e.preventDefault()
+    this.context.router.push(`/archives/range/${this.state.start}/${this.state.end}`)
   }
 
   handleChange (e) {
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  static contextTypes = {
+    router: PropTypes.object
   }
 
   render () {

@@ -14,6 +14,7 @@ import Dashboard from './Dashboard'
 import TransactionEdit from './TransactionEdit'
 import TransactionAdd from './TransactionAdd'
 import ArchivedData from './ArchivedData'
+import ArchivedRangedData from './ArchivedRangedData'
 import LoginForm from './LoginForm'
 import Signup from './Signup'
 
@@ -33,6 +34,7 @@ const Root = ({ store }) => (
         <Route path='/transaction/edit/:id' component={requireAuth(TransactionEdit)} />
         <Route path='/transactions/add' component={requireAuth(TransactionAdd)} />
         <Route path='/archives/:year/:month' component={ArchivedData} />
+        <Route path='/archives/range/:start/:end' component={ArchivedRangedData} />
         <Route path='/login' component={LoginForm} />
         <Route path='/register' component={Signup} />
       </Route>
