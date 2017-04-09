@@ -33,8 +33,8 @@ const Root = ({ store }) => (
         <Route path='/income/add' component={requireAuth(IncomeAdd)} />
         <Route path='/transaction/edit/:id' component={requireAuth(TransactionEdit)} />
         <Route path='/transactions/add' component={requireAuth(TransactionAdd)} />
-        <Route path='/archives/:year/:month' component={ArchivedData} />
-        <Route path='/archives/range/:start/:end' component={ArchivedRangedData} />
+        <Route path='/archives/:year/:month' component={requireAuth(ArchivedData)} />
+        <Route path='/archives/range/:start/:end' component={requireAuth(ArchivedRangedData)} />
         <Route path='/login' component={LoginForm} />
         <Route path='/register' component={Signup} />
       </Route>

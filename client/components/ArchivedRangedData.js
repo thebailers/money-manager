@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchTransactions } from '../actions/actionCreators'
 import Transactions from './Transactions'
+import moment from 'moment'
 
 class ArchivedData extends Component {
   componentDidMount () {
@@ -12,6 +13,7 @@ class ArchivedData extends Component {
   }
   render () {
     const { transactions } = this.props
+    const friendlyDate = 'Do MMMM YYYY'
 
     if (!transactions) {
       return (
@@ -23,7 +25,7 @@ class ArchivedData extends Component {
 
     return (
       <section>
-        <h2>Date Range</h2>
+        <h2>Results for {moment(this.props.params.start).format(friendlyDate)} to {moment(this.props.params.end).format(friendlyDate)}</h2>
         <Transactions transactions={transactions} locked />
       </section>
     )
