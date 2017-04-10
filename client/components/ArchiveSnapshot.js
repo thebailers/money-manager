@@ -9,8 +9,11 @@ class ArchiveSnapshot extends Component {
 
     this.state = {
       archiveLinksReady: false,
-      archives: []
+      archives: [],
+      customFormIsVisible: false
     }
+
+    this.toggleSearchForm = this.toggleSearchForm.bind(this)
   }
 
   componentDidMount () {
@@ -37,6 +40,11 @@ class ArchiveSnapshot extends Component {
     this.setState({ archiveLinksReady: true, archives })
   }
 
+  toggleSearchForm (e) {
+    e.preventDefault()
+    this.setState({ customFormIsVisible: !this.state.customFormIsVisible })
+  }
+
   render () {
     if (!this.state.archiveLinksReady) {
       return <div>Loading...</div>
@@ -52,8 +60,8 @@ class ArchiveSnapshot extends Component {
             )
           })}
         </ul>
-        <a href="#">Custom date range</a>
-        <TimePeriodSearch />
+        <a onClick={this.toggleSearchForm} href="#">Custom date range</a>
+        {(this.state.customFormIsVisible) ? <TimePeriodSearch /> : ''}
       </section>
     )
   }
