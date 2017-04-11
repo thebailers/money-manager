@@ -34,6 +34,22 @@
       &:hover
         border-bottom: 1px dashed #333;
 
+  .custom-date-range
+    .date-range-toggle
+      display block
+      outline none
+      position relative
+
+    &.is-active
+      background lighten(lightgrey, 90%)
+
+      .date-range-toggle
+        &:after
+          color grey
+          content "\00D7"
+          font-size: 24px
+          position absolute
+          right 0
 
   a
     color $orange

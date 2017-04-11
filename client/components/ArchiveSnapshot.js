@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import classnames from 'classnames'
 import monthNames from '../utils/monthNames'
 import TimePeriodSearch from './TimePeriodSearch'
 
@@ -60,8 +61,10 @@ class ArchiveSnapshot extends Component {
             )
           })}
         </ul>
-        <a onClick={this.toggleSearchForm} href="#">Custom date range</a>
-        {(this.state.customFormIsVisible) ? <TimePeriodSearch /> : ''}
+        <div className={classnames('custom-date-range', this.state.customFormIsVisible ? 'is-active' : '')}>
+          <a onClick={this.toggleSearchForm} className='date-range-toggle' href="#">Custom date range</a>
+          {(this.state.customFormIsVisible) ? <TimePeriodSearch /> : ''}
+        </div>
       </section>
     )
   }
