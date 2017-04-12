@@ -77,7 +77,12 @@ Dashboard.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    transactions: state.transactions.all,
+    allTransactions: state.transactions.all,
+    transactions: state.transactions.all.filter((t) => {
+      const n = new Date()
+      const d = new Date(t.date)
+      return d.getMonth() === n.getMonth() && d.getFullYear() === n.getFullYear()
+    }),
     expenditure: state.expenditure.all,
     income: state.income.all,
     isAuthenticated: state.auth.isAuthenticated

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import classnames from 'classnames'
-import monthNames from '../utils/monthNames'
+import { getMonthName } from '../utils/dates'
 import TimePeriodSearch from './TimePeriodSearch'
 
 class ArchiveSnapshot extends Component {
@@ -28,7 +29,7 @@ class ArchiveSnapshot extends Component {
     for (var i = 1; i <= this.props.archiveCount; i++) {
       d.setMonth(d.getMonth() - 1)
       const year = d.getFullYear()
-      const month = monthNames[d.getMonth()]
+      const month = getMonthName(d.getMonth())
       const name = (i === 1 ? 'Last month' : `${month} ${year}`)
 
       archives.push({
@@ -57,7 +58,7 @@ class ArchiveSnapshot extends Component {
         <ul className='archive-list'>
           {this.state.archives.map((archive, i) => {
             return (
-              <li key={i}><Link to={`/archives/${archive.year}/${archive.month}`}>{archive.name}</Link></li>
+              <li key={i}><Link to={`/archives/${archive.year}/${archive.month}`}>{archive.name}</Link> <span>T: VALUE I: VALUE E: VALUE</span></li>
             )
           })}
         </ul>
@@ -71,7 +72,14 @@ class ArchiveSnapshot extends Component {
 }
 
 ArchiveSnapshot.propTypes = {
-  archiveCount: React.PropTypes.number.isRequired
+  archiveCount: React.PropTypes.number.isRequired,
+  transactions: React.PropTypes.array
 }
 
-export default ArchiveSnapshot
+const mapStateToProps = (state) => {
+  return {
+    transactions: state.transactions.all
+  }
+}
+
+export default connect(mapStateToProps)(ArchiveSnapshot)
