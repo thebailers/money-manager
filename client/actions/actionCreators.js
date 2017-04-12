@@ -27,7 +27,11 @@ function fetchTransactionsSuccess (transactions) {
   }
 }
 
-export const fetchTransactions = (start, end) => dispatch => axios.get(`/api/transactions?start=${start}&end=${end}`)
+// export const fetchTransactions = (start, end) => dispatch => axios.get(`/api/transactions?start=${start}&end=${end}`)
+//   .then(transactions => dispatch(fetchTransactionsSuccess(transactions)))
+//   .catch(err => dispatch(handleErr(err)))
+
+export const fetchTransactions = () => dispatch => axios.get('/api/transactions')
   .then(transactions => dispatch(fetchTransactionsSuccess(transactions)))
   .catch(err => dispatch(handleErr(err)))
 
