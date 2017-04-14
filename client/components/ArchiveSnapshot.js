@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import classnames from 'classnames'
-import { getMonthName } from '../utils/dates'
+import { getMonthName, getMonthInt } from '../utils/dates'
 import TimePeriodSearch from './TimePeriodSearch'
+import sumObjectValues from '../utils/sumObjectValues'
 
 class ArchiveSnapshot extends Component {
   constructor (props) {
@@ -48,6 +48,8 @@ class ArchiveSnapshot extends Component {
   }
 
   render () {
+    const { transactions } = this.props
+
     if (!this.state.archiveLinksReady) {
       return <div>Loading...</div>
     }
@@ -58,7 +60,20 @@ class ArchiveSnapshot extends Component {
         <ul className='archive-list'>
           {this.state.archives.map((archive, i) => {
             return (
-              <li key={i}><Link to={`/archives/${archive.year}/${archive.month}`}>{archive.name}</Link> <span>T: VALUE I: VALUE E: VALUE</span></li>
+              <li key={i}>
+                <Link to={`/archives/${archive.year}/${archive.month}`}>
+                  {archive.name}
+                </Link>
+                <span>
+                  T: {sumObjectValues(transactions.filter((t) => {
+                    const d = new Date(t.date)
+                    const n = new Date(archive.year, getMonthInt(archive.month), 1)
+                    return d.getMonth() === n.getMonth() && d.getFullYear() === n.getFullYear()
+                  }), 'amount')}
+                  I: VALUE
+                  E: VALUE
+                </span>
+              </li>
             )
           })}
         </ul>
@@ -73,13 +88,7 @@ class ArchiveSnapshot extends Component {
 
 ArchiveSnapshot.propTypes = {
   archiveCount: React.PropTypes.number.isRequired,
-  transactions: React.PropTypes.array
+  transactions: React.PropTypes.array.isRequired
 }
 
-const mapStateToProps = (state) => {
-  return {
-    transactions: state.transactions.all
-  }
-}
-
-export default connect(mapStateToProps)(ArchiveSnapshot)
+export default ArchiveSnapshot

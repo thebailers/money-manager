@@ -8,3 +8,12 @@ exports.filterByCurrentMonth = (m) => {
   const d = new Date(m.date)
   return d.getMonth() === n.getMonth() && d.getFullYear() === n.getFullYear()
 }
+
+// exports.filterByMonth = (m, el) => {
+//   console.log(m) // 3
+//   console.log(el) // undefined
+// }
+
+exports.getMonthInt = (m) => {
+  return monthNames.findIndex(item => m.toLowerCase() === item.toLowerCase())
+}

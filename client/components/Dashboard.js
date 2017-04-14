@@ -58,7 +58,7 @@ class Dashboard extends Component {
 
         </section>
 
-        <ArchiveSnapshot archiveCount={5} />
+        <ArchiveSnapshot archiveCount={5} transactions={this.props.allTransactions} />
 
       </section>
      )
@@ -70,6 +70,7 @@ Dashboard.propTypes = {
   fetchExpenditure: func.isRequired,
   fetchIncome: func.isRequired,
   transactions: array,
+  allTransactions: array,
   expenditure: array,
   income: array,
   fetchTransactions: func.isRequired,
