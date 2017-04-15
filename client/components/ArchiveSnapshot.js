@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import classnames from 'classnames'
-import { getMonthName, getMonthInt } from '../utils/dates'
+import { getMonthName, filterByMonth } from '../utils/dates'
 import TimePeriodSearch from './TimePeriodSearch'
 import sumObjectValues from '../utils/sumObjectValues'
 
@@ -65,11 +65,7 @@ class ArchiveSnapshot extends Component {
                   {archive.name}
                 </Link>
                 <span>
-                  T: {sumObjectValues(transactions.filter((t) => {
-                    const d = new Date(t.date)
-                    const n = new Date(archive.year, getMonthInt(archive.month), 1)
-                    return d.getMonth() === n.getMonth() && d.getFullYear() === n.getFullYear()
-                  }), 'amount')}
+                  T: {sumObjectValues(transactions.filter(filterByMonth(archive.year, archive.month)), 'amount')}
                   I: VALUE
                   E: VALUE
                 </span>

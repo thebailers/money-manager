@@ -9,10 +9,11 @@ exports.filterByCurrentMonth = (m) => {
   return d.getMonth() === n.getMonth() && d.getFullYear() === n.getFullYear()
 }
 
-// exports.filterByMonth = (m, el) => {
-//   console.log(m) // 3
-//   console.log(el) // undefined
-// }
+exports.filterByMonth = (y, m) => (t) => {
+  const d = new Date(t.date)
+  const n = new Date(y, exports.getMonthInt(m), 1)
+  return d.getMonth() === n.getMonth() && d.getFullYear() === n.getFullYear()
+}
 
 exports.getMonthInt = (m) => {
   return monthNames.findIndex(item => m.toLowerCase() === item.toLowerCase())
