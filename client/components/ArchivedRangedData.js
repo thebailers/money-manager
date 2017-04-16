@@ -3,13 +3,17 @@ import { connect } from 'react-redux'
 import { fetchTransactions } from '../actions/actionCreators'
 import Transactions from './Transactions'
 import moment from 'moment'
+import { filterByRange } from '../utils/dates'
 
 class ArchivedData extends Component {
   componentDidMount () {
-    const start = this.props.params.start
-    const end = this.props.params.end
+    // const start = this.props.params.start
+    // const end = this.props.params.end
+    //
+    // console.log(Number(end.split('-')[0]))
+    // console.log(Number(end.split('-')[1]))
 
-    this.props.fetchTransactions(start, end)
+    this.props.fetchTransactions()
   }
   render () {
     const { transactions } = this.props
@@ -40,9 +44,9 @@ ArchivedData.propTypes = {
   transactions: array
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    transactions: state.transactions.all
+    transactions: state.transactions.all.filter(filterByRange(ownProps.params.start, ownProps.params.end))
   }
 }
 

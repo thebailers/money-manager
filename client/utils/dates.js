@@ -20,6 +20,11 @@ exports.filterByMonth = (y, m) => (t) => {
   return d.getMonth() === n.getMonth() && d.getFullYear() === n.getFullYear()
 }
 
+// start and end is a date format 'YYYY MM DD'
+exports.filterByRange = (start, end) => (t) => {
+  return t.date >= start && t.date <= end
+}
+
 exports.getMonthInt = (m) => {
   return monthNames.findIndex(item => m.toLowerCase() === item.toLowerCase())
 }
