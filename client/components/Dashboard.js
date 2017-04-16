@@ -27,7 +27,7 @@ class Dashboard extends Component {
   }
 
   render () {
-    const { transactions, expenditure, income } = this.props
+    const { transactions, expenditure, income, allTransactions } = this.props
 
     if (!transactions || !expenditure || !income) {
       return (
@@ -58,7 +58,12 @@ class Dashboard extends Component {
 
         </section>
 
-        <ArchiveSnapshot archiveCount={5} transactions={this.props.allTransactions} />
+        <ArchiveSnapshot
+          archiveCount={5}
+          transactions={allTransactions}
+          income={income}
+          expenditure={expenditure}
+        />
 
       </section>
      )

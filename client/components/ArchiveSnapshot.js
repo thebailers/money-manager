@@ -48,7 +48,9 @@ class ArchiveSnapshot extends Component {
   }
 
   render () {
-    const { transactions } = this.props
+    const { transactions, income, expenditure } = this.props
+
+    console.log(income)
 
     if (!this.state.archiveLinksReady) {
       return <div>Loading...</div>
@@ -59,15 +61,16 @@ class ArchiveSnapshot extends Component {
         <h3 className='title'>Archives</h3>
         <ul className='archive-list'>
           {this.state.archives.map((archive, i) => {
+            const { year, month, name } = archive
             return (
               <li key={i}>
-                <Link to={`/archives/${archive.year}/${archive.month}`}>
-                  {archive.name}
+                <Link to={`/archives/${year}/${month}`}>
+                  {name}
                 </Link>
                 <span>
-                  T: {sumObjectValues(transactions.filter(filterByMonth(archive.year, archive.month)), 'amount')}
-                  I: VALUE
-                  E: VALUE
+                  T: {sumObjectValues(transactions.filter(filterByMonth(year, month)), 'amount')}
+                  I: {sumObjectValues(income, 'amount')}
+                  E: {sumObjectValues(expenditure, 'amount')}
                 </span>
               </li>
             )
@@ -82,9 +85,13 @@ class ArchiveSnapshot extends Component {
   }
 }
 
+const { number, array } = React.PropTypes
+
 ArchiveSnapshot.propTypes = {
-  archiveCount: React.PropTypes.number.isRequired,
-  transactions: React.PropTypes.array.isRequired
+  archiveCount: number.isRequired,
+  transactions: array.isRequired,
+  income: array.isRequired,
+  expenditure: array.isRequired
 }
 
 export default ArchiveSnapshot
