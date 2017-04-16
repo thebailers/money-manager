@@ -10,8 +10,13 @@ exports.filterByCurrentMonth = (m) => {
 }
 
 exports.filterByMonth = (y, m) => (t) => {
+  if (typeof m === 'string') {
+    m = exports.getMonthInt(m)
+  }
+
   const d = new Date(t.date)
-  const n = new Date(y, exports.getMonthInt(m), 1)
+  const n = new Date(y, m, 1)
+
   return d.getMonth() === n.getMonth() && d.getFullYear() === n.getFullYear()
 }
 
