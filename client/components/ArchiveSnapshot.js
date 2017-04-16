@@ -50,8 +50,6 @@ class ArchiveSnapshot extends Component {
   render () {
     const { transactions, income, expenditure } = this.props
 
-    console.log(income)
-
     if (!this.state.archiveLinksReady) {
       return <div>Loading...</div>
     }

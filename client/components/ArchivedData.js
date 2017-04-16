@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import monthNames from '../utils/monthNames'
+import { filterByMonth } from '../utils/dates'
 import { fetchTransactions } from '../actions/actionCreators'
 import Transactions from './Transactions'
 
@@ -45,9 +46,9 @@ ArchivedData.propTypes = {
   transactions: array
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    transactions: state.transactions.all
+    transactions: state.transactions.all.filter(filterByMonth(ownProps.params.year, ownProps.params.month))
   }
 }
 
