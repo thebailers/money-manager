@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import classnames from 'classnames'
+import numeral from 'numeral'
 import { getMonthName, filterByMonth } from '../utils/dates'
 import TimePeriodSearch from './TimePeriodSearch'
 import sumObjectValues from '../utils/sumObjectValues'
@@ -49,6 +50,7 @@ class ArchiveSnapshot extends Component {
 
   render () {
     const { transactions, income, expenditure } = this.props
+    const currencyFormat = '£ 0,0[.]00'
 
     if (!this.state.archiveLinksReady) {
       return <div>Loading...</div>
@@ -66,9 +68,9 @@ class ArchiveSnapshot extends Component {
                   {name}
                 </Link>
                 <span>
-                  T: {sumObjectValues(transactions.filter(filterByMonth(year, month)), 'amount')}
-                  I: {sumObjectValues(income, 'amount')}
-                  E: {sumObjectValues(expenditure, 'amount')}
+                  T: {`£${numeral(sumObjectValues(transactions.filter(filterByMonth(year, month)), 'amount')).format(currencyFormat)}`}
+                  I: {`£${numeral(sumObjectValues(income, 'amount')).format(currencyFormat)}`}
+                  E: {`£${numeral(sumObjectValues(expenditure, 'amount')).format(currencyFormat)}`}
                 </span>
               </li>
             )
