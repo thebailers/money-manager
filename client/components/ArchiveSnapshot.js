@@ -59,23 +59,33 @@ class ArchiveSnapshot extends Component {
     return (
       <section className="archives dashboard-archive-panel">
         <h3 className='title'>Archives</h3>
-        <ul className='archive-list'>
-          {this.state.archives.map((archive, i) => {
-            const { year, month, name } = archive
-            return (
-              <li key={i}>
-                <Link to={`/archives/${year}/${month}`}>
-                  {name}
-                </Link>
-                <span>
-                  T: {`£${numeral(sumObjectValues(transactions.filter(filterByMonth(year, month)), 'amount')).format(currencyFormat)}`}
-                  I: {`£${numeral(sumObjectValues(income, 'amount')).format(currencyFormat)}`}
-                  E: {`£${numeral(sumObjectValues(expenditure, 'amount')).format(currencyFormat)}`}
-                </span>
-              </li>
-            )
-          })}
-        </ul>
+        <table className='archive-list'>
+          <thead>
+            <tr>
+              <th className='nobor'><i className='fa fa-calendar' aria-hidden='true'></i></th>
+              <th className='nobor'><i className='fa fa-credit-card' aria-hidden='true'></i></th>
+              <th className='nobor'><i className='fa fa-credit-card' aria-hidden='true'></i><i className='fa fa-long-arrow-left color-green icon-shift-left-10' aria-hidden='true'></i></th>
+              <th className='nobor'><i className='fa fa-credit-card' aria-hidden='true'></i><i className='fa fa-long-arrow-right color-orange icon-shift-left-10' aria-hidden='true'></i></th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.archives.map((archive, i) => {
+              const { year, month, name } = archive
+              return (
+                <tr key={i}>
+                  <td>
+                    <Link to={`/archives/${year}/${month}`}>
+                      {name}
+                    </Link>
+                  </td>
+                  <td>{`£${numeral(sumObjectValues(transactions.filter(filterByMonth(year, month)), 'amount')).format(currencyFormat)}`}</td>
+                  <td>{`£${numeral(sumObjectValues(income, 'amount')).format(currencyFormat)}`}</td>
+                  <td>{`£${numeral(sumObjectValues(expenditure, 'amount')).format(currencyFormat)}`}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
         <div className={classnames('custom-date-range', this.state.customFormIsVisible ? 'is-active' : '')}>
           <a onClick={this.toggleSearchForm} className='date-range-toggle' href="#">Custom date range</a>
           {(this.state.customFormIsVisible) ? <TimePeriodSearch /> : ''}
