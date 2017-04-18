@@ -12,10 +12,12 @@ class IncomeAdd extends Component {
       name: '',
       category: '',
       date: '',
-      type: '',
+      type: 'recurring',
       amount: '',
       focused: false,
       loading: false,
+      recurring: true,
+      oneOff: false,
       errors: {}
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -85,15 +87,20 @@ class IncomeAdd extends Component {
           </div>
 
           <div className="field">
-            <label htmlFor="date">Date</label>
-            <input type="text" name="date" id="date" value={this.state.date} onChange={this.handleChange} />
-            <div className="text-help">{this.state.errors.date}</div>
+            <label htmlFor="type">Type</label>
+
+            <select value={this.state.type} onChange={this.handleChange} name="type">
+              <option value='recurring'>Recurring</option>
+              <option value='oneoff'>One-off</option>
+            </select>
+
+            <div className="text-help">{this.state.errors.type}</div>
           </div>
 
           <div className="field">
-            <label htmlFor="type">Type</label>
-            <input type="text" id="type" name="type" value={this.state.type} onChange={this.handleChange} />
-            <div className="text-help">{this.state.errors.type}</div>
+            <label htmlFor="date">Date</label>
+            <input type="text" name="date" id="date" value={this.state.date} onChange={this.handleChange} />
+            <div className="text-help">{this.state.errors.date}</div>
           </div>
 
           <div className="field">
