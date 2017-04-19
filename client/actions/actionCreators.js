@@ -11,6 +11,8 @@ export const FETCH_ONE_EXPENDITURE = 'FETCH_ONE_EXPENDITURE'
 export const FETCH_INCOME = 'FETCH_INCOME'
 export const FETCH_ONE_INCOME = 'FETCH_ONE_INCOME'
 
+export const FETCH_IRREGULAR_INCOME = 'FETCH_IRREGULAR_INCOME'
+
 export function handleErr (err) {
   if (err.status === 401 || err.status === 404) {
     localStorage.removeItem('mm-jwtToken')
@@ -93,8 +95,17 @@ export const fetchOneIncome = (id) => dispatch => axios.get(`/api/income/${id}`)
   .catch(err => dispatch(handleErr(err)))
 
 export const addIncome = (props) => dispatch => axios.post('/api/income', props)
-
-export const addIrregularIncome = (props) => dispatch => axios.post('/api/income-irregular', props)
-
 export const editIncome = (id, props) => dispatch => axios.put(`/api/income/${id}`, props)
 export const deleteIncome = (id) => dispatch => axios.delete(`/api/income/${id}`)
+
+export const fetchIrregularIncome = () => dispatch => axios.get('/api/income-irregular')
+  .then(income => {
+    dispatch({
+      type: FETCH_IRREGULAR_INCOME,
+      payload: income
+    })
+  }, err => {
+    dispatch(handleErr(err))
+  })
+
+export const addIrregularIncome = (props) => dispatch => axios.post('/api/income-irregular', props)

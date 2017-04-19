@@ -1,7 +1,7 @@
 var IncomeIrregular = require('./incomeIrregularModel')
 
 exports.get = function (req, res) {
-  Income.find({ user: req.user._id }, function (err, income) {
+  IncomeIrregular.find({ user: req.user._id }, function (err, income) {
     if (err) {
       res.send(err)
     }

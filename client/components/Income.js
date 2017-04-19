@@ -23,6 +23,7 @@ class Income extends Component {
   componentDidMount () {
     if (this.props.isAuthenticated) {
       this.props.fetchIncome()
+      this.props.fetchIrregularIncome()
     }
   }
 
@@ -95,14 +96,19 @@ class Income extends Component {
   }
 }
 
+const { func, arrayOf, object, bool } = React.PropTypes
+
 Income.propTypes = {
-  income: React.PropTypes.arrayOf(React.PropTypes.object),
-  fetchIncome: React.PropTypes.func.isRequired,
-  isAuthenticated: React.PropTypes.bool.isRequired
+  income: arrayOf(object),
+  irregularIncome: arrayOf(object),
+  fetchIncome: func.isRequired,
+  fetchIrregularIncome: func.isRequired,
+  isAuthenticated: bool.isRequired
 }
 
 const mapStateToProps = (state) => ({
   income: state.income.all,
+  irregularIncome: state.income.allIrregular,
   isAuthenticated: state.auth.isAuthenticated
 })
 
