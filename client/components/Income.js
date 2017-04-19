@@ -53,9 +53,10 @@ class Income extends Component {
   }
 
   render () {
-    const { income } = this.props
+    console.log(this.props)
+    const { income, incomeIrregular } = this.props
 
-    if (!income) {
+    if (!income || !incomeIrregular) {
       return (
         <div>
           <p>Loading...</p>
@@ -63,7 +64,8 @@ class Income extends Component {
       )
     }
 
-    const incomeTotal = sumObjectValues(income, 'amount')
+    const allIncome = [...income, ...incomeIrregular]
+    const incomeTotal = sumObjectValues(allIncome, 'amount')
 
     return (
       <section>
@@ -80,7 +82,7 @@ class Income extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.orderData(income).map((income) => {
+            {this.orderData(allIncome).map((income) => {
               return (
                 <IncomeItem {...this.props} key={income._id} income={income} />
               )
@@ -100,7 +102,7 @@ const { func, arrayOf, object, bool } = React.PropTypes
 
 Income.propTypes = {
   income: arrayOf(object),
-  irregularIncome: arrayOf(object),
+  incomeIrregular: arrayOf(object),
   fetchIncome: func.isRequired,
   fetchIrregularIncome: func.isRequired,
   isAuthenticated: bool.isRequired
@@ -108,7 +110,7 @@ Income.propTypes = {
 
 const mapStateToProps = (state) => ({
   income: state.income.all,
-  irregularIncome: state.income.allIrregular,
+  incomeIrregular: state.income.allIrregular,
   isAuthenticated: state.auth.isAuthenticated
 })
 
