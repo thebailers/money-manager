@@ -65,7 +65,9 @@ class Income extends Component {
     }
 
     const allIncome = [...income, ...incomeIrregular]
-    const incomeTotal = sumObjectValues(allIncome, 'amount')
+    const allIncomeTotal = sumObjectValues(allIncome, 'amount')
+    const incomeTotal = sumObjectValues(income, 'amount')
+    const irregularIncomeTotal = sumObjectValues(incomeIrregular, 'amount')
 
     return (
       <section>
@@ -91,7 +93,9 @@ class Income extends Component {
         </table>
 
         <section className='sumtotal'>
+          <Total value={allIncomeTotal} type='All Income' />
           <Total value={incomeTotal} type='Income' />
+          <Total value={irregularIncomeTotal} type='Irregular Income' />
         </section>
       </section>
     )
