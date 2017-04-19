@@ -93,5 +93,8 @@ export const fetchOneIncome = (id) => dispatch => axios.get(`/api/income/${id}`)
   .catch(err => dispatch(handleErr(err)))
 
 export const addIncome = (props) => dispatch => axios.post('/api/income', props)
+
+export const addIrregularIncome = (props) => dispatch => axios.post('/api/income-irregular', props)
+
 export const editIncome = (id, props) => dispatch => axios.put(`/api/income/${id}`, props)
 export const deleteIncome = (id) => dispatch => axios.delete(`/api/income/${id}`)
