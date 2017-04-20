@@ -100,7 +100,7 @@ class IncomeAdd extends Component {
 
   renderDateFormat () {
     if (this.state.type === 'recurring') {
-      return <input type="text" name="day" id="date" value={this.state.date} onChange={this.handleChange} />
+      return <input type="text" name="date" id="date" value={this.state.date} onChange={this.handleChange} />
     } else {
       return (
         <SingleDatePicker
