@@ -53,7 +53,6 @@ class Income extends Component {
   }
 
   render () {
-    console.log(this.props)
     const { income, incomeIrregular } = this.props
 
     if (!income || !incomeIrregular) {
@@ -72,25 +71,52 @@ class Income extends Component {
     return (
       <section>
         <h2>Income <Link className='actionlink' to='/income/add'>Add</Link></h2>
-        <table className='financials'>
-          <thead>
-            <tr>
-              <th className={(_.split('-', this.state.orderBy)[0] === 'name') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='name-asc'>Name</th>
-              <th>Category</th>
-              <th className={((_.split('-', this.state.orderBy)[0] === 'date') ? 'activefilter' : '')} onClick={this.orderBy} data-orderby='date-desc'>Payment Date</th>
-              <th className={(_.split('-', this.state.orderBy)[0] === 'amount') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='amount-asc'>Amount</th>
-              <th className='actions nobor'>&nbsp;</th>
-              <th className='actions nobor'>&nbsp;</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.orderData(allIncome).map((income) => {
-              return (
-                <IncomeItem {...this.props} key={income._id} income={income} />
-              )
-            })}
-          </tbody>
-        </table>
+
+        <section>
+          <h3>Regular Income</h3>
+          <table className='financials'>
+            <thead>
+              <tr>
+                <th className={(_.split('-', this.state.orderBy)[0] === 'name') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='name-asc'>Name</th>
+                <th>Category</th>
+                <th className={((_.split('-', this.state.orderBy)[0] === 'date') ? 'activefilter' : '')} onClick={this.orderBy} data-orderby='date-desc'>Payment Date</th>
+                <th className={(_.split('-', this.state.orderBy)[0] === 'amount') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='amount-asc'>Amount</th>
+                <th className='actions nobor'>&nbsp;</th>
+                <th className='actions nobor'>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.orderData(income).map((income) => {
+                return (
+                  <IncomeItem {...this.props} key={income._id} income={income} />
+                )
+              })}
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h3>Irregular Income</h3>
+          <table className='financials'>
+            <thead>
+              <tr>
+                <th className={(_.split('-', this.state.orderBy)[0] === 'name') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='name-asc'>Name</th>
+                <th>Category</th>
+                <th className={((_.split('-', this.state.orderBy)[0] === 'date') ? 'activefilter' : '')} onClick={this.orderBy} data-orderby='date-desc'>Payment Date</th>
+                <th className={(_.split('-', this.state.orderBy)[0] === 'amount') ? 'activefilter' : ''} onClick={this.orderBy} data-orderby='amount-asc'>Amount</th>
+                <th className='actions nobor'>&nbsp;</th>
+                <th className='actions nobor'>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.orderData(incomeIrregular).map((income) => {
+                return (
+                  <IncomeItem {...this.props} key={income._id} income={income} />
+                )
+              })}
+            </tbody>
+          </table>
+        </section>
 
         <section className='sumtotal'>
           <Total value={allIncomeTotal} type='All Income' />
