@@ -3,9 +3,9 @@ import monthNames from './monthNames'
 exports.getMonthName = (m) => (monthNames[m])
 
 // m = array of objects with dates :: return objects for the current calendar month
-exports.filterByCurrentMonth = (m) => {
+exports.filterByCurrentMonth = (obj) => {
   const n = new Date()
-  const d = new Date(m.date)
+  const d = new Date(obj.date)
   return d.getMonth() === n.getMonth() && d.getFullYear() === n.getFullYear()
 }
 

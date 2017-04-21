@@ -8,6 +8,7 @@ import IncomeItem from './IncomeItem'
 import sumObjectValues from '../utils/sumObjectValues'
 import _ from 'ramda'
 import diff from '../utils/diff'
+import { filterByCurrentMonth } from '../utils/dates'
 
 class Income extends Component {
   constructor (props) {
@@ -140,7 +141,7 @@ Income.propTypes = {
 
 const mapStateToProps = (state) => ({
   income: state.income.all,
-  incomeIrregular: state.income.allIrregular,
+  incomeIrregular: state.income.allIrregular.filter(filterByCurrentMonth),
   isAuthenticated: state.auth.isAuthenticated
 })
 
