@@ -9,22 +9,6 @@ import IncomeData from './IncomeData'
 
 class ArchivedData extends Component {
   componentDidMount () {
-    // const { month, year } = this.props.params
-    //
-    // const monthToInt = monthNames.findIndex(i => month.toLowerCase() === i.toLowerCase())
-    // const daysInMonth = moment(`${year}-${monthToInt}`, 'YYYY-MM').daysInMonth()
-
-    // const start = new Date(year, monthToInt, 1)
-    // const end = new Date(year, monthToInt, daysInMonth)
-
-    // this.props.fetchTransactions(start, end)
-    // this.props.fetchIncome(start, end)
-
-    // if (this.props.income.length === 0) {
-    //   this.props.fetchIncome()
-    //   this.props.fetchIrregularIncome()
-    // }
-
     this.props.fetchIncome()
     this.props.fetchIrregularIncome()
 
