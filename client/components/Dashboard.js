@@ -19,6 +19,7 @@ class Dashboard extends Component {
       this.props.fetchTransactions(start, end)
       this.props.fetchExpenditure()
       this.props.fetchIncome()
+      this.props.fetchIrregularIncome()
     }
   }
 
@@ -27,7 +28,7 @@ class Dashboard extends Component {
   }
 
   render () {
-    const { transactions, expenditure, income, allTransactions } = this.props
+    const { transactions, expenditure, income, incomeIrregular, allTransactions } = this.props
 
     if (!transactions || !expenditure || !income) {
       return (
@@ -37,9 +38,11 @@ class Dashboard extends Component {
       )
     }
 
+    const mergedIncome = [...income, ...incomeIrregular]
+
     const transactionsTotal = sumObjectValues(transactions, 'amount')
     const expenditureTotal = sumObjectValues(expenditure, 'amount')
-    const incomeTotal = sumObjectValues(income, 'amount')
+    const incomeTotal = sumObjectValues(mergedIncome, 'amount')
 
     return (
       <section>
@@ -74,10 +77,12 @@ const { func, array, bool } = React.PropTypes
 Dashboard.propTypes = {
   fetchExpenditure: func.isRequired,
   fetchIncome: func.isRequired,
+  fetchIrregularIncome: func.isRequired,
   transactions: array,
   allTransactions: array,
   expenditure: array,
   income: array,
+  incomeIrregular: array,
   fetchTransactions: func.isRequired,
   isAuthenticated: bool.isRequired
 }
@@ -88,6 +93,7 @@ const mapStateToProps = (state) => {
     transactions: state.transactions.all.filter(filterByCurrentMonth),
     expenditure: state.expenditure.all,
     income: state.income.all,
+    incomeIrregular: state.income.allIrregular.filter(filterByCurrentMonth),
     isAuthenticated: state.auth.isAuthenticated
   }
 }
