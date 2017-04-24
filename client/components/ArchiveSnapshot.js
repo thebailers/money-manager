@@ -49,7 +49,7 @@ class ArchiveSnapshot extends Component {
   }
 
   render () {
-    const { transactions, income, expenditure } = this.props
+    const { transactions, income, incomeIrregular, expenditure } = this.props
     const currencyFormat = '£ 0,0[.]00'
 
     if (!this.state.archiveLinksReady) {
@@ -71,6 +71,9 @@ class ArchiveSnapshot extends Component {
           <tbody>
             {this.state.archives.map((archive, i) => {
               const { year, month, name } = archive
+              const irregularIncomeByMonth = incomeIrregular.filter(filterByMonth(year, month))
+              const mergedIncome = [...income, ...irregularIncomeByMonth]
+
               return (
                 <tr key={i}>
                   <td>
@@ -79,7 +82,7 @@ class ArchiveSnapshot extends Component {
                     </Link>
                   </td>
                   <td>{`£${numeral(sumObjectValues(transactions.filter(filterByMonth(year, month)), 'amount')).format(currencyFormat)}`}</td>
-                  <td>{`£${numeral(sumObjectValues(income, 'amount')).format(currencyFormat)}`}</td>
+                  <td>{`£${numeral(sumObjectValues(mergedIncome.filter(filterByMonth(year, month)), 'amount')).format(currencyFormat)}`}</td>
                   <td>{`£${numeral(sumObjectValues(expenditure, 'amount')).format(currencyFormat)}`}</td>
                 </tr>
               )
@@ -101,6 +104,7 @@ ArchiveSnapshot.propTypes = {
   archiveCount: number.isRequired,
   transactions: array.isRequired,
   income: array.isRequired,
+  incomeIrregular: array,
   expenditure: array.isRequired
 }
 

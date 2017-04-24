@@ -28,9 +28,9 @@ class Dashboard extends Component {
   }
 
   render () {
-    const { transactions, expenditure, income, incomeIrregular, allTransactions } = this.props
+    const { transactions, expenditure, income, incomeIrregular, incomeIrregularAll, allTransactions } = this.props
 
-    if (!transactions || !expenditure || !income) {
+    if (!transactions || !expenditure || !income || !incomeIrregular || !allTransactions) {
       return (
         <div>
           <p>Loading...</p>
@@ -65,6 +65,7 @@ class Dashboard extends Component {
           archiveCount={5}
           transactions={allTransactions}
           income={income}
+          incomeIrregular={incomeIrregularAll}
           expenditure={expenditure}
         />
 
@@ -83,6 +84,7 @@ Dashboard.propTypes = {
   expenditure: array,
   income: array,
   incomeIrregular: array,
+  incomeIrregularAll: array,
   fetchTransactions: func.isRequired,
   isAuthenticated: bool.isRequired
 }
@@ -93,6 +95,7 @@ const mapStateToProps = (state) => {
     transactions: state.transactions.all.filter(filterByCurrentMonth),
     expenditure: state.expenditure.all,
     income: state.income.all,
+    incomeIrregularAll: state.income.allIrregular,
     incomeIrregular: state.income.allIrregular.filter(filterByCurrentMonth),
     isAuthenticated: state.auth.isAuthenticated
   }
