@@ -82,7 +82,7 @@ class ArchiveSnapshot extends Component {
                     </Link>
                   </td>
                   <td>{`£${numeral(sumObjectValues(transactions.filter(filterByMonth(year, month)), 'amount')).format(currencyFormat)}`}</td>
-                  <td>{`£${numeral(sumObjectValues(mergedIncome.filter(filterByMonth(year, month)), 'amount')).format(currencyFormat)}`}</td>
+                  <td>{`£${numeral(sumObjectValues(mergedIncome, 'amount')).format(currencyFormat)}`}</td>
                   <td>{`£${numeral(sumObjectValues(expenditure, 'amount')).format(currencyFormat)}`}</td>
                 </tr>
               )
