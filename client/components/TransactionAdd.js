@@ -18,8 +18,10 @@ class TransactionAdd extends Component {
       errors: {},
       loading: false
     }
+
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
     this.onDateChange = this.onDateChange.bind(this)
     this.onFocusChange = this.onFocusChange.bind(this)
     this.outsideRange = this.outsideRange.bind(this)
@@ -45,6 +47,12 @@ class TransactionAdd extends Component {
         .then(() => {
           this.context.router.push('/')
         })
+    }
+  }
+
+  handleBlur (e) {
+    if (e.target.name === 'amount') {
+      this.setState({ [e.target.name]: parseFloat(e.target.value).toFixed(2) })
     }
   }
 
@@ -103,7 +111,14 @@ class TransactionAdd extends Component {
 
           <div className={classnames('field', { error: !!this.state.errors.amount })}>
             <label htmlFor="amount">Amount</label>
-            <input id="amount" name="amount" type="text" value={this.state.amount} onChange={this.handleChange} />
+            <input
+              id="amount"
+              name="amount"
+              type="text"
+              value={this.state.amount}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+            />
             <span className="text-help">{this.state.errors.amount}</span>
           </div>
 
