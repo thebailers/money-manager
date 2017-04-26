@@ -5,6 +5,7 @@ import { addIncome, addIrregularIncome } from '../actions/actionCreators'
 import classnames from 'classnames'
 import { SingleDatePicker } from 'react-dates'
 import moment from 'moment'
+import { formatMonetaryValue } from '../utils/currency'
 
 class IncomeAdd extends Component {
 
@@ -24,6 +25,7 @@ class IncomeAdd extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
     this.onDateChange = this.onDateChange.bind(this)
     this.onFocusChange = this.onFocusChange.bind(this)
     this.outsideRange = this.outsideRange.bind(this)
@@ -76,6 +78,12 @@ class IncomeAdd extends Component {
       })
     }
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleBlur (e) {
+    if (e.target.name === 'amount') {
+      this.setState({ [e.target.name]: formatMonetaryValue(e.target.value) })
+    }
   }
 
   static contextTypes = {
@@ -153,7 +161,14 @@ class IncomeAdd extends Component {
 
           <div className="field">
             <label htmlFor="amount">Amount</label>
-            <input type="text" id="amount" name="amount" value={this.state.amount} onChange={this.handleChange} />
+            <input
+              type="text"
+              id="amount"
+              name="amount"
+              value={this.state.amount}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+            />
             <div className="text-help">{this.state.errors.amount}</div>
           </div>
 

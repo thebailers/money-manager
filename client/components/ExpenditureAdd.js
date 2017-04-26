@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { addExpenditure } from '../actions/actionCreators'
 import classnames from 'classnames'
+import { formatMonetaryValue } from '../utils/currency'
 
 class ExpenditureAdd extends Component {
 
@@ -20,6 +21,7 @@ class ExpenditureAdd extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
   }
 
   handleSubmit (e) {
@@ -59,6 +61,12 @@ class ExpenditureAdd extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
+  handleBlur (e) {
+    if (e.target.name === 'amount') {
+      this.setState({ [e.target.name]: formatMonetaryValue(e.target.value) })
+    }
+  }
+
   static contextTypes = {
     router: PropTypes.object
   }
@@ -94,7 +102,14 @@ class ExpenditureAdd extends Component {
 
           <div className="field">
             <label htmlFor="amount">Amount</label>
-            <input type="text" id="amount" name="amount" value={this.state.amount} onChange={this.handleChange} />
+            <input
+              type="text"
+              id="amount"
+              name="amount"
+              value={this.state.amount}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+            />
             <div className="text-help">{this.state.errors.amount}</div>
           </div>
 
