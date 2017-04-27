@@ -84,7 +84,21 @@ class ExpenditureAdd extends Component {
 
           <div className="field">
             <label htmlFor="category">Category</label>
-            <input type="text" id="category" name="category" value={this.state.category} onChange={this.handleChange} />
+            <select value={this.state.category} name="category" onChange={this.handleChange}>
+              <option value="General">General</option>
+              <option value="Bills">Bills</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Gambling">Gambling</option>
+              <option value="Groceries">Groceries</option>
+              <option value="Clothes">Clothes</option>
+              <option value="Toiletries">Toiletries</option>
+              <option value="Baby">Baby</option>
+              <option value="Interest">Interest/Fees</option>
+              <option value="FoodBeverages">Food &amp; Beverages</option>
+              <option value="Leisure">Sport &amp; Leisure</option>
+              <option value="Electrical">Electrical</option>
+              <option value="Pets">Pets</option>
+            </select>
             <div className="text-help">{this.state.errors.category}</div>
           </div>
 
