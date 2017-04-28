@@ -39,10 +39,12 @@ class Dashboard extends Component {
     }
 
     const mergedIncome = [...income, ...incomeIrregular]
+    const mergedExpenditure = [...transactions, ...expenditure]
 
     const transactionsTotal = sumObjectValues(transactions, 'amount')
     const expenditureTotal = sumObjectValues(expenditure, 'amount')
     const incomeTotal = sumObjectValues(mergedIncome, 'amount')
+    const outgoingTotal = sumObjectValues(mergedExpenditure, 'amount')
 
     return (
       <section>
@@ -58,6 +60,11 @@ class Dashboard extends Component {
             expenditureTotal={expenditureTotal}
             transactionsTotal={transactionsTotal}
           />
+
+          <h3>{outgoingTotal} : {incomeTotal}</h3>
+          <div className='progress-bar'>
+            <span className='progress'></span>
+          </div>
 
         </section>
 
