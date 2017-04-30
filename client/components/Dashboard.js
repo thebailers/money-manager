@@ -9,6 +9,7 @@ import Remaining from './Remaining'
 import sumObjectValues from '../utils/sumObjectValues'
 import { filterByCurrentMonth } from '../utils/dates'
 import { calculatePercentage } from '../utils/general'
+import ProgressBar from './common/ProgressBar'
 
 class Dashboard extends Component {
 
@@ -49,10 +50,6 @@ class Dashboard extends Component {
 
     const percentage = calculatePercentage(outgoingTotal, incomeTotal)
 
-    const progressBarStyle = {
-      width: `${percentage}%`
-    }
-
     return (
       <section>
         <Transactions transactions={transactions} />
@@ -68,10 +65,10 @@ class Dashboard extends Component {
             transactionsTotal={transactionsTotal}
           />
 
-          <h3>{outgoingTotal} : {incomeTotal}</h3>
-          <div className='progress-bar'>
-            <span className='progress' style={progressBarStyle}></span>
-          </div>
+          <section className='expenditure-remaining'>
+            <h3>Monthly balance remaining</h3>
+            <ProgressBar percentage={percentage} />
+          </section>
 
         </section>
 
