@@ -1,7 +1,21 @@
 $orange = orangered
 $green = limegreen
+$stroke = #eaeaea
 $radius-button = 3px
 
+media_queries = {
+  mobile  : "only screen and (max-width: 600px)",
+  tablet  : "only screen and (min-width: 601px) and (max-width: 800px)",
+  desktop : "only screen and (min-width: 801px)"
+}
+
+for_breakpoint(breakpoints)
+  conditions = ()
+  for breakpoint in breakpoints
+    push(conditions, media_queries[breakpoint])
+  conditions = join(", ", conditions)
+  @media conditions
+    {block}
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700italic,700,300,300italic)
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css)
@@ -12,6 +26,7 @@ $radius-button = 3px
 @import '_datepicker.styl'
 @import '_login.styl'
 @import '_forms.styl'
+@import 'modules/_container.styl'
 @import 'modules/_buttons.styl'
 @import 'modules/_notifications.styl'
 @import 'modules/_dashboard.styl'

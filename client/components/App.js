@@ -11,7 +11,7 @@ class App extends Component {
         <Header />
         {(this.props.isAuthenticated ? <Navigation location={this.props.location} /> : '')}
         <FlashMessagesList />
-        <article className='articlebody'>
+        <article className='articlebody container'>
           {this.props.children}
         </article>
       </div>
