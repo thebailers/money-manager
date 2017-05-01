@@ -1,5 +1,6 @@
 nav
-	background #f4f4f4
+	margin-bottom 50px
+	padding 15px
 
 	.subnav
 		margin 0
@@ -7,20 +8,25 @@ nav
 		padding 0
 
 		li
+			border-radius $radius-button
 			float left
 			list-style none
+			margin-right 15px
 
 			&.active
-				background $orange
+				background $lightblue
 
 				a
 					color white
 
+			&:hover
+				background GhostWhite
+
 
 			a
-				color black
+				color $lightgreytext
 				display inline-block
-				font-size 14px
+				font-size 15px
 				padding 6px 10px 7px
 				outline none
 				text-decoration none
