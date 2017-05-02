@@ -46,14 +46,20 @@ class Transactions extends Component {
     // Display link to add a first transaction if allowed
     if (transactions.length === 0 && !this.props.locked) {
       return (
-        <div className='alert error'>No transactions. <Link className='actionlink' to='/transactions/add'>Add one.</Link></div>
+        <div>
+          <h1>Transactions</h1>
+          <p>No transactions. <Link className='actionlink' to='/transactions/add'>Add one</Link></p>
+        </div>
       )
     }
 
     // Show no transactions notice without add functionality if locked
     if (transactions.length === 0 && this.props.locked) {
       return (
-        <div className='alert error'>No transactions for this time period.</div>
+        <div>
+          <h1>Transactions</h1>
+          <div className='alert error'>No transactions for this time period</div>
+        </div>
       )
     }
 

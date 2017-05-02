@@ -33,7 +33,7 @@ class Header extends Component {
     )
 
     return (
-      <header>
+      <header className='container'>
         <div className='logo'>My £oney Manager</div>
         {isAuthenticated ? userLinks : guestLinks}
       </header>
