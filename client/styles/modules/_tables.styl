@@ -1,4 +1,6 @@
 .financials
+  margin-bottom 75px
+
   td
     border-top 1px solid $stroke
     font-size 16px
@@ -6,7 +8,11 @@
     padding 20px
 
     &:first-child
-      width 50%
+      padding-left 0
+      width 35%
+
+    &:last-child
+      padding-right 0
 
     &:nth-child(4), &:nth-child(5)
       width 4%
@@ -16,6 +22,12 @@
     font-weight normal
     text-align left
     padding 20px
+
+    &:first-child
+      padding-left 0
+
+    &:last-child
+      padding-right 0
 
     &.activefilter
       color $orange

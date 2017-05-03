@@ -31,8 +31,20 @@ class Transaction extends Component {
         <td>{transaction.name}</td>
         <td>{moment(transaction.date).format('Do MMM YYYY')}</td>
         <td>{`£${numeral(transaction.amount).format('£ 0,0[.]00')}`}</td>
-        <td><Link to={`/transaction/edit/${transaction._id}`} className='button'>Edit</Link></td>
-        <td><button className='button' onClick={this.handleDelete}>Delete</button></td>
+        <td>
+          <Link
+            to={`/transaction/edit/${transaction._id}`}
+            className='button edit-icon color-lightblue'>
+            <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+            <span className='screen-reader'>Edit</span>
+          </Link>
+        </td>
+        <td>
+          <button className='button delete-icon color-lightblue' onClick={this.handleDelete}>
+            <i className="fa fa-trash" aria-hidden="true"></i>
+            <span className='screen-reader'>Delete</span>
+          </button>
+        </td>
       </tr>
     )
   }
