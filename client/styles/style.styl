@@ -1,6 +1,8 @@
 $orange = orangered
 $green = limegreen
 $lightblue = LightSkyBlue
+$midblue = CornflowerBlue
+$lightgrey = Gainsboro
 $lightgreytext = #9c9c9c
 $stroke = #eaeaea
 $radius-button = 3px
@@ -36,6 +38,7 @@ for_breakpoint(breakpoints)
 @import 'modules/_icons.styl'
 @import 'modules/_archive_snapshot.styl'
 @import 'modules/_progressbar.styl'
+@import 'modules/_tables.styl'
 
 body
   color #333
@@ -65,20 +68,8 @@ article.articlebody
 
 
 		table
-			border 1px solid snow
-			border-spacing 10px
+			border-spacing 0
 			width 100%
-
-			thead
-				th
-					border-bottom 2px solid silver
-					color silver
-					font-weight normal
-					text-align left
-
-					&.activefilter
-						color orangered
-						border-bottom 2px solid $orange
 
 			th, td
 				font-size 14px
@@ -90,12 +81,6 @@ article.articlebody
 				background #fff
 
 				td
-					&:first-child
-						width 50%
-					&:nth-child(2), &:nth-child(3), &:nth-child(4)
-						width 14%
-					&:nth-child(5), &:nth-child(6)
-						width 4%
 
 					.button
 						background #c9c9c9
@@ -118,15 +103,6 @@ article.articlebody
 					&.actions
 						border none
 						text-align center
-
-				&.-transactions
-					td
-						&:first-child
-							width 64%
-						&:nth-child(2), &:nth-child(3)
-							width 14%
-						&:nth-child(4), &:nth-child(5)
-							width 4%
 
 			button
 				border none

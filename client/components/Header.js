@@ -28,7 +28,7 @@ class Header extends Component {
     const guestLinks = (
       <ul className='navigation'>
         <li><Link to='/login'>Log in</Link></li>
-        <li><Link className='signup button green' to='/register'>Sign up</Link></li>
+        <li><Link className='signup button lightgrey' to='/register'>Sign up</Link></li>
       </ul>
     )
 

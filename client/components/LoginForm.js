@@ -76,7 +76,7 @@ class LoginForm extends Component {
         />
 
         <div>
-          <button className='button large orange login' disabled={isLoading}>Login</button>
+          <button className='button large lightblue login' disabled={isLoading}>Login</button>
         </div>
       </form>
     )
