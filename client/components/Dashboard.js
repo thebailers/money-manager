@@ -45,6 +45,7 @@ class Dashboard extends Component {
 
     const transactionsTotal = sumObjectValues(transactions, 'amount')
     const expenditureTotal = sumObjectValues(expenditure, 'amount')
+
     const incomeTotal = sumObjectValues(mergedIncome, 'amount')
     const outgoingTotal = sumObjectValues(mergedExpenditure, 'amount')
 
@@ -55,8 +56,7 @@ class Dashboard extends Component {
         <Transactions transactions={transactions} />
 
         <section className='sumtotal'>
-          <Total value={transactionsTotal} type='Transactions' />
-          <Total value={expenditureTotal} type='Expenditure' />
+          <Total value={outgoingTotal} type='Expenditure' />
           <Total value={incomeTotal} type='Income' />
 
           <Remaining
