@@ -5,7 +5,6 @@ import * as actionCreators from '../actions/actionCreators'
 import Transactions from './Transactions'
 import ArchiveSnapshot from './ArchiveSnapshot'
 import Total from './Total'
-import Remaining from './Remaining'
 import sumObjectValues from '../utils/sumObjectValues'
 import { filterByCurrentMonth } from '../utils/dates'
 import { calculatePercentage } from '../utils/general'
@@ -49,21 +48,22 @@ class Dashboard extends Component {
     const incomeTotal = sumObjectValues(mergedIncome, 'amount')
     const outgoingTotal = sumObjectValues(mergedExpenditure, 'amount')
 
+    const remaining = (incomeTotal - expenditureTotal) - transactionsTotal
+
     const percentage = calculatePercentage(outgoingTotal, incomeTotal)
 
     return (
       <section>
         <Transactions transactions={transactions} />
 
-        <section className='sumtotal'>
-          <Total value={outgoingTotal} type='Expenditure' />
-          <Total value={incomeTotal} type='Income' />
+        <section className='cashflow-totals'>
+          <h2>Cashflow Monthly Cashflow Overview</h2>
 
-          <Remaining
-            incomeTotal={incomeTotal}
-            expenditureTotal={expenditureTotal}
-            transactionsTotal={transactionsTotal}
-          />
+          <div className='totals'>
+            <Total value={outgoingTotal} type='Expenditure' />
+            <Total value={incomeTotal} type='Income' />
+            <Total value={remaining} type='Remaining' />
+          </div>
 
           <section className='expenditure-remaining'>
             <h3>Monthly balance remaining</h3>
