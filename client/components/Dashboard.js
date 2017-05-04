@@ -6,7 +6,7 @@ import Transactions from './Transactions'
 import ArchiveSnapshot from './ArchiveSnapshot'
 import Total from './Total'
 import sumObjectValues from '../utils/sumObjectValues'
-import { filterByCurrentMonth } from '../utils/dates'
+import { filterByCurrentMonth, getMonthName } from '../utils/dates'
 import { calculatePercentage } from '../utils/general'
 import ProgressBar from './common/ProgressBar'
 
@@ -39,36 +39,48 @@ class Dashboard extends Component {
       )
     }
 
+    // Array of all merged income
     const mergedIncome = [...income, ...incomeIrregular]
+
+    // Array of all merged expenditure
     const mergedExpenditure = [...transactions, ...expenditure]
 
+    // Numeric values of current cashflow values
     const transactionsTotal = sumObjectValues(transactions, 'amount')
     const expenditureTotal = sumObjectValues(expenditure, 'amount')
-
     const incomeTotal = sumObjectValues(mergedIncome, 'amount')
     const outgoingTotal = sumObjectValues(mergedExpenditure, 'amount')
 
+    // Numeric value - remainder of income, less transactions & expenditure
     const remaining = (incomeTotal - expenditureTotal) - transactionsTotal
 
+    // Returns numeric percentage representation of outgoings against income
     const percentage = calculatePercentage(outgoingTotal, incomeTotal)
+
+    // Current date for dashboard date display
+    const date = new Date()
 
     return (
       <section>
         <Transactions transactions={transactions} />
 
-        <section className='cashflow-totals'>
-          <h2>Cashflow Monthly Cashflow Overview</h2>
+        <section className='cashflow-totals section-divide'>
+          <h2>Cashflow for {getMonthName(date.getMonth())} {date.getFullYear()}</h2>
+
+          <section className='expenditure-remaining'>
+            <ProgressBar
+              percentage={percentage}
+              annotated
+              limit={incomeTotal}
+              current={outgoingTotal}
+            />
+          </section>
 
           <div className='totals'>
             <Total value={outgoingTotal} type='Expenditure' />
             <Total value={incomeTotal} type='Income' />
             <Total value={remaining} type='Remaining' />
           </div>
-
-          <section className='expenditure-remaining'>
-            <h3>Monthly balance remaining</h3>
-            <ProgressBar percentage={percentage} />
-          </section>
 
         </section>
 
