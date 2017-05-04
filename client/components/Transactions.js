@@ -65,7 +65,7 @@ class Transactions extends Component {
 
     return (
       <section className='transactions'>
-        <h2>Transactions {(!this.props.locked) ? <Link className='actionlink' to='/transactions/add'>Add</Link> : ''}</h2>
+        <h2>Transactions {(!this.props.locked) ? <Link className='actionlink' to='/transactions/add'>Add new transaction</Link> : ''}</h2>
         <table className='financials -transactions'>
           <thead>
             <tr>

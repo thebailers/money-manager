@@ -34,13 +34,13 @@ class Transaction extends Component {
         <td>
           <Link
             to={`/transaction/edit/${transaction._id}`}
-            className='button edit-icon color-lightblue'>
+            className='button edit-icon color-lightgrey'>
             <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
             <span className='screen-reader'>Edit</span>
           </Link>
         </td>
         <td>
-          <button className='button delete-icon color-lightblue' onClick={this.handleDelete}>
+          <button className='button delete-icon color-lightgrey' onClick={this.handleDelete}>
             <i className="fa fa-trash" aria-hidden="true"></i>
             <span className='screen-reader'>Delete</span>
           </button>
