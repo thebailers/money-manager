@@ -5,7 +5,7 @@ import { addIncome, addIrregularIncome } from '../actions/actionCreators'
 import classnames from 'classnames'
 import { SingleDatePicker } from 'react-dates'
 import moment from 'moment'
-import { formatMonetaryValue } from '../utils/currency'
+import { formatDecimals } from '../utils/currency'
 
 class IncomeAdd extends Component {
 
@@ -82,7 +82,7 @@ class IncomeAdd extends Component {
 
   handleBlur (e) {
     if (e.target.name === 'amount') {
-      this.setState({ [e.target.name]: formatMonetaryValue(e.target.value) })
+      this.setState({ [e.target.name]: formatDecimals(e.target.value) })
     }
   }
 

@@ -29,12 +29,12 @@ const ProgressBar = ({ percentage, current, annotated, limit }) => {
   )
 }
 
-const { number, bool } = React.PropTypes
+const { number, string, bool, oneOfType } = React.PropTypes
 
 ProgressBar.propTypes = {
   percentage: number,
-  current: number,
-  limit: number,
+  current: oneOfType([string, number]),
+  limit: oneOfType([string, number]),
   annotated: bool
 }
 

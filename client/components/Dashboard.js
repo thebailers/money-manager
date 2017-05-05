@@ -8,6 +8,7 @@ import Total from './Total'
 import sumObjectValues from '../utils/sumObjectValues'
 import { filterByCurrentMonth, getMonthName } from '../utils/dates'
 import { calculatePercentage } from '../utils/general'
+import { formatMonetaryValue } from '../utils/currency'
 import ProgressBar from './common/ProgressBar'
 
 class Dashboard extends Component {
@@ -71,8 +72,8 @@ class Dashboard extends Component {
             <ProgressBar
               percentage={percentage}
               annotated
-              limit={incomeTotal}
-              current={outgoingTotal}
+              limit={formatMonetaryValue(incomeTotal)}
+              current={formatMonetaryValue(outgoingTotal)}
             />
           </section>
 
