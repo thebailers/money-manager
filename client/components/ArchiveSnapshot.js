@@ -58,7 +58,8 @@ class ArchiveSnapshot extends Component {
 
     return (
       <section className="archives dashboard-archive-panel">
-        <h3 className='title'>Archives</h3>
+        <h3 className='title'>Five Month Snapshot</h3>
+        <p>View data from the previous 5 months income and outgoings, or select a custom date range below&hellip;</p>
         <table className='archive-list'>
           <thead>
             <tr>
