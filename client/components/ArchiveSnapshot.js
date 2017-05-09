@@ -72,17 +72,19 @@ class ArchiveSnapshot extends Component {
           <tbody>
             {this.state.archives.map((archive, i) => {
               const { year, month, name } = archive
+              const currentMonthTransactions = transactions.filter(filterByMonth(year, month))
+              const allExpenditure = [...currentMonthTransactions, ...expenditure]
               const irregularIncomeByMonth = incomeIrregular.filter(filterByMonth(year, month))
               const mergedIncome = [...income, ...irregularIncomeByMonth]
 
               return (
-                <tr key={i}>
+                <tr className={classnames(allExpenditure < mergedIncome ? 'positive' : 'negative')} key={i}>
                   <td>
                     <Link to={`/archives/${year}/${month}`}>
                       {name}
                     </Link>
                   </td>
-                  <td>{`£${numeral(sumObjectValues(transactions.filter(filterByMonth(year, month)), 'amount')).format(currencyFormat)}`}</td>
+                  <td>{`£${numeral(sumObjectValues(currentMonthTransactions, 'amount')).format(currencyFormat)}`}</td>
                   <td>{`£${numeral(sumObjectValues(mergedIncome, 'amount')).format(currencyFormat)}`}</td>
                   <td>{`£${numeral(sumObjectValues(expenditure, 'amount')).format(currencyFormat)}`}</td>
                 </tr>
