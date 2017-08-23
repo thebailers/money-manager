@@ -60,6 +60,7 @@ describe('income reducer', () => {
     ).toEqual(
       {
         all: [],
+        allIrregular: [],
         income: {
           "_id": "5862db33e7c717750a0803ea",
           "type": "Recurring",
@@ -139,7 +140,7 @@ describe('income reducer', () => {
             "name": "Dog Walking",
             "__v": 0
           }
-        ], income: {}
+        ], income: {}, allIrregular: []
       }
     )
   })
