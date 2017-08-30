@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { addTransaction } from '../actions/actionCreators'
@@ -130,7 +131,7 @@ class TransactionAdd extends Component {
   }
 }
 
-const { func } = React.PropTypes
+const { func } = PropTypes
 
 TransactionAdd.propTypes = {
   addTransaction: func.isRequired

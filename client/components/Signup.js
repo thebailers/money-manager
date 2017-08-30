@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { addFlashMessage } from '../actions/flashMessages'
 import SignupForm from './SignupForm'
@@ -12,8 +13,10 @@ class Signup extends Component {
   }
 }
 
+const { func } = PropTypes
+
 Signup.propTypes = {
-  addFlashMessage: React.PropTypes.func.isRequired
+  addFlashMessage: func.isRequired
 }
 
 export default connect(null, { addFlashMessage })(Signup)

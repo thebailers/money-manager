@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from '../actions/actionCreators'
@@ -129,7 +130,7 @@ class Income extends Component {
   }
 }
 
-const { func, arrayOf, object, bool } = React.PropTypes
+const { func, arrayOf, object, bool } = PropTypes
 
 Income.propTypes = {
   income: arrayOf(object),

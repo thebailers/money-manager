@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import IncomeItem from './IncomeItem'
 import _ from 'ramda'
@@ -84,9 +85,11 @@ class IncomeData extends Component {
   }
 }
 
+const { array, bool } = PropTypes
+
 IncomeData.propTypes = {
-  income: React.PropTypes.array,
-  locked: React.PropTypes.bool
+  income: array,
+  locked: bool
 }
 
 export default IncomeData

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from '../actions/actionCreators'
@@ -97,7 +98,7 @@ class Dashboard extends Component {
      )
   }
 }
-const { func, array, bool } = React.PropTypes
+const { func, array, bool } = PropTypes
 
 Dashboard.propTypes = {
   fetchExpenditure: func.isRequired,

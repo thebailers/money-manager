@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import numeral from 'numeral'
@@ -35,7 +36,7 @@ class IncomeItem extends Component {
   }
 }
 
-const { object, func } = React.PropTypes
+const { object, func } = PropTypes
 
 IncomeItem.propTypes = {
   income: object,

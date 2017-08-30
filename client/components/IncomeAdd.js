@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { addIncome, addIrregularIncome } from '../actions/actionCreators'
@@ -180,7 +181,7 @@ class IncomeAdd extends Component {
   }
 }
 
-const { func } = React.PropTypes
+const { func } = PropTypes
 
 IncomeAdd.propTypes = {
   addIncome: func.isRequired,

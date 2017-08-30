@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { deleteTransaction, fetchTransactions } from '../actions/actionCreators'
@@ -50,10 +51,10 @@ class Transaction extends Component {
   }
 }
 
-const { func } = React.PropTypes
+const { func, object } = PropTypes
 
 Transaction.propTypes = {
-  transaction: React.PropTypes.object.isRequired,
+  transaction: object.isRequired,
   deleteTransaction: func.isRequired,
   fetchTransactions: func.isRequired
 }

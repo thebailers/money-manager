@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute } from 'react-router'
 import { history } from '../store'
@@ -42,9 +43,10 @@ const Root = ({ store }) => (
   </Provider>
 )
 
+const { object } = PropTypes
+
 Root.propTypes = {
-  store: React.PropTypes.object
-  // requireAuth: React.PropTypes.func.isRequired
+  store: object
 }
 
 export default Root

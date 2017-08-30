@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 const ProgressBar = ({ percentage, current, annotated, limit }) => {
@@ -29,7 +30,7 @@ const ProgressBar = ({ percentage, current, annotated, limit }) => {
   )
 }
 
-const { number, string, bool, oneOfType } = React.PropTypes
+const { number, string, bool, oneOfType } = PropTypes
 
 ProgressBar.propTypes = {
   percentage: number,

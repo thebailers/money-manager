@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 // import moment from 'moment'
 // import monthNames from '../utils/monthNames'
@@ -39,7 +40,7 @@ class ArchivedData extends Component {
   }
 }
 
-const { object, func, array } = React.PropTypes
+const { object, func, array } = PropTypes
 
 ArchivedData.propTypes = {
   params: object.isRequired,

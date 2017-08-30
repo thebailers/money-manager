@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import numeral from 'numeral'
@@ -150,7 +151,7 @@ class ExpenditureEdit extends Component {
   }
 }
 
-const { func, object } = React.PropTypes
+const { func, object } = PropTypes
 
 ExpenditureEdit.propTypes = {
   fetchOneExpenditure: func.isRequired,

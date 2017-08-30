@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import numeral from 'numeral'
 
 class Total extends Component {
@@ -13,9 +14,11 @@ class Total extends Component {
   }
 }
 
+const { number, string } = PropTypes
+
 Total.propTypes = {
-  value: React.PropTypes.number.isRequired,
-  type: React.PropTypes.string.isRequired
+  value: number.isRequired,
+  type: string.isRequired
 }
 
 export default Total

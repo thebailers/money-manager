@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import Transaction from './Transaction'
 import _ from 'ramda'
@@ -88,9 +89,11 @@ class Transactions extends Component {
   }
 }
 
+const { array, bool } = PropTypes
+
 Transactions.propTypes = {
-  transactions: React.PropTypes.array,
-  locked: React.PropTypes.bool
+  transactions: array,
+  locked: bool
 }
 
 export default Transactions

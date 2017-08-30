@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { deleteExpenditure, fetchExpenditure } from '../actions/actionCreators'
 import { Link } from 'react-router'
@@ -94,7 +95,7 @@ class Expenditure extends Component {
   }
 }
 
-const { func, array, bool } = React.PropTypes
+const { func, array, bool } = PropTypes
 
 Expenditure.propTypes = {
   fetchExpenditure: func.isRequired,

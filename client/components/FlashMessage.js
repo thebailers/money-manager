@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 class FlashMessage extends Component {
@@ -41,9 +42,11 @@ class FlashMessage extends Component {
   }
 }
 
+const { object, func } = PropTypes
+
 FlashMessage.propTypes = {
-  message: React.PropTypes.object.isRequired,
-  deleteFlashMessage: React.PropTypes.func.isRequired
+  message: object.isRequired,
+  deleteFlashMessage: func.isRequired
 }
 
 export default FlashMessage

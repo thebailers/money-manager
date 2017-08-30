@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { fetchTransaction, editTransaction } from '../actions/actionCreators'
@@ -159,11 +160,13 @@ class TransactionEdit extends Component {
   }
 }
 
+const { func, object } = PropTypes
+
 TransactionEdit.propTypes = {
-  fetchTransaction: React.PropTypes.func.isRequired,
-  editTransaction: React.PropTypes.func.isRequired,
-  transaction: React.PropTypes.object,
-  params: React.PropTypes.object
+  fetchTransaction: func.isRequired,
+  editTransaction: func.isRequired,
+  transaction: object,
+  params: object
 }
 
 function mapStateToProps (state) {

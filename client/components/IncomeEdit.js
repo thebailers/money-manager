@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import numeral from 'numeral'
@@ -152,7 +153,7 @@ class IncomeEdit extends Component {
   }
 }
 
-const { func, object } = React.PropTypes
+const { func, object } = PropTypes
 
 IncomeEdit.propTypes = {
   fetchOneIncome: func.isRequired,

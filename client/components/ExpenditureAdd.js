@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { addExpenditure } from '../actions/actionCreators'
@@ -135,7 +136,7 @@ class ExpenditureAdd extends Component {
   }
 }
 
-const { func } = React.PropTypes
+const { func } = PropTypes
 
 ExpenditureAdd.propTypes = {
   addExpenditure: func.isRequired

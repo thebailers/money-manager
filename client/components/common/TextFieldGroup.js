@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 const TextFieldGroup = ({ label, field, value, error, type, onChange }) => {
@@ -17,13 +18,15 @@ const TextFieldGroup = ({ label, field, value, error, type, onChange }) => {
   )
 }
 
+const { string, func } = PropTypes
+
 TextFieldGroup.propTypes = {
-  field: React.PropTypes.string.isRequired,
-  value: React.PropTypes.string.isRequired,
-  label: React.PropTypes.string.isRequired,
-  error: React.PropTypes.string,
-  type: React.PropTypes.string.isRequired,
-  onChange: React.PropTypes.func.isRequired
+  field: string.isRequired,
+  value: string.isRequired,
+  label: string.isRequired,
+  error: string,
+  type: string.isRequired,
+  onChange: func.isRequired
 }
 
 TextFieldGroup.defaultProps = {

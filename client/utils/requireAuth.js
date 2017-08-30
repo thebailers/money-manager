@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { checkAuth } from '../actions/authActions'
 
@@ -38,13 +39,15 @@ export default function (ComposedComponent) {
     }
   }
 
+  const { bool, func, object } = PropTypes
+
   Authenticate.propTypes = {
-    isAuthenticated: React.PropTypes.bool.isRequired,
-    checkAuth: React.PropTypes.func.isRequired
+    isAuthenticated: bool.isRequired,
+    checkAuth: func.isRequired
   }
 
   Authenticate.contextTypes = {
-    router: React.PropTypes.object.isRequired
+    router: object.isRequired
   }
 
   function mapStateToProps (state) {

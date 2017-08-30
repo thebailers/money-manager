@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Header from './Header'
 import Navigation from './Navigation'
@@ -20,9 +21,9 @@ class App extends Component {
 }
 
 App.propTypes = {
-  children: React.PropTypes.node,
-  location: React.PropTypes.object,
-  isAuthenticated: React.PropTypes.bool.isRequired
+  children: PropTypes.node,
+  location: PropTypes.object,
+  isAuthenticated: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = (state) => {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import classnames from 'classnames'
 import numeral from 'numeral'
@@ -101,7 +102,7 @@ class ArchiveSnapshot extends Component {
   }
 }
 
-const { number, array } = React.PropTypes
+const { number, array } = PropTypes
 
 ArchiveSnapshot.propTypes = {
   archiveCount: number.isRequired,
