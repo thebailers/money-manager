@@ -1,163 +1,67 @@
-exports[`test The component matches the snapshot 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Transactions /> The component matches the snapshot 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
-    "buildPredicate": [Function buildPredicate],
-    "childrenOfNode": [Function childrenOfNode],
-    "findWhereUnwrapped": [Function findWhereUnwrapped]
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
   },
   "length": 1,
   "node": <section
-    className="transactions">
+    className="transactions"
+>
     <h2>
         Transactions 
-        <function (props, context, updater) {
-              // This constructor gets overridden by mocks. The argument is used
-              // by mocks to assert on what gets mounted.
-        
-              if (process.env.NODE_ENV !== 'production') {
-                warning(
-                  this instanceof Constructor,
-                  'Something is calling a React component directly. Use a factory or ' +
-                    'JSX instead. See: https://fb.me/react-legacyfactory'
-                );
-              }
-        
-              // Wire up auto-binding
-              if (this.__reactAutoBindPairs.length) {
-                bindAutoBindMethods(this);
-              }
-        
-              this.props = props;
-              this.context = context;
-              this.refs = emptyObject;
-              this.updater = updater || ReactNoopUpdateQueue;
-        
-              this.state = null;
-        
-              // ReactClasses doesn't have constructors. Instead, they use the
-              // getInitialState and componentWillMount methods for initialization.
-        
-              var initialState = this.getInitialState ? this.getInitialState() : null;
-              if (process.env.NODE_ENV !== 'production') {
-                // We allow auto-mocks to proceed as if they're returning null.
-                if (
-                  initialState === undefined &&
-                  this.getInitialState._isMockFunction
-                ) {
-                  // This is probably bad practice. Consider warning here and
-                  // deprecating this convenience.
-                  initialState = null;
-                }
-              }
-              _invariant(
-                typeof initialState === 'object' && !Array.isArray(initialState),
-                '%s.getInitialState(): must return an object or null',
-                Constructor.displayName || 'ReactCompositeComponent'
-              );
-        
-              this.state = initialState;
-            }
+        <Link
             className="actionlink"
             onlyActiveOnIndex={false}
             style={Object {}}
-            to="/transactions/add">
+            to="/transactions/add"
+        >
             Add new transaction
-        </function (props, context, updater) {
-              // This constructor gets overridden by mocks. The argument is used
-              // by mocks to assert on what gets mounted.
-        
-              if (process.env.NODE_ENV !== 'production') {
-                warning(
-                  this instanceof Constructor,
-                  'Something is calling a React component directly. Use a factory or ' +
-                    'JSX instead. See: https://fb.me/react-legacyfactory'
-                );
-              }
-        
-              // Wire up auto-binding
-              if (this.__reactAutoBindPairs.length) {
-                bindAutoBindMethods(this);
-              }
-        
-              this.props = props;
-              this.context = context;
-              this.refs = emptyObject;
-              this.updater = updater || ReactNoopUpdateQueue;
-        
-              this.state = null;
-        
-              // ReactClasses doesn't have constructors. Instead, they use the
-              // getInitialState and componentWillMount methods for initialization.
-        
-              var initialState = this.getInitialState ? this.getInitialState() : null;
-              if (process.env.NODE_ENV !== 'production') {
-                // We allow auto-mocks to proceed as if they're returning null.
-                if (
-                  initialState === undefined &&
-                  this.getInitialState._isMockFunction
-                ) {
-                  // This is probably bad practice. Consider warning here and
-                  // deprecating this convenience.
-                  initialState = null;
-                }
-              }
-              _invariant(
-                typeof initialState === 'object' && !Array.isArray(initialState),
-                '%s.getInitialState(): must return an object or null',
-                Constructor.displayName || 'ReactCompositeComponent'
-              );
-        
-              this.state = initialState;
-            }>
+        </Link>
     </h2>
     <table
-        className="financials -transactions">
+        className="financials -transactions"
+    >
         <thead>
             <tr>
                 <th
                     className=" filterable"
                     data-orderby="name-asc"
-                    onClick={[Function bound orderBy]}>
+                    onClick={[Function]}
+                >
                     Name
                 </th>
                 <th
                     className="activefilter"
                     data-orderby="date-desc"
-                    onClick={[Function bound orderBy]}>
+                    onClick={[Function]}
+                >
                     Date
                 </th>
                 <th
                     className=""
                     data-orderby="amount-asc"
-                    onClick={[Function bound orderBy]}>
+                    onClick={[Function]}
+                >
                     Amount
                 </th>
                 <th
-                    className="actions nobor">
+                    className="actions nobor"
+                >
                      
                 </th>
                 <th
-                    className="actions nobor">
+                    className="actions nobor"
+                >
                      
                 </th>
             </tr>
         </thead>
         <tbody>
-            <function Connect(props, context) {
-                    _classCallCheck(this, Connect);
-            
-                    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-            
-                    _this.version = version;
-                    _this.store = props.store || context.store;
-            
-                    (0, _invariant2["default"])(_this.store, 'Could not find "store" in either the context or ' + ('props of "' + connectDisplayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "store" as a prop to "' + connectDisplayName + '".'));
-            
-                    var storeState = _this.store.getState();
-                    _this.state = { storeState: storeState };
-                    _this.clearCache();
-                    return _this;
-                  }
+            <Connect(Transaction)
                 transaction={
                     Object {
                         "__v": 0,
@@ -165,7 +69,7 @@ ShallowWrapper {
                         "amount": 6.25,
                         "date": "2017-05-25T00:00:00.000Z",
                         "name": "Monmouth Coffee",
-                        "user": "58c2a33cc6cd5a5d15a8fc0c"
+                        "user": "58c2a33cc6cd5a5d15a8fc0c",
                       }
                 }
                 transactions={
@@ -176,7 +80,7 @@ ShallowWrapper {
                           "amount": 4.5,
                           "date": "2017-05-01T00:00:00.000Z",
                           "name": "Cashew Nuts",
-                          "user": "58c2a33cc6cd5a5d15a8fc0c"
+                          "user": "58c2a33cc6cd5a5d15a8fc0c",
                         },
                         Object {
                           "__v": 0,
@@ -184,7 +88,7 @@ ShallowWrapper {
                           "amount": 6.25,
                           "date": "2017-05-25T00:00:00.000Z",
                           "name": "Monmouth Coffee",
-                          "user": "58c2a33cc6cd5a5d15a8fc0c"
+                          "user": "58c2a33cc6cd5a5d15a8fc0c",
                         },
                         Object {
                           "__v": 0,
@@ -192,25 +96,12 @@ ShallowWrapper {
                           "amount": 399,
                           "date": "2017-02-27T00:00:00.000Z",
                           "name": "Flight to Copenhagen",
-                          "user": "58c2a33cc6cd5a5d15a8fc0c"
-                        }
+                          "user": "58c2a33cc6cd5a5d15a8fc0c",
+                        },
                       ]
-                } />
-            <function Connect(props, context) {
-                    _classCallCheck(this, Connect);
-            
-                    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-            
-                    _this.version = version;
-                    _this.store = props.store || context.store;
-            
-                    (0, _invariant2["default"])(_this.store, 'Could not find "store" in either the context or ' + ('props of "' + connectDisplayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "store" as a prop to "' + connectDisplayName + '".'));
-            
-                    var storeState = _this.store.getState();
-                    _this.state = { storeState: storeState };
-                    _this.clearCache();
-                    return _this;
-                  }
+                }
+            />
+            <Connect(Transaction)
                 transaction={
                     Object {
                         "__v": 0,
@@ -218,7 +109,7 @@ ShallowWrapper {
                         "amount": 4.5,
                         "date": "2017-05-01T00:00:00.000Z",
                         "name": "Cashew Nuts",
-                        "user": "58c2a33cc6cd5a5d15a8fc0c"
+                        "user": "58c2a33cc6cd5a5d15a8fc0c",
                       }
                 }
                 transactions={
@@ -229,7 +120,7 @@ ShallowWrapper {
                           "amount": 4.5,
                           "date": "2017-05-01T00:00:00.000Z",
                           "name": "Cashew Nuts",
-                          "user": "58c2a33cc6cd5a5d15a8fc0c"
+                          "user": "58c2a33cc6cd5a5d15a8fc0c",
                         },
                         Object {
                           "__v": 0,
@@ -237,7 +128,7 @@ ShallowWrapper {
                           "amount": 6.25,
                           "date": "2017-05-25T00:00:00.000Z",
                           "name": "Monmouth Coffee",
-                          "user": "58c2a33cc6cd5a5d15a8fc0c"
+                          "user": "58c2a33cc6cd5a5d15a8fc0c",
                         },
                         Object {
                           "__v": 0,
@@ -245,25 +136,12 @@ ShallowWrapper {
                           "amount": 399,
                           "date": "2017-02-27T00:00:00.000Z",
                           "name": "Flight to Copenhagen",
-                          "user": "58c2a33cc6cd5a5d15a8fc0c"
-                        }
+                          "user": "58c2a33cc6cd5a5d15a8fc0c",
+                        },
                       ]
-                } />
-            <function Connect(props, context) {
-                    _classCallCheck(this, Connect);
-            
-                    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-            
-                    _this.version = version;
-                    _this.store = props.store || context.store;
-            
-                    (0, _invariant2["default"])(_this.store, 'Could not find "store" in either the context or ' + ('props of "' + connectDisplayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "store" as a prop to "' + connectDisplayName + '".'));
-            
-                    var storeState = _this.store.getState();
-                    _this.state = { storeState: storeState };
-                    _this.clearCache();
-                    return _this;
-                  }
+                }
+            />
+            <Connect(Transaction)
                 transaction={
                     Object {
                         "__v": 0,
@@ -271,7 +149,7 @@ ShallowWrapper {
                         "amount": 399,
                         "date": "2017-02-27T00:00:00.000Z",
                         "name": "Flight to Copenhagen",
-                        "user": "58c2a33cc6cd5a5d15a8fc0c"
+                        "user": "58c2a33cc6cd5a5d15a8fc0c",
                       }
                 }
                 transactions={
@@ -282,7 +160,7 @@ ShallowWrapper {
                           "amount": 4.5,
                           "date": "2017-05-01T00:00:00.000Z",
                           "name": "Cashew Nuts",
-                          "user": "58c2a33cc6cd5a5d15a8fc0c"
+                          "user": "58c2a33cc6cd5a5d15a8fc0c",
                         },
                         Object {
                           "__v": 0,
@@ -290,7 +168,7 @@ ShallowWrapper {
                           "amount": 6.25,
                           "date": "2017-05-25T00:00:00.000Z",
                           "name": "Monmouth Coffee",
-                          "user": "58c2a33cc6cd5a5d15a8fc0c"
+                          "user": "58c2a33cc6cd5a5d15a8fc0c",
                         },
                         Object {
                           "__v": 0,
@@ -298,166 +176,69 @@ ShallowWrapper {
                           "amount": 399,
                           "date": "2017-02-27T00:00:00.000Z",
                           "name": "Flight to Copenhagen",
-                          "user": "58c2a33cc6cd5a5d15a8fc0c"
-                        }
+                          "user": "58c2a33cc6cd5a5d15a8fc0c",
+                        },
                       ]
-                } />
+                }
+            />
         </tbody>
     </table>
 </section>,
   "nodes": Array [
     <section
-      className="transactions">
+      className="transactions"
+>
       <h2>
             Transactions 
-            <function (props, context, updater) {
-                  // This constructor gets overridden by mocks. The argument is used
-                  // by mocks to assert on what gets mounted.
-            
-                  if (process.env.NODE_ENV !== 'production') {
-                    warning(
-                      this instanceof Constructor,
-                      'Something is calling a React component directly. Use a factory or ' +
-                        'JSX instead. See: https://fb.me/react-legacyfactory'
-                    );
-                  }
-            
-                  // Wire up auto-binding
-                  if (this.__reactAutoBindPairs.length) {
-                    bindAutoBindMethods(this);
-                  }
-            
-                  this.props = props;
-                  this.context = context;
-                  this.refs = emptyObject;
-                  this.updater = updater || ReactNoopUpdateQueue;
-            
-                  this.state = null;
-            
-                  // ReactClasses doesn't have constructors. Instead, they use the
-                  // getInitialState and componentWillMount methods for initialization.
-            
-                  var initialState = this.getInitialState ? this.getInitialState() : null;
-                  if (process.env.NODE_ENV !== 'production') {
-                    // We allow auto-mocks to proceed as if they're returning null.
-                    if (
-                      initialState === undefined &&
-                      this.getInitialState._isMockFunction
-                    ) {
-                      // This is probably bad practice. Consider warning here and
-                      // deprecating this convenience.
-                      initialState = null;
-                    }
-                  }
-                  _invariant(
-                    typeof initialState === 'object' && !Array.isArray(initialState),
-                    '%s.getInitialState(): must return an object or null',
-                    Constructor.displayName || 'ReactCompositeComponent'
-                  );
-            
-                  this.state = initialState;
-                }
+            <Link
                   className="actionlink"
                   onlyActiveOnIndex={false}
                   style={Object {}}
-                  to="/transactions/add">
+                  to="/transactions/add"
+            >
                   Add new transaction
-            </function (props, context, updater) {
-                  // This constructor gets overridden by mocks. The argument is used
-                  // by mocks to assert on what gets mounted.
-            
-                  if (process.env.NODE_ENV !== 'production') {
-                    warning(
-                      this instanceof Constructor,
-                      'Something is calling a React component directly. Use a factory or ' +
-                        'JSX instead. See: https://fb.me/react-legacyfactory'
-                    );
-                  }
-            
-                  // Wire up auto-binding
-                  if (this.__reactAutoBindPairs.length) {
-                    bindAutoBindMethods(this);
-                  }
-            
-                  this.props = props;
-                  this.context = context;
-                  this.refs = emptyObject;
-                  this.updater = updater || ReactNoopUpdateQueue;
-            
-                  this.state = null;
-            
-                  // ReactClasses doesn't have constructors. Instead, they use the
-                  // getInitialState and componentWillMount methods for initialization.
-            
-                  var initialState = this.getInitialState ? this.getInitialState() : null;
-                  if (process.env.NODE_ENV !== 'production') {
-                    // We allow auto-mocks to proceed as if they're returning null.
-                    if (
-                      initialState === undefined &&
-                      this.getInitialState._isMockFunction
-                    ) {
-                      // This is probably bad practice. Consider warning here and
-                      // deprecating this convenience.
-                      initialState = null;
-                    }
-                  }
-                  _invariant(
-                    typeof initialState === 'object' && !Array.isArray(initialState),
-                    '%s.getInitialState(): must return an object or null',
-                    Constructor.displayName || 'ReactCompositeComponent'
-                  );
-            
-                  this.state = initialState;
-                }>
+            </Link>
       </h2>
       <table
-            className="financials -transactions">
+            className="financials -transactions"
+      >
             <thead>
                   <tr>
                         <th
                               className=" filterable"
                               data-orderby="name-asc"
-                              onClick={[Function bound orderBy]}>
+                              onClick={[Function]}
+                        >
                               Name
                         </th>
                         <th
                               className="activefilter"
                               data-orderby="date-desc"
-                              onClick={[Function bound orderBy]}>
+                              onClick={[Function]}
+                        >
                               Date
                         </th>
                         <th
                               className=""
                               data-orderby="amount-asc"
-                              onClick={[Function bound orderBy]}>
+                              onClick={[Function]}
+                        >
                               Amount
                         </th>
                         <th
-                              className="actions nobor">
+                              className="actions nobor"
+                        >
                                
                         </th>
                         <th
-                              className="actions nobor">
+                              className="actions nobor"
+                        >
                                
                         </th>
                   </tr>
             </thead>
             <tbody>
-                  <function Connect(props, context) {
-                          _classCallCheck(this, Connect);
-                  
-                          var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-                  
-                          _this.version = version;
-                          _this.store = props.store || context.store;
-                  
-                          (0, _invariant2["default"])(_this.store, 'Could not find "store" in either the context or ' + ('props of "' + connectDisplayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "store" as a prop to "' + connectDisplayName + '".'));
-                  
-                          var storeState = _this.store.getState();
-                          _this.state = { storeState: storeState };
-                          _this.clearCache();
-                          return _this;
-                        }
+                  <Connect(Transaction)
                         transaction={
                               Object {
                                     "__v": 0,
@@ -465,7 +246,7 @@ ShallowWrapper {
                                     "amount": 6.25,
                                     "date": "2017-05-25T00:00:00.000Z",
                                     "name": "Monmouth Coffee",
-                                    "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                    "user": "58c2a33cc6cd5a5d15a8fc0c",
                                   }
                         }
                         transactions={
@@ -476,7 +257,7 @@ ShallowWrapper {
                                       "amount": 4.5,
                                       "date": "2017-05-01T00:00:00.000Z",
                                       "name": "Cashew Nuts",
-                                      "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                      "user": "58c2a33cc6cd5a5d15a8fc0c",
                                     },
                                     Object {
                                       "__v": 0,
@@ -484,7 +265,7 @@ ShallowWrapper {
                                       "amount": 6.25,
                                       "date": "2017-05-25T00:00:00.000Z",
                                       "name": "Monmouth Coffee",
-                                      "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                      "user": "58c2a33cc6cd5a5d15a8fc0c",
                                     },
                                     Object {
                                       "__v": 0,
@@ -492,25 +273,12 @@ ShallowWrapper {
                                       "amount": 399,
                                       "date": "2017-02-27T00:00:00.000Z",
                                       "name": "Flight to Copenhagen",
-                                      "user": "58c2a33cc6cd5a5d15a8fc0c"
-                                    }
+                                      "user": "58c2a33cc6cd5a5d15a8fc0c",
+                                    },
                                   ]
-                        } />
-                  <function Connect(props, context) {
-                          _classCallCheck(this, Connect);
-                  
-                          var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-                  
-                          _this.version = version;
-                          _this.store = props.store || context.store;
-                  
-                          (0, _invariant2["default"])(_this.store, 'Could not find "store" in either the context or ' + ('props of "' + connectDisplayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "store" as a prop to "' + connectDisplayName + '".'));
-                  
-                          var storeState = _this.store.getState();
-                          _this.state = { storeState: storeState };
-                          _this.clearCache();
-                          return _this;
                         }
+                  />
+                  <Connect(Transaction)
                         transaction={
                               Object {
                                     "__v": 0,
@@ -518,7 +286,7 @@ ShallowWrapper {
                                     "amount": 4.5,
                                     "date": "2017-05-01T00:00:00.000Z",
                                     "name": "Cashew Nuts",
-                                    "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                    "user": "58c2a33cc6cd5a5d15a8fc0c",
                                   }
                         }
                         transactions={
@@ -529,7 +297,7 @@ ShallowWrapper {
                                       "amount": 4.5,
                                       "date": "2017-05-01T00:00:00.000Z",
                                       "name": "Cashew Nuts",
-                                      "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                      "user": "58c2a33cc6cd5a5d15a8fc0c",
                                     },
                                     Object {
                                       "__v": 0,
@@ -537,7 +305,7 @@ ShallowWrapper {
                                       "amount": 6.25,
                                       "date": "2017-05-25T00:00:00.000Z",
                                       "name": "Monmouth Coffee",
-                                      "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                      "user": "58c2a33cc6cd5a5d15a8fc0c",
                                     },
                                     Object {
                                       "__v": 0,
@@ -545,25 +313,12 @@ ShallowWrapper {
                                       "amount": 399,
                                       "date": "2017-02-27T00:00:00.000Z",
                                       "name": "Flight to Copenhagen",
-                                      "user": "58c2a33cc6cd5a5d15a8fc0c"
-                                    }
+                                      "user": "58c2a33cc6cd5a5d15a8fc0c",
+                                    },
                                   ]
-                        } />
-                  <function Connect(props, context) {
-                          _classCallCheck(this, Connect);
-                  
-                          var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-                  
-                          _this.version = version;
-                          _this.store = props.store || context.store;
-                  
-                          (0, _invariant2["default"])(_this.store, 'Could not find "store" in either the context or ' + ('props of "' + connectDisplayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "store" as a prop to "' + connectDisplayName + '".'));
-                  
-                          var storeState = _this.store.getState();
-                          _this.state = { storeState: storeState };
-                          _this.clearCache();
-                          return _this;
                         }
+                  />
+                  <Connect(Transaction)
                         transaction={
                               Object {
                                     "__v": 0,
@@ -571,7 +326,7 @@ ShallowWrapper {
                                     "amount": 399,
                                     "date": "2017-02-27T00:00:00.000Z",
                                     "name": "Flight to Copenhagen",
-                                    "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                    "user": "58c2a33cc6cd5a5d15a8fc0c",
                                   }
                         }
                         transactions={
@@ -582,7 +337,7 @@ ShallowWrapper {
                                       "amount": 4.5,
                                       "date": "2017-05-01T00:00:00.000Z",
                                       "name": "Cashew Nuts",
-                                      "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                      "user": "58c2a33cc6cd5a5d15a8fc0c",
                                     },
                                     Object {
                                       "__v": 0,
@@ -590,7 +345,7 @@ ShallowWrapper {
                                       "amount": 6.25,
                                       "date": "2017-05-25T00:00:00.000Z",
                                       "name": "Monmouth Coffee",
-                                      "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                      "user": "58c2a33cc6cd5a5d15a8fc0c",
                                     },
                                     Object {
                                       "__v": 0,
@@ -598,13 +353,14 @@ ShallowWrapper {
                                       "amount": 399,
                                       "date": "2017-02-27T00:00:00.000Z",
                                       "name": "Flight to Copenhagen",
-                                      "user": "58c2a33cc6cd5a5d15a8fc0c"
-                                    }
+                                      "user": "58c2a33cc6cd5a5d15a8fc0c",
+                                    },
                                   ]
-                        } />
+                        }
+                  />
             </tbody>
       </table>
-</section>
+</section>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -612,15 +368,7 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <function Transactions(props) {/* istanbul ignore next */_classCallCheck(this, Transactions);var _this = _possibleConstructorReturn(this, (Transactions.__proto__ || Object.getPrototypeOf(Transactions)).call(this,
-    props));
-
-    /* istanbul ignore next */_this.state = {
-      orderBy: 'date-desc' };
-
-
-    /* istanbul ignore next */_this.orderBy = /* istanbul ignore next */_this.orderBy.bind( /* istanbul ignore next */_this); /* istanbul ignore next */return _this;
-  }
+      "_currentElement": <Transactions
         transactions={
                 Array [
                         Object {
@@ -629,7 +377,7 @@ ShallowWrapper {
                           "amount": 4.5,
                           "date": "2017-05-01T00:00:00.000Z",
                           "name": "Cashew Nuts",
-                          "user": "58c2a33cc6cd5a5d15a8fc0c"
+                          "user": "58c2a33cc6cd5a5d15a8fc0c",
                         },
                         Object {
                           "__v": 0,
@@ -637,7 +385,7 @@ ShallowWrapper {
                           "amount": 6.25,
                           "date": "2017-05-25T00:00:00.000Z",
                           "name": "Monmouth Coffee",
-                          "user": "58c2a33cc6cd5a5d15a8fc0c"
+                          "user": "58c2a33cc6cd5a5d15a8fc0c",
                         },
                         Object {
                           "__v": 0,
@@ -645,17 +393,18 @@ ShallowWrapper {
                           "amount": 399,
                           "date": "2017-02-27T00:00:00.000Z",
                           "name": "Flight to Copenhagen",
-                          "user": "58c2a33cc6cd5a5d15a8fc0c"
-                        }
+                          "user": "58c2a33cc6cd5a5d15a8fc0c",
+                        },
                       ]
-        } />,
+        }
+/>,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": Transactions {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "orderBy": [Function bound orderBy],
+        "orderBy": [Function],
         "props": Object {
           "transactions": Array [
             Object {
@@ -664,7 +413,7 @@ ShallowWrapper {
               "amount": 4.5,
               "date": "2017-05-01T00:00:00.000Z",
               "name": "Cashew Nuts",
-              "user": "58c2a33cc6cd5a5d15a8fc0c"
+              "user": "58c2a33cc6cd5a5d15a8fc0c",
             },
             Object {
               "__v": 0,
@@ -672,7 +421,7 @@ ShallowWrapper {
               "amount": 6.25,
               "date": "2017-05-25T00:00:00.000Z",
               "name": "Monmouth Coffee",
-              "user": "58c2a33cc6cd5a5d15a8fc0c"
+              "user": "58c2a33cc6cd5a5d15a8fc0c",
             },
             Object {
               "__v": 0,
@@ -680,24 +429,24 @@ ShallowWrapper {
               "amount": 399,
               "date": "2017-02-27T00:00:00.000Z",
               "name": "Flight to Copenhagen",
-              "user": "58c2a33cc6cd5a5d15a8fc0c"
-            }
-          ]
+              "user": "58c2a33cc6cd5a5d15a8fc0c",
+            },
+          ],
         },
         "refs": Object {},
         "state": Object {
-          "orderBy": "date-desc"
+          "orderBy": "date-desc",
         },
         "updater": Object {
-          "enqueueCallback": [Function anonymous],
-          "enqueueCallbackInternal": [Function anonymous],
-          "enqueueElementInternal": [Function anonymous],
-          "enqueueForceUpdate": [Function anonymous],
-          "enqueueReplaceState": [Function anonymous],
-          "enqueueSetState": [Function anonymous],
-          "isMounted": [Function anonymous],
-          "validateCallback": [Function anonymous]
-        }
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
       },
       "_mountOrder": 1,
       "_pendingCallbacks": null,
@@ -707,157 +456,59 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <section
-          className="transactions">
+          className="transactions"
+>
           <h2>
                     Transactions 
-                    <function (props, context, updater) {
-                          // This constructor gets overridden by mocks. The argument is used
-                          // by mocks to assert on what gets mounted.
-                    
-                          if (process.env.NODE_ENV !== 'production') {
-                            warning(
-                              this instanceof Constructor,
-                              'Something is calling a React component directly. Use a factory or ' +
-                                'JSX instead. See: https://fb.me/react-legacyfactory'
-                            );
-                          }
-                    
-                          // Wire up auto-binding
-                          if (this.__reactAutoBindPairs.length) {
-                            bindAutoBindMethods(this);
-                          }
-                    
-                          this.props = props;
-                          this.context = context;
-                          this.refs = emptyObject;
-                          this.updater = updater || ReactNoopUpdateQueue;
-                    
-                          this.state = null;
-                    
-                          // ReactClasses doesn't have constructors. Instead, they use the
-                          // getInitialState and componentWillMount methods for initialization.
-                    
-                          var initialState = this.getInitialState ? this.getInitialState() : null;
-                          if (process.env.NODE_ENV !== 'production') {
-                            // We allow auto-mocks to proceed as if they're returning null.
-                            if (
-                              initialState === undefined &&
-                              this.getInitialState._isMockFunction
-                            ) {
-                              // This is probably bad practice. Consider warning here and
-                              // deprecating this convenience.
-                              initialState = null;
-                            }
-                          }
-                          _invariant(
-                            typeof initialState === 'object' && !Array.isArray(initialState),
-                            '%s.getInitialState(): must return an object or null',
-                            Constructor.displayName || 'ReactCompositeComponent'
-                          );
-                    
-                          this.state = initialState;
-                        }
+                    <Link
                               className="actionlink"
                               onlyActiveOnIndex={false}
                               style={Object {}}
-                              to="/transactions/add">
+                              to="/transactions/add"
+                    >
                               Add new transaction
-                    </function (props, context, updater) {
-                          // This constructor gets overridden by mocks. The argument is used
-                          // by mocks to assert on what gets mounted.
-                    
-                          if (process.env.NODE_ENV !== 'production') {
-                            warning(
-                              this instanceof Constructor,
-                              'Something is calling a React component directly. Use a factory or ' +
-                                'JSX instead. See: https://fb.me/react-legacyfactory'
-                            );
-                          }
-                    
-                          // Wire up auto-binding
-                          if (this.__reactAutoBindPairs.length) {
-                            bindAutoBindMethods(this);
-                          }
-                    
-                          this.props = props;
-                          this.context = context;
-                          this.refs = emptyObject;
-                          this.updater = updater || ReactNoopUpdateQueue;
-                    
-                          this.state = null;
-                    
-                          // ReactClasses doesn't have constructors. Instead, they use the
-                          // getInitialState and componentWillMount methods for initialization.
-                    
-                          var initialState = this.getInitialState ? this.getInitialState() : null;
-                          if (process.env.NODE_ENV !== 'production') {
-                            // We allow auto-mocks to proceed as if they're returning null.
-                            if (
-                              initialState === undefined &&
-                              this.getInitialState._isMockFunction
-                            ) {
-                              // This is probably bad practice. Consider warning here and
-                              // deprecating this convenience.
-                              initialState = null;
-                            }
-                          }
-                          _invariant(
-                            typeof initialState === 'object' && !Array.isArray(initialState),
-                            '%s.getInitialState(): must return an object or null',
-                            Constructor.displayName || 'ReactCompositeComponent'
-                          );
-                    
-                          this.state = initialState;
-                        }>
+                    </Link>
           </h2>
           <table
-                    className="financials -transactions">
+                    className="financials -transactions"
+          >
                     <thead>
                               <tr>
                                         <th
                                                   className=" filterable"
                                                   data-orderby="name-asc"
-                                                  onClick={[Function bound orderBy]}>
+                                                  onClick={[Function]}
+                                        >
                                                   Name
                                         </th>
                                         <th
                                                   className="activefilter"
                                                   data-orderby="date-desc"
-                                                  onClick={[Function bound orderBy]}>
+                                                  onClick={[Function]}
+                                        >
                                                   Date
                                         </th>
                                         <th
                                                   className=""
                                                   data-orderby="amount-asc"
-                                                  onClick={[Function bound orderBy]}>
+                                                  onClick={[Function]}
+                                        >
                                                   Amount
                                         </th>
                                         <th
-                                                  className="actions nobor">
+                                                  className="actions nobor"
+                                        >
                                                    
                                         </th>
                                         <th
-                                                  className="actions nobor">
+                                                  className="actions nobor"
+                                        >
                                                    
                                         </th>
                               </tr>
                     </thead>
                     <tbody>
-                              <function Connect(props, context) {
-                                      _classCallCheck(this, Connect);
-                              
-                                      var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-                              
-                                      _this.version = version;
-                                      _this.store = props.store || context.store;
-                              
-                                      (0, _invariant2["default"])(_this.store, 'Could not find "store" in either the context or ' + ('props of "' + connectDisplayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "store" as a prop to "' + connectDisplayName + '".'));
-                              
-                                      var storeState = _this.store.getState();
-                                      _this.state = { storeState: storeState };
-                                      _this.clearCache();
-                                      return _this;
-                                    }
+                              <Connect(Transaction)
                                         transaction={
                                                   Object {
                                                             "__v": 0,
@@ -865,7 +516,7 @@ ShallowWrapper {
                                                             "amount": 6.25,
                                                             "date": "2017-05-25T00:00:00.000Z",
                                                             "name": "Monmouth Coffee",
-                                                            "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                            "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                           }
                                         }
                                         transactions={
@@ -876,7 +527,7 @@ ShallowWrapper {
                                                               "amount": 4.5,
                                                               "date": "2017-05-01T00:00:00.000Z",
                                                               "name": "Cashew Nuts",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                             },
                                                             Object {
                                                               "__v": 0,
@@ -884,7 +535,7 @@ ShallowWrapper {
                                                               "amount": 6.25,
                                                               "date": "2017-05-25T00:00:00.000Z",
                                                               "name": "Monmouth Coffee",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                             },
                                                             Object {
                                                               "__v": 0,
@@ -892,25 +543,12 @@ ShallowWrapper {
                                                               "amount": 399,
                                                               "date": "2017-02-27T00:00:00.000Z",
                                                               "name": "Flight to Copenhagen",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
-                                                            }
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
+                                                            },
                                                           ]
-                                        } />
-                              <function Connect(props, context) {
-                                      _classCallCheck(this, Connect);
-                              
-                                      var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-                              
-                                      _this.version = version;
-                                      _this.store = props.store || context.store;
-                              
-                                      (0, _invariant2["default"])(_this.store, 'Could not find "store" in either the context or ' + ('props of "' + connectDisplayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "store" as a prop to "' + connectDisplayName + '".'));
-                              
-                                      var storeState = _this.store.getState();
-                                      _this.state = { storeState: storeState };
-                                      _this.clearCache();
-                                      return _this;
-                                    }
+                                        }
+                              />
+                              <Connect(Transaction)
                                         transaction={
                                                   Object {
                                                             "__v": 0,
@@ -918,7 +556,7 @@ ShallowWrapper {
                                                             "amount": 4.5,
                                                             "date": "2017-05-01T00:00:00.000Z",
                                                             "name": "Cashew Nuts",
-                                                            "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                            "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                           }
                                         }
                                         transactions={
@@ -929,7 +567,7 @@ ShallowWrapper {
                                                               "amount": 4.5,
                                                               "date": "2017-05-01T00:00:00.000Z",
                                                               "name": "Cashew Nuts",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                             },
                                                             Object {
                                                               "__v": 0,
@@ -937,7 +575,7 @@ ShallowWrapper {
                                                               "amount": 6.25,
                                                               "date": "2017-05-25T00:00:00.000Z",
                                                               "name": "Monmouth Coffee",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                             },
                                                             Object {
                                                               "__v": 0,
@@ -945,25 +583,12 @@ ShallowWrapper {
                                                               "amount": 399,
                                                               "date": "2017-02-27T00:00:00.000Z",
                                                               "name": "Flight to Copenhagen",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
-                                                            }
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
+                                                            },
                                                           ]
-                                        } />
-                              <function Connect(props, context) {
-                                      _classCallCheck(this, Connect);
-                              
-                                      var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-                              
-                                      _this.version = version;
-                                      _this.store = props.store || context.store;
-                              
-                                      (0, _invariant2["default"])(_this.store, 'Could not find "store" in either the context or ' + ('props of "' + connectDisplayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "store" as a prop to "' + connectDisplayName + '".'));
-                              
-                                      var storeState = _this.store.getState();
-                                      _this.state = { storeState: storeState };
-                                      _this.clearCache();
-                                      return _this;
-                                    }
+                                        }
+                              />
+                              <Connect(Transaction)
                                         transaction={
                                                   Object {
                                                             "__v": 0,
@@ -971,7 +596,7 @@ ShallowWrapper {
                                                             "amount": 399,
                                                             "date": "2017-02-27T00:00:00.000Z",
                                                             "name": "Flight to Copenhagen",
-                                                            "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                            "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                           }
                                         }
                                         transactions={
@@ -982,7 +607,7 @@ ShallowWrapper {
                                                               "amount": 4.5,
                                                               "date": "2017-05-01T00:00:00.000Z",
                                                               "name": "Cashew Nuts",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                             },
                                                             Object {
                                                               "__v": 0,
@@ -990,7 +615,7 @@ ShallowWrapper {
                                                               "amount": 6.25,
                                                               "date": "2017-05-25T00:00:00.000Z",
                                                               "name": "Monmouth Coffee",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                             },
                                                             Object {
                                                               "__v": 0,
@@ -998,166 +623,69 @@ ShallowWrapper {
                                                               "amount": 399,
                                                               "date": "2017-02-27T00:00:00.000Z",
                                                               "name": "Flight to Copenhagen",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
-                                                            }
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
+                                                            },
                                                           ]
-                                        } />
+                                        }
+                              />
                     </tbody>
           </table>
 </section>,
         "_debugID": 2,
         "_renderedOutput": <section
-          className="transactions">
+          className="transactions"
+>
           <h2>
                     Transactions 
-                    <function (props, context, updater) {
-                          // This constructor gets overridden by mocks. The argument is used
-                          // by mocks to assert on what gets mounted.
-                    
-                          if (process.env.NODE_ENV !== 'production') {
-                            warning(
-                              this instanceof Constructor,
-                              'Something is calling a React component directly. Use a factory or ' +
-                                'JSX instead. See: https://fb.me/react-legacyfactory'
-                            );
-                          }
-                    
-                          // Wire up auto-binding
-                          if (this.__reactAutoBindPairs.length) {
-                            bindAutoBindMethods(this);
-                          }
-                    
-                          this.props = props;
-                          this.context = context;
-                          this.refs = emptyObject;
-                          this.updater = updater || ReactNoopUpdateQueue;
-                    
-                          this.state = null;
-                    
-                          // ReactClasses doesn't have constructors. Instead, they use the
-                          // getInitialState and componentWillMount methods for initialization.
-                    
-                          var initialState = this.getInitialState ? this.getInitialState() : null;
-                          if (process.env.NODE_ENV !== 'production') {
-                            // We allow auto-mocks to proceed as if they're returning null.
-                            if (
-                              initialState === undefined &&
-                              this.getInitialState._isMockFunction
-                            ) {
-                              // This is probably bad practice. Consider warning here and
-                              // deprecating this convenience.
-                              initialState = null;
-                            }
-                          }
-                          _invariant(
-                            typeof initialState === 'object' && !Array.isArray(initialState),
-                            '%s.getInitialState(): must return an object or null',
-                            Constructor.displayName || 'ReactCompositeComponent'
-                          );
-                    
-                          this.state = initialState;
-                        }
+                    <Link
                               className="actionlink"
                               onlyActiveOnIndex={false}
                               style={Object {}}
-                              to="/transactions/add">
+                              to="/transactions/add"
+                    >
                               Add new transaction
-                    </function (props, context, updater) {
-                          // This constructor gets overridden by mocks. The argument is used
-                          // by mocks to assert on what gets mounted.
-                    
-                          if (process.env.NODE_ENV !== 'production') {
-                            warning(
-                              this instanceof Constructor,
-                              'Something is calling a React component directly. Use a factory or ' +
-                                'JSX instead. See: https://fb.me/react-legacyfactory'
-                            );
-                          }
-                    
-                          // Wire up auto-binding
-                          if (this.__reactAutoBindPairs.length) {
-                            bindAutoBindMethods(this);
-                          }
-                    
-                          this.props = props;
-                          this.context = context;
-                          this.refs = emptyObject;
-                          this.updater = updater || ReactNoopUpdateQueue;
-                    
-                          this.state = null;
-                    
-                          // ReactClasses doesn't have constructors. Instead, they use the
-                          // getInitialState and componentWillMount methods for initialization.
-                    
-                          var initialState = this.getInitialState ? this.getInitialState() : null;
-                          if (process.env.NODE_ENV !== 'production') {
-                            // We allow auto-mocks to proceed as if they're returning null.
-                            if (
-                              initialState === undefined &&
-                              this.getInitialState._isMockFunction
-                            ) {
-                              // This is probably bad practice. Consider warning here and
-                              // deprecating this convenience.
-                              initialState = null;
-                            }
-                          }
-                          _invariant(
-                            typeof initialState === 'object' && !Array.isArray(initialState),
-                            '%s.getInitialState(): must return an object or null',
-                            Constructor.displayName || 'ReactCompositeComponent'
-                          );
-                    
-                          this.state = initialState;
-                        }>
+                    </Link>
           </h2>
           <table
-                    className="financials -transactions">
+                    className="financials -transactions"
+          >
                     <thead>
                               <tr>
                                         <th
                                                   className=" filterable"
                                                   data-orderby="name-asc"
-                                                  onClick={[Function bound orderBy]}>
+                                                  onClick={[Function]}
+                                        >
                                                   Name
                                         </th>
                                         <th
                                                   className="activefilter"
                                                   data-orderby="date-desc"
-                                                  onClick={[Function bound orderBy]}>
+                                                  onClick={[Function]}
+                                        >
                                                   Date
                                         </th>
                                         <th
                                                   className=""
                                                   data-orderby="amount-asc"
-                                                  onClick={[Function bound orderBy]}>
+                                                  onClick={[Function]}
+                                        >
                                                   Amount
                                         </th>
                                         <th
-                                                  className="actions nobor">
+                                                  className="actions nobor"
+                                        >
                                                    
                                         </th>
                                         <th
-                                                  className="actions nobor">
+                                                  className="actions nobor"
+                                        >
                                                    
                                         </th>
                               </tr>
                     </thead>
                     <tbody>
-                              <function Connect(props, context) {
-                                      _classCallCheck(this, Connect);
-                              
-                                      var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-                              
-                                      _this.version = version;
-                                      _this.store = props.store || context.store;
-                              
-                                      (0, _invariant2["default"])(_this.store, 'Could not find "store" in either the context or ' + ('props of "' + connectDisplayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "store" as a prop to "' + connectDisplayName + '".'));
-                              
-                                      var storeState = _this.store.getState();
-                                      _this.state = { storeState: storeState };
-                                      _this.clearCache();
-                                      return _this;
-                                    }
+                              <Connect(Transaction)
                                         transaction={
                                                   Object {
                                                             "__v": 0,
@@ -1165,7 +693,7 @@ ShallowWrapper {
                                                             "amount": 6.25,
                                                             "date": "2017-05-25T00:00:00.000Z",
                                                             "name": "Monmouth Coffee",
-                                                            "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                            "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                           }
                                         }
                                         transactions={
@@ -1176,7 +704,7 @@ ShallowWrapper {
                                                               "amount": 4.5,
                                                               "date": "2017-05-01T00:00:00.000Z",
                                                               "name": "Cashew Nuts",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                             },
                                                             Object {
                                                               "__v": 0,
@@ -1184,7 +712,7 @@ ShallowWrapper {
                                                               "amount": 6.25,
                                                               "date": "2017-05-25T00:00:00.000Z",
                                                               "name": "Monmouth Coffee",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                             },
                                                             Object {
                                                               "__v": 0,
@@ -1192,25 +720,12 @@ ShallowWrapper {
                                                               "amount": 399,
                                                               "date": "2017-02-27T00:00:00.000Z",
                                                               "name": "Flight to Copenhagen",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
-                                                            }
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
+                                                            },
                                                           ]
-                                        } />
-                              <function Connect(props, context) {
-                                      _classCallCheck(this, Connect);
-                              
-                                      var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-                              
-                                      _this.version = version;
-                                      _this.store = props.store || context.store;
-                              
-                                      (0, _invariant2["default"])(_this.store, 'Could not find "store" in either the context or ' + ('props of "' + connectDisplayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "store" as a prop to "' + connectDisplayName + '".'));
-                              
-                                      var storeState = _this.store.getState();
-                                      _this.state = { storeState: storeState };
-                                      _this.clearCache();
-                                      return _this;
-                                    }
+                                        }
+                              />
+                              <Connect(Transaction)
                                         transaction={
                                                   Object {
                                                             "__v": 0,
@@ -1218,7 +733,7 @@ ShallowWrapper {
                                                             "amount": 4.5,
                                                             "date": "2017-05-01T00:00:00.000Z",
                                                             "name": "Cashew Nuts",
-                                                            "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                            "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                           }
                                         }
                                         transactions={
@@ -1229,7 +744,7 @@ ShallowWrapper {
                                                               "amount": 4.5,
                                                               "date": "2017-05-01T00:00:00.000Z",
                                                               "name": "Cashew Nuts",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                             },
                                                             Object {
                                                               "__v": 0,
@@ -1237,7 +752,7 @@ ShallowWrapper {
                                                               "amount": 6.25,
                                                               "date": "2017-05-25T00:00:00.000Z",
                                                               "name": "Monmouth Coffee",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                             },
                                                             Object {
                                                               "__v": 0,
@@ -1245,25 +760,12 @@ ShallowWrapper {
                                                               "amount": 399,
                                                               "date": "2017-02-27T00:00:00.000Z",
                                                               "name": "Flight to Copenhagen",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
-                                                            }
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
+                                                            },
                                                           ]
-                                        } />
-                              <function Connect(props, context) {
-                                      _classCallCheck(this, Connect);
-                              
-                                      var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-                              
-                                      _this.version = version;
-                                      _this.store = props.store || context.store;
-                              
-                                      (0, _invariant2["default"])(_this.store, 'Could not find "store" in either the context or ' + ('props of "' + connectDisplayName + '". ') + 'Either wrap the root component in a <Provider>, ' + ('or explicitly pass "store" as a prop to "' + connectDisplayName + '".'));
-                              
-                                      var storeState = _this.store.getState();
-                                      _this.state = { storeState: storeState };
-                                      _this.clearCache();
-                                      return _this;
-                                    }
+                                        }
+                              />
+                              <Connect(Transaction)
                                         transaction={
                                                   Object {
                                                             "__v": 0,
@@ -1271,7 +773,7 @@ ShallowWrapper {
                                                             "amount": 399,
                                                             "date": "2017-02-27T00:00:00.000Z",
                                                             "name": "Flight to Copenhagen",
-                                                            "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                            "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                           }
                                         }
                                         transactions={
@@ -1282,7 +784,7 @@ ShallowWrapper {
                                                               "amount": 4.5,
                                                               "date": "2017-05-01T00:00:00.000Z",
                                                               "name": "Cashew Nuts",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                             },
                                                             Object {
                                                               "__v": 0,
@@ -1290,7 +792,7 @@ ShallowWrapper {
                                                               "amount": 6.25,
                                                               "date": "2017-05-25T00:00:00.000Z",
                                                               "name": "Monmouth Coffee",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
                                                             },
                                                             Object {
                                                               "__v": 0,
@@ -1298,33 +800,26 @@ ShallowWrapper {
                                                               "amount": 399,
                                                               "date": "2017-02-27T00:00:00.000Z",
                                                               "name": "Flight to Copenhagen",
-                                                              "user": "58c2a33cc6cd5a5d15a8fc0c"
-                                                            }
+                                                              "user": "58c2a33cc6cd5a5d15a8fc0c",
+                                                            },
                                                           ]
-                                        } />
+                                        }
+                              />
                     </tbody>
           </table>
-</section>
+</section>,
       },
       "_renderedNodeType": 0,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false
+      "_warnedAboutRefsInRender": false,
     },
-    "getRenderOutput": [Function getRenderOutput],
-    "render": [Function render]
+    "getRenderOutput": [Function],
+    "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <function Transactions(props) {/* istanbul ignore next */_classCallCheck(this, Transactions);var _this = _possibleConstructorReturn(this, (Transactions.__proto__ || Object.getPrototypeOf(Transactions)).call(this,
-    props));
-
-    /* istanbul ignore next */_this.state = {
-      orderBy: 'date-desc' };
-
-
-    /* istanbul ignore next */_this.orderBy = /* istanbul ignore next */_this.orderBy.bind( /* istanbul ignore next */_this); /* istanbul ignore next */return _this;
-  }
+  "unrendered": <Transactions
     transactions={
         Array [
             Object {
@@ -1333,7 +828,7 @@ ShallowWrapper {
               "amount": 4.5,
               "date": "2017-05-01T00:00:00.000Z",
               "name": "Cashew Nuts",
-              "user": "58c2a33cc6cd5a5d15a8fc0c"
+              "user": "58c2a33cc6cd5a5d15a8fc0c",
             },
             Object {
               "__v": 0,
@@ -1341,7 +836,7 @@ ShallowWrapper {
               "amount": 6.25,
               "date": "2017-05-25T00:00:00.000Z",
               "name": "Monmouth Coffee",
-              "user": "58c2a33cc6cd5a5d15a8fc0c"
+              "user": "58c2a33cc6cd5a5d15a8fc0c",
             },
             Object {
               "__v": 0,
@@ -1349,9 +844,10 @@ ShallowWrapper {
               "amount": 399,
               "date": "2017-02-27T00:00:00.000Z",
               "name": "Flight to Copenhagen",
-              "user": "58c2a33cc6cd5a5d15a8fc0c"
-            }
+              "user": "58c2a33cc6cd5a5d15a8fc0c",
+            },
           ]
-    } />
+    }
+/>,
 }
 `;
