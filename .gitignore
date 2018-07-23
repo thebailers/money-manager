@@ -4,3 +4,4 @@ npm-debug.log
 .DS_Store
 *.log
 npm-debug.log*
+.idea/

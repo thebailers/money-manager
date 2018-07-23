@@ -5,18 +5,18 @@ import { handleErr } from './actionCreators'
 
 export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 
-export const setCurrentUser = (user) => ({
+export const setCurrentUser = user => ({
   type: SET_CURRENT_USER,
   user
 })
 
-export const register = userdata => dispatch => axios.post('/api/users', userdata)
-  .then(res => {
+export const register = userdata => dispatch =>
+  axios.post('/api/users', userdata).then(res => {
     console.log(res)
   })
 
-export const login = data => dispatch => axios.post('/auth/signin', data)
-  .then(res => {
+export const login = data => dispatch =>
+  axios.post('/auth/signin', data).then(res => {
     const token = res.data.token
     localStorage.setItem('mm-jwtToken', token)
     setAuthToken(token)
@@ -29,5 +29,5 @@ export const logout = () => dispatch => {
   dispatch(setCurrentUser({}))
 }
 
-export const checkAuth = () => dispatch => axios.get('/auth/check-auth')
-  .catch(err => dispatch(handleErr(err)))
+export const checkAuth = () => dispatch =>
+  axios.get('/auth/check-auth').catch(err => dispatch(handleErr(err)))

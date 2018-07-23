@@ -6,5 +6,3 @@ import rootReducer from './reducers/index'
 
 const store = createStore(rootReducer)
 export const history = syncHistoryWithStore(browserHistory, store)
-
-export default store
